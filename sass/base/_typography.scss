@@ -1,0 +1,109 @@
+%heading {
+  font-family: $font-header;
+  font-weight: 400;
+  letter-spacing: 1.7px;
+}
+
+.heading-1 {
+  @extend %heading;
+  font-size: 6rem;
+  &--light {
+    color: $color-grey-light-1;
+  }
+  &--dark {
+    color: $color-grey-dark-1;
+  }
+}
+
+.heading-2 {
+  @extend %heading;
+  font-size: 4.5rem;
+  // line-height: 1;
+
+  &--light {
+    color: $color-grey-light-1;
+  }
+  &--dark {
+    color: $color-grey-dark-1;
+  }
+}
+
+.heading-3,
+h3 {
+  @extend %heading;
+  font-size: 4.1rem;
+  &--light {
+    color: $color-grey-light-1;
+  }
+  &--dark {
+    color: $color-grey-dark-1;
+  }
+}
+h3 {
+  padding-bottom: 1rem;
+}
+
+.heading-4 {
+  @extend %heading;
+  font-size: 1.8rem;
+
+  &--light {
+    color: $color-grey-light-1;
+  }
+  &--dark {
+    color: $color-grey-dark-1;
+  }
+}
+p {
+  font-size: 1.4rem;
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+}
+
+.section-text,
+.tabbed-text {
+  .text-block {
+    &.two-col {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+}
+.text-block {
+  a {
+    color: $color-primary;
+  }
+}
+
+.align-cent {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.font-upper {
+  text-transform: uppercase;
+}
+.font-display {
+  letter-spacing: 1.7px;
+}
+.font-italic {
+  font-style: italic;
+}
+
+.read-more p:not(:first-child) {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 0;
+}
+
+.read-more.expanded p {
+  max-height: 1000px;
+  margin-bottom: 2rem;
+}
+blockquote {
+  padding-left: 2rem;
+  font-style: italic;
+}

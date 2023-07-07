@@ -1,0 +1,104 @@
+/*=====MASTER GRID RULES=====*/
+
+.container {
+  display: grid;
+  // grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(12, [col-start] minmax(min-content, 10rem) [col-end])
+    [center-end] minmax(6rem, 1fr)
+    [full-end];
+
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr) [center-start] repeat(
+        12,
+        [col-start] minmax(min-content, 10rem) [col-end]
+      )
+      [center-end] minmax(1rem, 1fr) [full-end];
+  }
+
+  // @media only screen and (max-width: $bp-medium) {
+  //   grid-template-rows: 6rem calc(100vh - 6rem);
+  // }
+}
+
+/*=====SECTION GRID RULES=====*/
+
+section {
+  &.alt-bg {
+    background-color: $color-alt-bg;
+  }
+  &:first-of-type {
+    padding-top: 5rem;
+  }
+  .flex-col {
+  }
+}
+
+.row {
+  grid-column: center-start / center-end;
+  &--extended {
+    grid-column: full-start / full-end;
+  }
+  &.col-2 {
+    grid-column: col-start 6 / col-end 7;
+    @media only screen and (max-width: $bp-small) {
+      grid-column: center-start / center-end !important;
+    }
+  }
+  &.col-4 {
+    grid-column: col-start 5 / col-end 8;
+    @media only screen and (max-width: $bp-small) {
+      grid-column: center-start / center-end !important;
+    }
+  }
+  &.col-6 {
+    grid-column: col-start 4 / col-end 9;
+    @media only screen and (max-width: $bp-small) {
+      grid-column: center-start / center-end !important;
+    }
+  }
+  &.col-8 {
+    grid-column: col-start 3 / col-end 10;
+    @media only screen and (max-width: $bp-small) {
+      grid-column: center-start / center-end !important;
+    }
+  }
+  &.col-10 {
+    grid-column: col-start 2 / col-end 11;
+    @media only screen and (max-width: $bp-small) {
+      grid-column: center-start / center-end !important;
+    }
+  }
+  &.extended {
+    grid-column: full-start / full-end;
+  }
+  .spacer {
+    &.small {
+      padding: 3rem;
+    }
+    &.medium {
+      padding: 5rem;
+    }
+    &.large {
+      padding: 8rem;
+    }
+    &.massive {
+      padding: 12rem;
+    }
+  }
+}
+
+.mb-sm {
+  padding-bottom: 5rem;
+}
+.mb-md {
+  padding-bottom: 9rem;
+}
+.mb-lg {
+  padding-bottom: 15rem;
+}
+.mb-hg {
+  padding-bottom: 20rem;
+}

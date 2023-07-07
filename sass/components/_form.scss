@@ -1,0 +1,19 @@
+.modal-form {
+  padding: 5rem 0;
+  .mc4wp-form-fields {
+    display: flex;
+    justify-content: center;
+    grid-gap: 1rem;
+
+    input {
+      padding: 2rem;
+      text-transform: uppercase;
+    }
+    input[type="submit"] {
+      color: $color-white;
+      background: $color-primary-dark-2;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

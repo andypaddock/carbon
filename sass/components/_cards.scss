@@ -1,0 +1,108 @@
+.triple-cards {
+  display: flex;
+  flex-direction: column;
+  &--card {
+    position: relative;
+    min-height: 50rem;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .top-link {
+      align-self: flex-end;
+      height: 5rem;
+      width: 5rem;
+      display: grid;
+      place-content: center;
+      border: 1px solid $color-black;
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary;
+      }
+    }
+    i {
+      font-size: 3rem;
+
+      padding: 0.5rem 1rem;
+      &:hover {
+      }
+    }
+  }
+  @media only screen and (min-width: $bp-large) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+  }
+}
+.card {
+  &__fullwidth {
+    position: relative;
+    min-height: 35rem;
+    .row.fullwidth-text--wrapper {
+      @media only screen and (min-width: $bp-large) {
+        grid-column: full-start / col-end 4;
+      }
+    }
+    img {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .link-text {
+      padding: 5rem;
+      background: rgba(#2e2d2b, 0.5);
+      margin-right: 1rem;
+      height: 100%;
+      .heading-2 {
+        padding-bottom: 3rem;
+      }
+      p {
+        color: $color-primary;
+        &:first-of-type {
+          color: $color-white;
+        }
+      }
+
+      a {
+        width: 5rem;
+        height: 5rem;
+        display: grid;
+        place-content: center;
+        font-size: 4rem;
+        color: $color-primary;
+        border: 1px solid $color-primary;
+        margin: 5rem 0;
+        &:hover {
+          border-color: $color-primary;
+          background: $color-primary;
+        }
+        i {
+          padding: 1rem 2rem;
+          &:hover {
+            color: $color-black;
+          }
+        }
+      }
+
+      @media only screen and (min-width: $bp-large) {
+        padding-left: calc(50vw - 464px);
+      }
+      @media only screen and (min-width: $bp-largest) {
+        padding-left: calc(50vw - 600px);
+      }
+    }
+  }
+}

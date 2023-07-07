@@ -1,0 +1,50 @@
+.format-switch {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+  grid-column: col-start 6 / col-end 7;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 99;
+
+  svg {
+    margin: 0 1rem;
+    cursor: pointer;
+
+    rect,
+    path {
+      transition: 0.3s fill ease;
+      fill: $color-primary-dark;
+    }
+
+    &:hover rect,
+    &:hover path {
+      fill: $color-primary;
+    }
+
+    &.highlight rect,
+    &.highlight path {
+      fill: $color-primary;
+    }
+  }
+}
+
+.highlights {
+  display: grid;
+  img {
+    height: 25vw;
+    // width: 45vw;
+    object-fit: cover;
+  }
+  .fa {
+    padding: 1rem;
+    color: $color-white;
+    background: $color-primary-dark;
+  }
+  .owl-nav {
+    button {
+      width: 3rem;
+    }
+  }
+}

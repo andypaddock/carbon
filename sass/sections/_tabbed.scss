@@ -1,0 +1,151 @@
+.section-tabs {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.tab-labels {
+  grid-column: col-start 2 / col-end 11;
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      flex: 1 1 15rem;
+      padding: 2rem 3rem;
+      border: 1px solid $color-alt-bg;
+      cursor: pointer;
+      font-size: 2rem;
+
+      font-weight: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &.active {
+        background: $color-alt-bg;
+        border: 1px solid $color-alt-bg;
+      }
+    }
+  }
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end !important;
+  }
+}
+
+.tabs-content {
+  background: $color-alt-bg;
+  grid-column: full-start / full-end;
+  padding: 5rem 0;
+  &.active {
+  }
+  .tab-content {
+    .tabbed-text,
+    .toggle-block,
+    .section-text-image,
+    .section-table {
+      grid-column: col-start 2 / col-end 11;
+    }
+    .highlights {
+      grid-column: full-start / full-end;
+    }
+    section:first-of-type {
+      padding-top: 5rem;
+    }
+    .section-text-image {
+      padding-bottom: 5rem;
+      h2 {
+        @extend %heading;
+        font-size: 2rem;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+}
+.toggle-block {
+}
+.owl-nav {
+  i {
+    font-size: 3rem;
+  }
+}
+
+.section-contact-tabs {
+  margin: 15rem 0 0;
+}
+
+.tabs {
+  display: flex;
+  grid-gap: 1rem;
+  padding: 0 0 1rem;
+  justify-content: flex-end;
+  list-style: none;
+  li {
+  }
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-black;
+    padding: 1.5rem 4rem;
+    border: 1px solid $color-black;
+
+    &:hover,
+    &.active {
+      background: $color-primary;
+      border: 1px solid $color-primary;
+      color: $color-white;
+    }
+  }
+}
+.tabgroup {
+  background: $color-off-white;
+  div {
+    padding: 0;
+  }
+  h2 {
+    text-align: center;
+    padding-top: 3rem;
+  }
+}
+.wpforms-field-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  padding: 0 3rem !important;
+  .wpforms-field {
+    grid-column: 1;
+  }
+  .wpforms-field-textarea {
+    grid-column: 2;
+    grid-row: 1/5;
+    textarea {
+      height: 100%;
+    }
+  }
+}
+div.wpforms-container-full .wpforms-form textarea.wpforms-field-large {
+  height: 100% !important;
+  border-color: transparent !important;
+}
+div.wpforms-container-full input {
+  border-color: transparent !important;
+}
+div.wpforms-container-full button[type="submit"]:not(:hover):not(:active) {
+  background: $color-primary !important;
+}
+div.wpforms-container-full button[type="submit"]:hover {
+  background: $color-grey-dark-2 !important;
+}
+div.wpforms-container-full button[type="submit"]:focus:after {
+  border: 2px solid $color-primary !important;
+}
+div.wpforms-container-full .wpforms-form .wpforms-submit-container {
+  text-align: right;
+}
+.wpforms-submit-container button {
+  border-radius: 0 !important;
+  &::after {
+    font: var(--fa-font-light);
+    content: "\f054";
+  }
+}

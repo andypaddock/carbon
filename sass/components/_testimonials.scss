@@ -1,0 +1,107 @@
+.testimonial-carousel {
+  .slick-list {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .slick-arrow {
+    position: absolute;
+    top: 30%;
+    border: none;
+    &.slick-next {
+      right: 0;
+    }
+    i {
+      padding: 1rem;
+      color: $color-white;
+      background: $color-primary-dark;
+      font-size: 2rem;
+    }
+  }
+  .attrib {
+    font-size: 1.3rem;
+  }
+  .quote {
+    text-align: center;
+  }
+}
+.testimonial-wrapper {
+  display: grid !important;
+  padding: 5rem 0;
+  .quote {
+    display: flex;
+    flex-direction: column;
+
+    .copy {
+      font-size: 3rem;
+      font-family: $font-header;
+      text-transform: uppercase;
+    }
+    .attrib {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-family: $font-header;
+      color: $color-primary;
+      padding-top: 2rem;
+    }
+    svg {
+      width: 10rem;
+      height: 5rem;
+    }
+    .quote-details {
+      padding: 3rem 0 0;
+      display: flex;
+      align-items: center;
+      grid-gap: 2rem;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    .quote-details a {
+      // padding: 5rem 0 0;
+      display: flex;
+      align-items: center;
+      grid-gap: 2rem;
+      text-transform: uppercase;
+      font-style: italic;
+      i {
+        padding: 0 0 0 1rem;
+      }
+      .date {
+        color: $color-black;
+      }
+    }
+  }
+  .slick-next,
+  .slick-prev {
+    left: 6rem;
+    top: 1rem;
+    background: transparent;
+    &::before {
+      font-family: "Font Awesome 6 Sharp";
+      color: $color-primary;
+    }
+  }
+  .slick-prev {
+    left: 0;
+  }
+}
+.stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: 2rem;
+  font-family: Times; // make sure ★ appears correctly
+  font-style: normal;
+  line-height: 1;
+
+  &::before {
+    content: "\25C9 \25c9 \25c9 \25c9 \25c9";
+    letter-spacing: 3px;
+    background: linear-gradient(
+      90deg,
+      $color-primary var(--percent),
+      $color-bg-dark var(--percent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

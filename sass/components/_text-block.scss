@@ -1,0 +1,119 @@
+.section-text-block {
+  .text {
+    .button {
+      max-width: 30rem;
+    }
+    .text-block {
+      @media only screen and (min-width: $bp-large) {
+        padding: 0 5rem;
+      }
+      &.align-left {
+        text-align: left;
+      }
+      &.align-cent {
+        text-align: center;
+      }
+      &.align-right {
+        text-align: right;
+      }
+      a {
+        color: $color-primary;
+        text-transform: uppercase;
+        padding-top: 3rem;
+        display: block;
+        font-family: $font-header;
+        &:hover {
+          color: $color-primary-light;
+        }
+      }
+      .read-more-link {
+        padding-top: 0;
+      }
+      h2 {
+        padding-bottom: 3rem;
+      }
+    }
+    &__one {
+      padding: 5rem 0;
+    }
+    &__two {
+      columns: 2;
+      column-gap: 2rem;
+    }
+    &__quote {
+      display: flex;
+      flex-wrap: wrap;
+      > div {
+        flex: 1 1 30rem;
+      }
+      .quote {
+        padding: 0 4rem;
+        font-size: 2.6rem;
+
+        color: $color-primary;
+      }
+    }
+    &__image {
+      img {
+        width: 40rem;
+      }
+      .left {
+        float: left;
+        padding: 0 4rem 1rem 0;
+      }
+      .right {
+        float: right;
+        padding: 0 4rem 1rem 4rem;
+      }
+    }
+  }
+}
+.title-block {
+  padding: 5rem 0 0;
+  &--heading {
+    &.align-center {
+      text-align: center;
+    }
+    &.align-right {
+      text-align: right;
+    }
+  }
+}
+.section-text-image-block {
+  padding-bottom: 15rem;
+  .image-block {
+    grid-column: center-start / center-end;
+    height: 100vh;
+    position: sticky;
+    top: 6rem;
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    @media only screen and (min-width: $bp-medium) {
+      grid-column: col-start 7 / full-end;
+    }
+  }
+
+  .text-block {
+    grid-column: center-start / center-end;
+    padding: 0 0 5rem 0;
+    h2 {
+      padding-bottom: 3rem;
+    }
+    @media only screen and (min-width: $bp-medium) {
+      grid-column: col-start 2 / col-end 6;
+      padding: 40vh 20% 5rem 0;
+    }
+  }
+}
+.breadcrumb {
+  text-transform: uppercase;
+  padding: 5rem 0 10rem;
+
+  .current {
+    color: $color-primary;
+  }
+}
