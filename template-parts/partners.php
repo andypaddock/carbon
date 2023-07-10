@@ -1,7 +1,7 @@
 <section class="container section-partners" id="<?php the_sub_field('section_id'); ?>">
     <div class="partners-block row <?php the_sub_field('column_size'); ?>">
 
-        <div class="title-block--heading align-<?php the_sub_field('heading_align'); ?>">
+        <div class="title-block">
             <h2 class="heading-3"><?php the_sub_field('main_title'); ?></h2>
             <?php the_sub_field('description'); ?>
         </div>
@@ -13,16 +13,35 @@
             <div class="group-title"><?php the_sub_field('group_title'); ?></div>
 
             <?php if( have_rows('group_members') ): ?>
-            <ul class="slides">
+            <div class="partner-group--members">
                 <?php while( have_rows('group_members') ): the_row(); 
         $image = get_sub_field('member_imagelogo');
         ?>
-                <li>
-                    <?php echo wp_get_attachment_image( $image, 'full' ); ?>
-                    <p><?php the_sub_field('member_name'); ?></p>
-                </li>
+                <div class="group-member tile">
+                    <div class="group-member--image">
+                        <?php if(get_sub_field('member_website')):?>
+                        <a href="<?php echo esc_url( urlencode( the_sub_field('member_website') ) ); ?>" target="_blank"
+                            title="Visit our partner <?php the_sub_field('member_name'); ?>">
+                            <?php echo wp_get_attachment_image( $image, 'full' ); ?>
+                        </a>
+                        <?php else:?>
+                        <?php echo wp_get_attachment_image( $image, 'full' ); ?>
+                        <?php endif;?>
+                    </div>
+                    <div class="group-member--details">
+                        <?php if(get_sub_field('member_website')):?>
+                        <a href="<?php echo esc_url( urlencode( the_sub_field('member_website') ) ); ?>" target="_blank"
+                            title="Visit our partner <?php the_sub_field('member_name'); ?>">
+                            <h4 class="heading-4 font-default"><?php the_sub_field('member_name'); ?></h4>
+                        </a>
+                        <?php else:?>
+                        <h4 class="heading-4 font-default"><?php the_sub_field('member_name'); ?></h4>
+                        <?php endif;?>
+                        <?php the_sub_field('member_description'); ?>
+                    </div>
+                </div>
                 <?php endwhile; ?>
-            </ul>
+            </div>
             <?php endif; ?>
 
 

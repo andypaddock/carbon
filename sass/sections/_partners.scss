@@ -1,0 +1,68 @@
+.section-partners,
+.section-buyers {
+  .partners-block,
+  .buyers-block {
+    .title-block {
+      padding: 10rem 0;
+      border-top: 1px solid $color-white;
+      @media only screen and (min-width: $bp-large) {
+        padding: 10rem 50% 10rem 0;
+      }
+    }
+    .partner-group {
+      .group-title {
+        text-transform: uppercase;
+        font-weight: 400;
+        padding: 0 0 3rem;
+        border-bottom: 1px solid $color-white;
+      }
+      &--members {
+        padding: 5rem 0 10rem;
+        display: flex;
+        flex-direction: column;
+        grid-gap: 3rem;
+        @media only screen and (min-width: $bp-large) {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 3rem;
+        }
+        .group-member {
+          display: flex;
+          grid-gap: 3rem;
+          &--image {
+            border-right: 1px solid $color-white;
+            padding-right: 3rem;
+            display: flex;
+            align-items: center;
+            img {
+              width: 8rem;
+              height: auto;
+            }
+          }
+        }
+      }
+      &--buyers {
+        display: flex;
+        flex-wrap: wrap;
+        @media only screen and (min-width: $bp-large) {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          grid-gap: 3rem;
+        }
+        .group-member {
+          flex: 1 15rem;
+          padding: 1rem;
+          display: grid;
+          place-content: center;
+        }
+      }
+    }
+    .buyers-group {
+      .group-title {
+      }
+    }
+  }
+  .buyers-block {
+    border-bottom: 1px solid $color-white;
+  }
+}

@@ -1,0 +1,160 @@
+<style>
+.hero {
+  position: relative;
+  overflow: clip;
+}
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(12, [col-start] minmax(min-content, 10rem) [col-end])
+    [center-end] minmax(6rem, 1fr)
+    [full-end];
+}
+.row {
+  grid-column: col-start 2 / col-end 11;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.main-text p {
+
+    padding: 5rem 0;
+
+}
+ 
+.main-image {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 10rem;
+  height: 10vh;
+}
+.main-image img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.cloud-one,
+.cloud-two {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100px;
+  animation: cloudAnimation 10s infinite linear;
+ 
+}
+
+.cloud-two {
+  top: 0%;
+  animation-delay: 5s;
+ 
+}
+.cloud-one {
+  top: -10%;
+}
+
+.base-image {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.content {
+  display: grid;
+  place-content: center;
+  height: 200vh; /* Adjust height as needed */
+  background-color: blue;
+  z-index: -1;
+}
+  .spacer {
+    height: 100vh; /* Height equal to hero section */
+  }
+
+  .content {
+    height: 200vh; /* Adjust height as needed */
+  }
+
+</style><section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="main-text">
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+                <p>Hero Text</p>
+            </div>
+            <div class="main-image"><img src="http://carbon-project.local/wp-content/uploads/2023/07/shel.png"></div>
+        </div>
+    </div>
+    <div class="cloud-two">
+        <img src="http://carbon-project.local/wp-content/uploads/2023/07/cloud1.png">
+    </div>
+    <div class="cloud-one">
+        <img src="http://carbon-project.local/wp-content/uploads/2023/07/cloud2.png">
+    </div>
+    <div class="base-image"><img src="https://carbon-project.local/wp-content/uploads/2023/07/DJI_0359-1bw-jpg.webp">
+    </div>
+</section>
+<div class="spacer"></div> <!-- Spacer element -->
+
+<div class="content">
+    Some Content
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+      const spacer = document.querySelector('.spacer'); // Get the spacer element
+
+        gsap.to(".cloud-one", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            },
+            y: 200, // Adjust the value to control the cloud's movement
+            scale: 1.9 // Adjust the value to control the cloud's scaling
+        });
+
+        gsap.to(".cloud-two", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            },
+            y: 500, // Adjust the value to control the cloud's movement
+            scale: 1.3 // Adjust the value to control the cloud's scaling
+        });
+      gsap.to(".base-image", {
+            scrollTrigger: {
+                trigger: ".spacer", // Use spacer element as the trigger
+                start: "top bottom",
+                end: "bottom top", // Adjust the offset to prevent overlap
+                scrub: true,
+                pin: true,
+                pinSpacing: false,
+                spacer: spacer // Use spacer element as the spacer for pinning
+            },
+            y: "-100vh"
+        });
+
+       
+</script>
