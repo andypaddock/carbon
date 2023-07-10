@@ -253,3 +253,25 @@ function countUp() {
 window.onload = countUp;
 
 
+//FADE FOOTER HEADINGS 
+
+// Get all the fade items
+const fadeItems = document.querySelectorAll('.fade-item');
+
+// Set the initial active index
+let activeIndex = 0;
+
+// Function to fade the headings
+function fadeHeadings() {
+  // Remove active class from all fade items
+  fadeItems.forEach(item => item.classList.remove('active'));
+
+  // Add active class to the current heading
+  fadeItems[activeIndex].classList.add('active');
+
+  // Increment the active index
+  activeIndex = (activeIndex + 1) % fadeItems.length;
+}
+
+// Call the fadeHeadings function every 3 seconds
+setInterval(fadeHeadings, 3000);

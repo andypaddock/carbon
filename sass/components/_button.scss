@@ -8,8 +8,12 @@
   transition: all 0.2s;
   text-align: center;
   letter-spacing: 1.7px;
-  display: inline-grid;
+  display: inline-flex;
+  align-items: center;
   margin-top: 5rem;
+  i {
+    padding-left: 1rem;
+  }
 
   &:hover {
     background-color: $color-primary;

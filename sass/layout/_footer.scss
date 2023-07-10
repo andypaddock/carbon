@@ -1,6 +1,34 @@
 .site-footer {
   &--upper {
     background: $color-bg-dark;
+    position: relative;
+    video {
+      position: absolute;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .contact-wrapper {
+      z-index: 2;
+    }
+    .carbon-form {
+      @media only screen and (min-width: $bp-large) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 3rem;
+      }
+
+      .footer-form-title {
+        font-size: 3rem;
+        span {
+          font-size: 2.5rem;
+          display: block;
+          font-family: $font-primary;
+          font-weight: 100;
+        }
+      }
+    }
   }
   &--lower {
     background: $color-black;
@@ -62,5 +90,25 @@
       opacity: 0.8;
       transform: translateY(0);
     }
+  }
+}
+.fade-wrapper {
+  z-index: 2;
+}
+#fade-container {
+  height: 12rem;
+  text-align: center;
+  margin: 6rem 0;
+  .fade-item {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+    left: 50%;
+    translate: -50%;
+    width: 100%;
+  }
+
+  .fade-item.active {
+    opacity: 1;
   }
 }
