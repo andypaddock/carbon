@@ -2470,6 +2470,38 @@ section.section-map {
   color: #9bd866;
 }
 
+.numbers-block {
+  border-bottom: 1px solid #fff;
+}
+.numbers-block--items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 10rem 0;
+}
+@media only screen and (min-width: 62.5em) {
+  .numbers-block--items {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 8rem;
+  }
+}
+.numbers-block--item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 25rem;
+          flex: 1 25rem;
+  text-align: center;
+}
+.numbers-block--item span {
+  font-size: 4.5rem;
+  font-family: "cora", sans-serif;
+  display: block;
+}
+
 .site-footer--upper {
   background: #2f2e2c;
 }

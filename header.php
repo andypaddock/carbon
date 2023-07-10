@@ -22,6 +22,13 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
+    <title>
+        <?php if(is_front_page() || is_home()){
+			echo get_bloginfo('name');
+		} else{
+			echo wp_title('');
+		}?>
+    </title>
     <?php wp_head(); ?>
 </head>
 

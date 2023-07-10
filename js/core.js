@@ -417,9 +417,47 @@ $('.tabs a').click(function(e) {
   $(target).show();
 });
 
-    
+
 
 
 }); //Don't remove ---- end of jQuery wrapper
+
+
+//COUNTER
+
+function countUp() {
+  const elements = document.querySelectorAll('.counter');
+
+  elements.forEach(element => {
+    const startNumber = parseInt(element.dataset.start);
+    const endNumber = parseInt(element.dataset.end);
+    const increment = parseInt(element.dataset.increment) || 1; // Default increment is 1 if not specified
+    const intervalDuration = parseInt(element.dataset.intervalDuration) || 1000; // Default interval duration is 1000 milliseconds (1 second)
+    const prefix = element.dataset.prefix || ''; // Text to prepend (empty string by default)
+    const suffix = element.dataset.suffix || ''; // Text to append (empty string by default)
+    let currentNumber = startNumber;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.target === element && entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            if (currentNumber > endNumber) {
+              clearInterval(intervalId);
+            } else {
+              element.querySelector('span').textContent = prefix + currentNumber + suffix;
+              currentNumber += increment;
+            }
+          }, intervalDuration);
+
+          observer.unobserve(element);
+        }
+      });
+    });
+
+    observer.observe(element);
+  });
+}
+
+window.onload = countUp;
 
 

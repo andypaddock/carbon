@@ -4,6 +4,18 @@
 <?php get_template_part('template-parts/partners'); ?>
 <?php elseif (get_row_layout() == 'buyers') : ?>
 <?php get_template_part('template-parts/buyers'); ?>
+
+<?php elseif (get_row_layout() == 'numbers') : ?>
+<?php get_template_part('template-parts/numbers'); ?>
+
+
+
+
+
+
+
+
+
 <?php elseif (get_row_layout() == 'text_block') : ?>
 <?php get_template_part('template-parts/text_block'); ?>
 <?php elseif (get_row_layout() == 'section_tabbed') : ?>
