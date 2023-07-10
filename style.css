@@ -85,8 +85,9 @@ h3, .heading-2, .heading-1 {
 .heading-1 {
   font-size: 6rem;
 }
-.heading-1--light {
-  color: #f9f7f6;
+.heading-1--extra {
+  font-size: 8.1rem;
+  font-weight: 700;
 }
 .heading-1--dark {
   color: #76736e;
@@ -160,6 +161,10 @@ p:not(:last-of-type) {
 
 .font-upper {
   text-transform: uppercase;
+}
+
+.font-default {
+  font-family: "lato", sans-serif;
 }
 
 .font-display {
@@ -2226,6 +2231,16 @@ section.section-map {
   display: none;
 }
 
+.toggle-block {
+  padding: 6rem 0;
+}
+@media only screen and (min-width: 62.5em) {
+  .toggle-block {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+  }
+}
 .toggle-block label {
   position: relative;
   margin-bottom: 0;
@@ -2240,8 +2255,7 @@ section.section-map {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #fff;
-  border: 1 px solid transparent;
+  border: 1 px solid white;
   cursor: pointer;
 }
 .toggle-block label i {
@@ -2252,18 +2266,19 @@ section.section-map {
   color: #9bd866;
 }
 .toggle-block label.collapsed i {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 .toggle-block .content {
   display: none;
   padding: 3rem 2rem;
-  background: #fff;
 }
 .toggle-block .item {
-  border: 1px solid transparent;
+  border: 1px solid #fff;
   margin-bottom: 2rem;
-  color: #000;
+  -webkit-column-break-inside: avoid;
+     -moz-column-break-inside: avoid;
+          break-inside: avoid-column;
 }
 
 .block__item {
@@ -2342,6 +2357,13 @@ section.section-map {
 .block__text {
   display: none;
   padding-top: 10px;
+}
+
+.section-faq {
+  padding: 10rem 0;
+}
+.section-faq .heading-1 {
+  text-align: center;
 }
 
 .section-text-block .text .button {

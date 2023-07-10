@@ -1,6 +1,11 @@
 .section-accordion {
 }
 .toggle-block {
+  padding: 6rem 0;
+  @media only screen and (min-width: $bp-large) {
+    column-count: 2;
+  }
+
   label {
     position: relative;
     margin-bottom: 0;
@@ -9,8 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: $color-white;
-    border: 1 px solid transparent;
+    border: 1 px solid white;
     cursor: pointer;
 
     i {
@@ -20,19 +24,18 @@
     }
 
     &.collapsed i {
-      transform: rotate(90deg);
+      transform: rotate(-90deg);
     }
   }
 
   .content {
     display: none;
     padding: 3rem 2rem;
-    background: $color-white;
   }
   .item {
-    border: 1px solid transparent;
+    border: 1px solid $color-white;
     margin-bottom: 2rem;
-    color: $color-black;
+    break-inside: avoid-column;
   }
 }
 
@@ -102,4 +105,10 @@
 .block__text {
   display: none;
   padding-top: 10px;
+}
+.section-faq {
+  padding: 10rem 0;
+  .heading-1 {
+    text-align: center;
+  }
 }

@@ -8,8 +8,9 @@
 .heading-1 {
   @extend %heading;
   font-size: 6rem;
-  &--light {
-    color: $color-grey-light-1;
+  &--extra {
+    font-size: 8.1rem;
+    font-weight: 700;
   }
   &--dark {
     color: $color-grey-dark-1;
@@ -85,6 +86,9 @@ p {
 }
 .font-upper {
   text-transform: uppercase;
+}
+.font-default {
+  font-family: $font-primary;
 }
 .font-display {
   letter-spacing: 1.7px;

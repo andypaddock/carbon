@@ -7,6 +7,8 @@
 
 <?php elseif (get_row_layout() == 'numbers') : ?>
 <?php get_template_part('template-parts/numbers'); ?>
+<?php elseif (get_row_layout() == 'faq') : ?>
+<?php get_template_part('template-parts/faq'); ?>
 
 
 
