@@ -275,3 +275,103 @@ function fadeHeadings() {
 
 // Call the fadeHeadings function every 3 seconds
 setInterval(fadeHeadings, 3000);
+
+
+//MOVE TO GREENSOCK
+
+// When the page is fully loaded
+    window.addEventListener('load', function () {
+        // Select the necessary elements
+        const videoElement = document.querySelector('.base-video');
+        const panelOneSection = document.querySelector('.panel-one');
+        const videoFile = document.getElementById('intro');
+
+        // Set initial state of the video element
+        // gsap.set(videoElement, { position: 'fixed', bottom: 0 });
+
+        // Create the ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Add ScrollTrigger animation
+        gsap.to(videoElement, {
+      scrollTrigger: {
+        trigger: panelOneSection,
+        start: 'top bottom', // Start the animation when panel-one section enters the viewport
+        end: 'bottom bottom', // End the animation when panel-one section leaves the viewport
+        onEnter: () => {
+          videoElement.style.position = 'absolute'; // When panel-one section enters the viewport, remove fixed positioning
+          gsap.to(videoElement, { filter: 'grayscale(0)',opacity:1,duration: 2 }); // Change grayscale to 0 when entering
+        },
+        onLeaveBack: () => {
+          videoElement.style.position = 'fixed'; // When panel-one section leaves the viewport, revert to fixed positioning
+          gsap.to(videoElement, { filter: 'grayscale(1)',opacity:0.6,duration: 2 }); // Change grayscale back to 1 when leaving
+        },
+      },
+    });
+
+        gsap.to(videoFile, {
+            scrollTrigger: {
+                trigger: panelOneSection,
+                start: 'top bottom',
+                onEnter: () => videoFile.play(), // Play the video when the trigger enters the viewport
+                onLeaveBack: () => videoFile.pause(), // Pause the video when the trigger leaves the viewport
+                onEnterBack: () => videoFile.play(), // Resume playing the video when the trigger re-enters the viewport
+            },
+        });
+
+        gsap.to(".cloud-one", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            },
+            y: 200,
+// Adjust the value to control the cloud's movement
+            scale: 1.9, // Adjust the value to control the cloud's scaling
+          opacity:1,
+        });
+
+        gsap.to(".cloud-two", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            },
+            y: 500,
+ // Adjust the value to control the cloud's movement
+            scale: 2.4 // Adjust the value to control the cloud's scaling
+        });
+      
+      
+      // Select the elements
+    const blocks = document.querySelectorAll('.block');
+    const changeMe = document.querySelector('.change-me');
+
+    // Loop through each block
+    blocks.forEach(block => {
+      // Create a ScrollTrigger for each block
+      gsap.to(block, {
+        scrollTrigger: {
+          trigger: changeMe,
+          start: 'top bottom',
+          end: 'bottom bottom',
+          onEnter: () => block.classList.add('active'),
+          onLeaveBack: () => block.classList.remove('active'),
+        },
+      });
+    });
+
+    });
+
+window.addEventListener('load', function() {
+  var heroText = document.querySelector('.hero-text .right-col');
+  var baseVideo = document.querySelector('.base-video');
+
+  // Calculate the height of the base-video element
+  var baseVideoHeight = baseVideo.offsetHeight;
+
+  // Set the calculated height as padding-bottom on the hero element
+  heroText.style.marginBottom = baseVideoHeight + 'px';
+});
