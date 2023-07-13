@@ -29,9 +29,9 @@ section {
   &.alt-bg {
     background-color: $color-alt-bg;
   }
-  &:first-of-type {
-    padding-top: 5rem;
-  }
+  // &:first-of-type {
+  //   padding-top: 5rem;
+  // }
   .flex-col {
   }
 }

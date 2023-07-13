@@ -2,15 +2,10 @@
 //@prepros-prepend slick.min.js
 //@prepros-prepend scrollreveal.js
 
-
-jQuery(document).ready(function($) {
-
-
-  
- 
+jQuery(document).ready(function ($) {
   /* ADD CLASS ON SCROLL*/
 
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
     if (scroll >= 100) {
@@ -22,69 +17,51 @@ jQuery(document).ready(function($) {
 
   // ========== Controller for lightbox elements
 
-
-
-
-
-
-
-
-
-
   //=========== Slick Slider
 
-$('.testimonial-carousel').slick({
-  centerMode: false,
-  centerPadding: '125px',
-  slidesToShow: 1,
-  prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa-thin fa-angle-left' aria-hidden='true'></i></button>",
-            nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa-thin fa-angle-right' aria-hidden='true'></i></button>",
-  // responsive: [
-  //   {
-  //     breakpoint: 768,
-  //     settings: {
-  //       arrows: false,
-  //       centerMode: true,
-  //       centerPadding: '40px',
-  //       slidesToShow: 1
-  //     }
-  //   },
-  //   {
-  //     breakpoint: 480,
-  //     settings: {
-  //       arrows: false,
-  //       centerMode: true,
-  //       centerPadding: '40px',
-  //       slidesToShow: 1
-  //     }
-  //   }
-  // ]
-});
+  $(".testimonial-carousel").slick({
+    centerMode: false,
+    centerPadding: "125px",
+    slidesToShow: 1,
+    prevArrow:
+      "<button type='button' class='slick-prev pull-left'><i class='fa-thin fa-angle-left' aria-hidden='true'></i></button>",
+    nextArrow:
+      "<button type='button' class='slick-next pull-right'><i class='fa-thin fa-angle-right' aria-hidden='true'></i></button>",
+    // responsive: [
+    //   {
+    //     breakpoint: 768,
+    //     settings: {
+    //       arrows: false,
+    //       centerMode: true,
+    //       centerPadding: '40px',
+    //       slidesToShow: 1
+    //     }
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       arrows: false,
+    //       centerMode: true,
+    //       centerPadding: '40px',
+    //       slidesToShow: 1
+    //     }
+    //   }
+    // ]
+  });
 
-$('.hero-slider').slick({
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear',
-  autoplay: true,
-  autoplaySpeed: 7000,
-  arrows:false,
-});
-
-
-
-
-
-
+  $(".hero-slider").slick({
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 7000,
+    arrows: false,
+  });
 
   //=========== Scroll Reveal
 
-
-
-
-
-
-var slideLeft = {
+  var slideLeft = {
     distance: "40px",
     origin: "left",
     opacity: 0.0,
@@ -130,56 +107,45 @@ var slideLeft = {
   ScrollReveal().reveal(".row-default", slideRight);
   ScrollReveal().reveal(".row-reverse", slideLeft);
 
+  //==============BLOG READ MORE AJAX CALL
 
+  var ppp = 6; // Post per page
+  var pageNumber = 1;
 
-
-
-
-
-
-//==============BLOG READ MORE AJAX CALL
-
-
-var ppp = 6; // Post per page
-var pageNumber = 1;
-
-
-function load_posts(){
+  function load_posts() {
     pageNumber++;
-    var str = '&pageNumber=' + pageNumber + '&ppp=' + ppp + '&action=more_post_ajax';
+    var str =
+      "&pageNumber=" + pageNumber + "&ppp=" + ppp + "&action=more_post_ajax";
     $.ajax({
-        type: "POST",
-        dataType: "html",
-        url: ajax_posts.ajaxurl,
-        data: str,
-        success: function(data){
-            var $data = $(data);
-            if($data.length){
-                $("#ajax-posts").append($data);
-                //$("#more_posts").attr("disabled",false); // Uncomment this if you want to disable the button once all posts are loaded
-                $("#more_posts").hide(); // This will hide the button once all posts have been loaded
-            } else{
-                $("#more_posts").attr("disabled",true);
-            }
-        },
-        error : function(jqXHR, textStatus, errorThrown) {
-            $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+      type: "POST",
+      dataType: "html",
+      url: ajax_posts.ajaxurl,
+      data: str,
+      success: function (data) {
+        var $data = $(data);
+        if ($data.length) {
+          $("#ajax-posts").append($data);
+          //$("#more_posts").attr("disabled",false); // Uncomment this if you want to disable the button once all posts are loaded
+          $("#more_posts").hide(); // This will hide the button once all posts have been loaded
+        } else {
+          $("#more_posts").attr("disabled", true);
         }
-
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+      },
     });
     return false;
-}
+  }
 
-$("#more_posts").on("click",function(){ // When btn is pressed.
-    $("#more_posts").attr("disabled",true); // Disable the button, temp.
+  $("#more_posts").on("click", function () {
+    // When btn is pressed.
+    $("#more_posts").attr("disabled", true); // Disable the button, temp.
     load_posts();
-    $(this).insertAfter('#ajax-posts'); // Move the 'Load More' button to the end of the the newly added posts.
-});
+    $(this).insertAfter("#ajax-posts"); // Move the 'Load More' button to the end of the the newly added posts.
+  });
 
-
-
-
-$(".toggle-block label").click(function () {
+  $(".toggle-block label").click(function () {
     var otherLabels = $(this).parent().siblings(".item").find("label");
     otherLabels.removeClass("collapsed");
     otherLabels.next().slideUp();
@@ -187,16 +153,7 @@ $(".toggle-block label").click(function () {
     $(this).next().slideToggle();
   });
 
-
-
-
-
-
-
-
-
-
-var containerEl = document.querySelector(".gallery-wrapper");
+  var containerEl = document.querySelector(".gallery-wrapper");
   var mixer;
 
   if (containerEl) {
@@ -206,37 +163,31 @@ var containerEl = document.querySelector(".gallery-wrapper");
       // },
     });
   }
-
-
-
-
-
-
 }); //Don't remove ---- end of jQuery wrapper
-
 
 //COUNTER
 
 function countUp() {
-  const elements = document.querySelectorAll('.counter');
+  const elements = document.querySelectorAll(".counter");
 
-  elements.forEach(element => {
+  elements.forEach((element) => {
     const startNumber = parseInt(element.dataset.start);
     const endNumber = parseInt(element.dataset.end);
     const increment = parseInt(element.dataset.increment) || 1; // Default increment is 1 if not specified
     const intervalDuration = parseInt(element.dataset.intervalDuration) || 1000; // Default interval duration is 1000 milliseconds (1 second)
-    const prefix = element.dataset.prefix || ''; // Text to prepend (empty string by default)
-    const suffix = element.dataset.suffix || ''; // Text to append (empty string by default)
+    const prefix = element.dataset.prefix || ""; // Text to prepend (empty string by default)
+    const suffix = element.dataset.suffix || ""; // Text to append (empty string by default)
     let currentNumber = startNumber;
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.target === element && entry.isIntersecting) {
           const intervalId = setInterval(() => {
             if (currentNumber > endNumber) {
               clearInterval(intervalId);
             } else {
-              element.querySelector('span').textContent = prefix + currentNumber + suffix;
+              element.querySelector("span").textContent =
+                prefix + currentNumber + suffix;
               currentNumber += increment;
             }
           }, intervalDuration);
@@ -252,11 +203,10 @@ function countUp() {
 
 window.onload = countUp;
 
-
-//FADE FOOTER HEADINGS 
+//FADE FOOTER HEADINGS
 
 // Get all the fade items
-const fadeItems = document.querySelectorAll('.fade-item');
+const fadeItems = document.querySelectorAll(".fade-item");
 
 // Set the initial active index
 let activeIndex = 0;
@@ -264,10 +214,10 @@ let activeIndex = 0;
 // Function to fade the headings
 function fadeHeadings() {
   // Remove active class from all fade items
-  fadeItems.forEach(item => item.classList.remove('active'));
+  fadeItems.forEach((item) => item.classList.remove("active"));
 
   // Add active class to the current heading
-  fadeItems[activeIndex].classList.add('active');
+  fadeItems[activeIndex].classList.add("active");
 
   // Increment the active index
   activeIndex = (activeIndex + 1) % fadeItems.length;
@@ -276,102 +226,170 @@ function fadeHeadings() {
 // Call the fadeHeadings function every 3 seconds
 setInterval(fadeHeadings, 3000);
 
-
 //MOVE TO GREENSOCK
 
 // When the page is fully loaded
-    window.addEventListener('load', function () {
-        // Select the necessary elements
-        const videoElement = document.querySelector('.base-video');
-        const panelOneSection = document.querySelector('.panel-one');
-        const videoFile = document.getElementById('intro');
+window.addEventListener("load", function () {
+  // Select the necessary elements
+  const videoElement = document.querySelector(".base-video");
+  const panelOneSection = document.querySelector(".base-video");
+  const videoFile = document.getElementById("intro");
+  const challengeVideo = document.getElementById("challenge");
 
-        // Set initial state of the video element
-        // gsap.set(videoElement, { position: 'fixed', bottom: 0 });
+  // Set initial state of the video element
+  // gsap.set(videoElement, { position: 'fixed', bottom: 0 });
 
-        // Create the ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+  // Create the ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
 
-        // Add ScrollTrigger animation
+  // Add ScrollTrigger animation
+  gsap.to(videoElement, {
+    scrollTrigger: {
+      trigger: panelOneSection,
+      start: "top center", // Start the animation when panel-one section enters the viewport
+      end: "bottom bottom", // End the animation when panel-one section leaves the viewport
+      onEnter: () => {
+        // videoElement.style.position = 'absolute'; // When panel-one section enters the viewport, remove fixed positioning
         gsap.to(videoElement, {
-      scrollTrigger: {
-        trigger: panelOneSection,
-        start: 'top bottom', // Start the animation when panel-one section enters the viewport
-        end: 'bottom bottom', // End the animation when panel-one section leaves the viewport
-        onEnter: () => {
-          videoElement.style.position = 'absolute'; // When panel-one section enters the viewport, remove fixed positioning
-          gsap.to(videoElement, { filter: 'grayscale(0)',opacity:1,duration: 2 }); // Change grayscale to 0 when entering
-        },
-        onLeaveBack: () => {
-          videoElement.style.position = 'fixed'; // When panel-one section leaves the viewport, revert to fixed positioning
-          gsap.to(videoElement, { filter: 'grayscale(1)',opacity:0.6,duration: 2 }); // Change grayscale back to 1 when leaving
-        },
+          filter: "grayscale(0)",
+          opacity: 1,
+          duration: 2,
+        }); // Change grayscale to 0 when entering
       },
-    });
+      onLeaveBack: () => {
+        // videoElement.style.position = 'fixed'; // When panel-one section leaves the viewport, revert to fixed positioning
+        gsap.to(videoElement, {
+          filter: "grayscale(1)",
+          opacity: 0.6,
+          duration: 2,
+        }); // Change grayscale back to 1 when leaving
+      },
+    },
+  });
 
-        gsap.to(videoFile, {
-            scrollTrigger: {
-                trigger: panelOneSection,
-                start: 'top bottom',
-                onEnter: () => videoFile.play(), // Play the video when the trigger enters the viewport
-                onLeaveBack: () => videoFile.pause(), // Pause the video when the trigger leaves the viewport
-                onEnterBack: () => videoFile.play(), // Resume playing the video when the trigger re-enters the viewport
-            },
-        });
+  gsap.to(videoFile, {
+    scrollTrigger: {
+      trigger: panelOneSection,
+      start: "top center",
+      onEnter: () => videoFile.play(), // Play the video when the trigger enters the viewport
+      onLeaveBack: () => videoFile.pause(), // Pause the video when the trigger leaves the viewport
+      onEnterBack: () => videoFile.play(), // Resume playing the video when the trigger re-enters the viewport
+    },
+  });
 
-        gsap.to(".cloud-one", {
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top center",
-                end: "bottom center",
-                scrub: true
-            },
-            y: 200,
-// Adjust the value to control the cloud's movement
-            scale: 1.9, // Adjust the value to control the cloud's scaling
-          opacity:1,
-        });
+  gsap.to(".cloud-one", {
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+    },
+    y: 200,
+    // Adjust the value to control the cloud's movement
+    scale: 1.9, // Adjust the value to control the cloud's scaling
+    opacity: 1,
+  });
 
-        gsap.to(".cloud-two", {
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top center",
-                end: "bottom center",
-                scrub: true
-            },
-            y: 500,
- // Adjust the value to control the cloud's movement
-            scale: 2.4 // Adjust the value to control the cloud's scaling
-        });
-      
-      
-      // Select the elements
-    const blocks = document.querySelectorAll('.block');
-    const changeMe = document.querySelector('.change-me');
+  gsap.to(".cloud-two", {
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+    },
+    y: 500,
+    // Adjust the value to control the cloud's movement
+    scale: 2.4, // Adjust the value to control the cloud's scaling
+  });
 
-    // Loop through each block
-    blocks.forEach(block => {
-      // Create a ScrollTrigger for each block
-      gsap.to(block, {
-        scrollTrigger: {
-          trigger: changeMe,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          onEnter: () => block.classList.add('active'),
-          onLeaveBack: () => block.classList.remove('active'),
-        },
-      });
-    });
+  gsap.to("#block-1", {
+    scrollTrigger: {
+      trigger: ".block-1",
+      // toggleActions: "play complete reverse reset",
+      start: "top 40%",
+      end: () => "+=" + this.document.querySelector(".block-1").offsetHeight,
+      onEnter: () => {
+        gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onEnterBack: () => {
+        gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onLeave: () => {
+        gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+    },
+  });
 
-    });
-
-window.addEventListener('load', function() {
-  var heroText = document.querySelector('.hero-text .right-col');
-  var baseVideo = document.querySelector('.base-video');
-
-  // Calculate the height of the base-video element
-  var baseVideoHeight = baseVideo.offsetHeight;
-
-  // Set the calculated height as padding-bottom on the hero element
-  heroText.style.marginBottom = baseVideoHeight + 'px';
+  gsap.to("#block-2", {
+    scrollTrigger: {
+      trigger: ".block-2",
+      // toggleActions: "restart none none reverse",
+      start: "top 40%",
+      end: () => "+=" + this.document.querySelector(".block-2").offsetHeight,
+      onEnter: () => {
+        gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onEnterBack: () => {
+        gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onLeave: () => {
+        gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+    },
+  });
+  gsap.to("#block-3", {
+    scrollTrigger: {
+      trigger: ".block-3",
+      // toggleActions: "restart none none reverse",
+      start: "top 40%",
+      end: () => "+=" + this.document.querySelector(".block-3").offsetHeight,
+      onEnter: () => {
+        gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onEnterBack: () => {
+        gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onLeave: () => {
+        gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+    },
+  });
+  gsap.to("#block-4", {
+    scrollTrigger: {
+      trigger: ".block-4",
+      // toggleActions: "restart none none reverse",
+      start: "top 40%",
+      end: () => "+=" + this.document.querySelector(".block-4").offsetHeight,
+      onEnter: () => {
+        gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onEnterBack: () => {
+        gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+      },
+      onLeave: () => {
+        gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+      },
+    },
+  });
+  gsap.to(challengeVideo, {
+    scrollTrigger: {
+      trigger: "#challenge",
+      start: "top top",
+      onEnter: () => challengeVideo.play(), // Play the video when the trigger enters the viewport
+      onLeaveBack: () => challengeVideo.pause(), // Pause the video when the trigger leaves the viewport
+      onEnterBack: () => challengeVideo.play(), // Resume playing the video when the trigger re-enters the viewport
+    },
+  });
 });

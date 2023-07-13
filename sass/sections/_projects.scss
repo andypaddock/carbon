@@ -1,0 +1,73 @@
+section.panel-project {
+  overflow: clip;
+  position: relative;
+  padding-top: 0;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  .project--panel-one {
+    min-height: 100vh;
+    grid-column: col-start 2 / col-end 6;
+    display: flex;
+    padding-top: 25vh;
+    .scroll-text {
+      font-family: $font-header;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+    .project-intro {
+      .heading-3 {
+        padding: 5rem 0;
+      }
+    }
+  }
+  .project--panel-two {
+    grid-column: col-start 2 / full-end;
+    display: grid;
+    grid-gap: 5rem;
+    grid-template-columns: 55rem auto;
+    padding-top: 25vh;
+    .challenge-head {
+      line-height: 1.2;
+    }
+    .challenges {
+      margin-left: -6rem;
+      padding: 3rem 0 10rem 0;
+      .challenge {
+        display: grid;
+        grid-template-columns: 5rem auto;
+        grid-gap: 2rem;
+        &--icon {
+          img {
+            width: 5rem;
+            height: 5rem;
+          }
+        }
+        &--text {
+          padding-bottom: 3rem;
+          .upper {
+            text-transform: uppercase;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .sticky-video {
+      height: 100%;
+      video {
+        width: unset;
+        height: 100%;
+      }
+    }
+  }
+  .project-image {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

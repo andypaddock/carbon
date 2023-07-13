@@ -15,6 +15,14 @@
   &--dark {
     color: $color-grey-dark-1;
   }
+  &--hero {
+    font-size: 8rem;
+    font-weight: 700;
+    span {
+      font-size: 7.4rem;
+      font-weight: initial;
+    }
+  }
 }
 
 .heading-2 {
@@ -27,6 +35,9 @@
   }
   &--dark {
     color: $color-grey-dark-1;
+  }
+  &--map {
+    font-size: 3rem;
   }
 }
 
@@ -57,7 +68,7 @@ h3 {
   }
 }
 p {
-  font-size: 1.4rem;
+  font-size: 2rem;
   &:not(:last-of-type) {
     margin-bottom: 2rem;
   }

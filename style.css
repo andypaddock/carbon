@@ -37,7 +37,7 @@ body {
   color: #fff;
   font-weight: 100;
   line-height: 1.6;
-  font-size: 1.4rem;
+  font-size: 1.6remrem;
 }
 
 a {
@@ -92,6 +92,14 @@ h3, .heading-2, .heading-1 {
 .heading-1--dark {
   color: #76736e;
 }
+.heading-1--hero {
+  font-size: 8rem;
+  font-weight: 700;
+}
+.heading-1--hero span {
+  font-size: 7.4rem;
+  font-weight: initial;
+}
 
 .heading-2 {
   font-size: 4.5rem;
@@ -101,6 +109,9 @@ h3, .heading-2, .heading-1 {
 }
 .heading-2--dark {
   color: #76736e;
+}
+.heading-2--map {
+  font-size: 3rem;
 }
 
 .heading-3,
@@ -131,7 +142,7 @@ h3 {
 }
 
 p {
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 p:not(:last-of-type) {
   margin-bottom: 2rem;
@@ -1014,9 +1025,52 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container button {
           transform: rotate(270deg);
 }
 
-.hero {
+section.hero {
   overflow: clip;
   position: relative;
+  padding-top: 0;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+section.hero .hero--panel-one {
+  height: 100vh;
+  grid-column: col-start 2/col-end 7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+section.hero .hero--panel-one .scroll-text {
+  font-family: "cora", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+section.hero .hero--panel-two {
+  grid-column: col-start 2/center-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 10rem;
+}
+section.hero .hero--panel-two .map-elements {
+  padding-top: 10rem;
+  padding-bottom: 50vh;
+}
+section.hero .hero--panel-two .map-elements--block {
+  margin-bottom: 10rem;
+}
+section.hero .hero--panel-two .sticky-map {
+  position: sticky;
+  top: 30vh;
+}
+section.hero .hero--panel-two .sticky-map #block-1,
+section.hero .hero--panel-two .sticky-map #block-2,
+section.hero .hero--panel-two .sticky-map #block-3,
+section.hero .hero--panel-two .sticky-map #block-4 {
+  opacity: 0.4;
 }
 
 .block {
@@ -1049,8 +1103,6 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container button {
 }
 
 .base-video {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   background-color: #ccc;
   z-index: 1;
@@ -1061,12 +1113,6 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container button {
 
 video {
   width: 100%;
-}
-
-.panel-one {
-  height: 100vh;
-  background-color: #f2f2f2;
-  padding: 20px;
 }
 
 .cloud-one,
@@ -2475,9 +2521,6 @@ section.section-map {
 section.alt-bg {
   background-color: #f0f1eb;
 }
-section:first-of-type {
-  padding-top: 5rem;
-}
 .row {
   grid-column: center-start/center-end;
 }
@@ -3307,6 +3350,82 @@ figure {
 .section-partners .buyers-block,
 .section-buyers .buyers-block {
   border-bottom: 1px solid #fff;
+}
+
+section.panel-project {
+  overflow: clip;
+  position: relative;
+  padding-top: 0;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+section.panel-project .project--panel-one {
+  min-height: 100vh;
+  grid-column: col-start 2/col-end 6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 25vh;
+}
+section.panel-project .project--panel-one .scroll-text {
+  font-family: "cora", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+section.panel-project .project--panel-one .project-intro .heading-3 {
+  padding: 5rem 0;
+}
+section.panel-project .project--panel-two {
+  grid-column: col-start 2/full-end;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 5rem;
+  -ms-grid-columns: 55rem 5rem auto;
+  grid-template-columns: 55rem auto;
+  padding-top: 25vh;
+}
+section.panel-project .project--panel-two .challenge-head {
+  line-height: 1.2;
+}
+section.panel-project .project--panel-two .challenges {
+  margin-left: -6rem;
+  padding: 3rem 0 10rem 0;
+}
+section.panel-project .project--panel-two .challenges .challenge {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5rem 2rem auto;
+  grid-template-columns: 5rem auto;
+  grid-gap: 2rem;
+}
+section.panel-project .project--panel-two .challenges .challenge--icon img {
+  width: 5rem;
+  height: 5rem;
+}
+section.panel-project .project--panel-two .challenges .challenge--text {
+  padding-bottom: 3rem;
+}
+section.panel-project .project--panel-two .challenges .challenge--text .upper {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+section.panel-project .project--panel-two .sticky-video {
+  height: 100%;
+}
+section.panel-project .project--panel-two .sticky-video video {
+  width: unset;
+  height: 100%;
+}
+section.panel-project .project-image {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+section.panel-project .project-image img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #video-container {

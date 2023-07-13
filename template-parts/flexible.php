@@ -11,6 +11,8 @@
 <?php get_template_part('template-parts/faq'); ?>
 <?php elseif (get_row_layout() == 'hero') : ?>
 <?php get_template_part('template-parts/hero'); ?>
+<?php elseif (get_row_layout() == 'project') : ?>
+<?php get_template_part('template-parts/project'); ?>
 
 
 
