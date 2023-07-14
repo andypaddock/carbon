@@ -392,4 +392,37 @@ window.addEventListener("load", function () {
       onEnterBack: () => challengeVideo.play(), // Resume playing the video when the trigger re-enters the viewport
     },
   });
+
+  const panelFourHeadImages = document.querySelectorAll(
+    ".panel-four-head-image"
+  );
+  const panelFourImages = document.querySelectorAll(".panel-four-image");
+
+  const imgtl = gsap.timeline();
+
+  imgtl.set([panelFourHeadImages, panelFourImages], { opacity: 0 });
+
+  imgtl
+    .to([panelFourHeadImages, panelFourImages], {
+      opacity: 1,
+      duration: 0.1,
+      ease: "power1.inOut",
+    })
+    .to([panelFourHeadImages, panelFourImages], {
+      opacity: 0,
+      duration: 0.1,
+      ease: "power1.inOut",
+    })
+    .to([panelFourHeadImages, panelFourImages], {
+      opacity: 1,
+      duration: 0.1,
+      ease: "power1.inOut",
+    });
+
+  // Show the elements with a smooth transition
+  imgtl.to([panelFourHeadImages, panelFourImages], {
+    opacity: 1,
+    duration: 0.3,
+    ease: "power1.inOut",
+  });
 });

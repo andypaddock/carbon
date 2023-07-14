@@ -1,7 +1,6 @@
 <div class="row project--panel-two">
-
     <div class="panel-two--text">
-        <h3 class="heading-2 challenge-head"><?php the_sub_field('challenges_title') ?></h3>
+        <h3 class="heading-3 challenge-head"><?php the_sub_field('challenges_title') ?></h3>
         <div class="challenges">
             <?php if( have_rows('challenges') ):?>
             <?php while ( have_rows('challenges') ) : the_row(); ?>
@@ -32,3 +31,4 @@ $video = get_sub_field('challenge_video');?>
             </video>
         </div>
     </div>
+</div>

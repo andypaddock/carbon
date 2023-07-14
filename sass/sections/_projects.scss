@@ -61,6 +61,55 @@ section.panel-project {
       }
     }
   }
+  .project--panel-three {
+    grid-column: col-start 2 / col-end 11;
+    padding-top: 25vh;
+    .explainer-title {
+      font-weight: 700;
+      line-height: 1.2;
+      padding-bottom: 5rem;
+      span {
+        display: block;
+        font-size: 3.5rem;
+        font-weight: 400;
+      }
+    }
+    .explainer {
+      column-count: 2;
+      column-gap: 2rem;
+      p {
+        &:first-of-type {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .panel-four-head-image {
+    padding-top: 25vh;
+    display: grid;
+    place-content: center;
+  }
+  .project--panel-four {
+    grid-column: col-start 2 / col-end 11;
+
+    display: grid;
+    grid-template-columns: 55rem auto;
+    .panel-four--text {
+      .how-number {
+        padding: 5rem 0 2rem;
+        font-family: $font-header;
+        font-size: 2.8rem;
+        display: block;
+      }
+    }
+    .panel-four-image {
+      display: grid;
+      place-content: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
   .project-image {
     position: absolute;
     top: 0;

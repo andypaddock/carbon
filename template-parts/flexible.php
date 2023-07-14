@@ -13,6 +13,11 @@
 <?php get_template_part('template-parts/hero'); ?>
 <?php elseif (get_row_layout() == 'project') : ?>
 <?php get_template_part('template-parts/project'); ?>
+<?php elseif (get_row_layout() == 'news') : ?>
+<?php get_template_part('template-parts/news_feed'); ?>
+<?php elseif (get_row_layout() == 'map') : ?>
+<?php get_template_part('template-parts/map'); ?>
+
 
 
 

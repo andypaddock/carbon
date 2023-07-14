@@ -3,7 +3,7 @@
 
         <div class="title-block">
             <h2 class="heading-3"><?php the_sub_field('main_title'); ?></h2>
-            <?php the_sub_field('description'); ?>
+            <p><?php the_sub_field('description'); ?></p>
         </div>
 
 

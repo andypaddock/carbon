@@ -1,5 +1,4 @@
 <section class="panel-project">
-
     <div class="container">
         <div class="row extended">
             <div class="project-image">
@@ -12,5 +11,7 @@ if( $image ) {
         </div>
         <?php get_template_part('template-parts/project/panel-one'); ?>
         <?php get_template_part('template-parts/project/panel-two'); ?>
+        <?php get_template_part('template-parts/project/panel-three'); ?>
+        <?php get_template_part('template-parts/project/panel-four'); ?>
     </div>
 </section>

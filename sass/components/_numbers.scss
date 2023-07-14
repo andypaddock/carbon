@@ -5,8 +5,8 @@
     flex-wrap: wrap;
     padding: 10rem 0;
     @media only screen and (min-width: $bp-large) {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       grid-gap: 3rem;
       row-gap: 8rem;
     }

@@ -22,11 +22,12 @@
         flex-direction: column;
         grid-gap: 3rem;
         @media only screen and (min-width: $bp-large) {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 3rem;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
         }
         .group-member {
+          flex: 1 1 calc(50% - 3rem);
           display: flex;
           grid-gap: 3rem;
           &--image {
@@ -45,8 +46,8 @@
         display: flex;
         flex-wrap: wrap;
         @media only screen and (min-width: $bp-large) {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          display: flex;
+          flex-wrap: wrap;
           grid-gap: 3rem;
         }
         .group-member {

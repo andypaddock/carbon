@@ -10,29 +10,15 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				carbon_posted_on();
-				carbon_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php carbon_post_thumbnail(); ?>
-
-	<div class="entry-content">
-		<?php
+    <section class="container">
+        <div class="row extended"><?php carbon_post_thumbnail(); ?></div>
+        <div class="row col-10">
+            <h1 class="entry-title heading-1"><?php the_title();?></h1>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row col-10 entry-content">
+            <?php
 		the_content(
 			sprintf(
 				wp_kses(
@@ -55,9 +41,9 @@
 			)
 		);
 		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php carbon_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+        </div><!-- .entry-content -->
+    </section>
+    <footer class="entry-footer">
+        <?php carbon_entry_footer(); ?>
+    </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
