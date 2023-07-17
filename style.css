@@ -132,13 +132,16 @@ h3 {
 }
 
 .heading-4 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 .heading-4--light {
   color: #f9f7f6;
 }
 .heading-4--dark {
   color: #76736e;
+}
+.heading-4--news {
+  font-family: "lato", sans-serif;
 }
 
 p {
@@ -2258,7 +2261,7 @@ section.section-map {
 }
 
 .title-block {
-  padding: 5rem 0 0;
+  padding: 5rem 0 10rem;
 }
 .title-block--heading.align-center {
   text-align: center;
@@ -2345,6 +2348,44 @@ section.section-map {
   font-size: 4.5rem;
   font-family: "cora", sans-serif;
   display: block;
+}
+
+.section-goals {
+  padding-top: 25vh;
+}
+
+.goals {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  grid-gap: 5rem;
+}
+.goals .goal {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30rem;
+          flex: 1 1 30rem;
+}
+@media only screen and (min-width: 62.5em) {
+  .goals .goal {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(33% - 5rem);
+            flex: 1 1 calc(33% - 5rem);
+    max-width: calc(33% - 5rem);
+  }
+}
+.goals .goal img {
+  width: 100%;
+  height: 25rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.goals .goal--text {
+  padding: 2rem 0;
+}
+.goals .goal--text p {
+  font-size: 1.6rem;
 }
 
 .site-footer--upper {

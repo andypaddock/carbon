@@ -17,6 +17,8 @@
 <?php get_template_part('template-parts/news_feed'); ?>
 <?php elseif (get_row_layout() == 'map') : ?>
 <?php get_template_part('template-parts/map'); ?>
+<?php elseif (get_row_layout() == 'goals') : ?>
+<?php get_template_part('template-parts/goals'); ?>
 
 
 
