@@ -425,4 +425,18 @@ window.addEventListener("load", function () {
     duration: 0.3,
     ease: "power1.inOut",
   });
+
+  let sections = gsap.utils.toArray(".panel");
+
+  gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".slidecontainer",
+      pin: true,
+      scrub: 1,
+      snap: 1 / (sections.length - 1),
+      end: () => "+=" + document.querySelector(".slidecontainer").offsetWidth,
+    },
+  });
 });
