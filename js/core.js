@@ -1,6 +1,9 @@
 //@prepros-prepend fslightbox.js
 //@prepros-prepend slick.min.js
 //@prepros-prepend scrollreveal.js
+//@prepros-prepend mixitup.js
+//@prepros-prepend mixitup-pagination.js
+//@prepros-prepend mixitup-multifilter.js
 
 jQuery(document).ready(function ($) {
   /* ADD CLASS ON SCROLL*/
@@ -49,14 +52,8 @@ jQuery(document).ready(function ($) {
     // ]
   });
 
-  $(".hero-slider").slick({
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 7000,
-    arrows: false,
+  $(".timeline").slick({
+    slidesToShow: 3,
   });
 
   //=========== Scroll Reveal
@@ -153,14 +150,17 @@ jQuery(document).ready(function ($) {
     $(this).next().slideToggle();
   });
 
-  var containerEl = document.querySelector(".gallery-wrapper");
+  var containerEl = document.querySelector(".files-wrapper");
   var mixer;
 
   if (containerEl) {
     mixer = mixitup(containerEl, {
-      // multifilter: {
-      //   enable: true,
-      // },
+      pagination: {
+        limit: 8, // impose a limit of 8 targets per page
+        maintainActivePage: false,
+        loop: true,
+        hidePageListIfSinglePage: true,
+      },
     });
   }
 }); //Don't remove ---- end of jQuery wrapper

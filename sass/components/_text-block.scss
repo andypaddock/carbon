@@ -117,3 +117,98 @@
     color: $color-primary;
   }
 }
+.section-timeline {
+  padding-bottom: 25vh;
+}
+.timeline-block.overflow {
+  grid-column: col-start 2 / full-end;
+  .date {
+    text-align: center;
+    &--line {
+      height: 2.5rem;
+      border-bottom: 1px solid #707070;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .left {
+        border-right: 1px solid #707070;
+      }
+    }
+    &--description {
+      padding: 0 6rem;
+      color: #707070;
+    }
+    h3 {
+      padding-bottom: 0;
+      color: #707070;
+    }
+  }
+  .timeline {
+    .slick-current.slick-active {
+      h3 {
+        color: $color-white;
+      }
+      .date--description {
+        color: $color-white;
+      }
+    }
+  }
+}
+.section-files {
+  padding: 25vh 0;
+  .files-controls {
+    padding: 5rem 0;
+    .years {
+      list-style: none;
+      display: flex;
+      grid-gap: 2rem;
+      li {
+        cursor: pointer;
+        position: relative;
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          font-family: $font-header;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .mixitup-control-active {
+      svg {
+        path {
+          fill: #ebe9e7;
+        }
+      }
+      span {
+        color: $color-black;
+      }
+    }
+  }
+  .files-wrapper {
+    padding: 5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 5rem;
+    .files {
+      flex: 1 1 40rem;
+      padding: 0 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid $color-white;
+      .link {
+        a {
+          text-transform: uppercase;
+          font-weight: 400;
+          i {
+            padding-left: 2rem;
+          }
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

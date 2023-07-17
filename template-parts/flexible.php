@@ -19,6 +19,10 @@
 <?php get_template_part('template-parts/map'); ?>
 <?php elseif (get_row_layout() == 'goals') : ?>
 <?php get_template_part('template-parts/goals'); ?>
+<?php elseif (get_row_layout() == 'timeline') : ?>
+<?php get_template_part('template-parts/timeline'); ?>
+<?php elseif (get_row_layout() == 'files') : ?>
+<?php get_template_part('template-parts/files'); ?>
 
 
 

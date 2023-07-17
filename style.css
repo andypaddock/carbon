@@ -2313,6 +2313,109 @@ section.section-map {
   color: #9bd866;
 }
 
+.section-timeline {
+  padding-bottom: 25vh;
+}
+
+.timeline-block.overflow {
+  grid-column: col-start 2/full-end;
+}
+.timeline-block.overflow .date {
+  text-align: center;
+}
+.timeline-block.overflow .date--line {
+  height: 2.5rem;
+  border-bottom: 1px solid #707070;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+.timeline-block.overflow .date--line .left {
+  border-right: 1px solid #707070;
+}
+.timeline-block.overflow .date--description {
+  padding: 0 6rem;
+  color: #707070;
+}
+.timeline-block.overflow .date h3 {
+  padding-bottom: 0;
+  color: #707070;
+}
+.timeline-block.overflow .timeline .slick-current.slick-active h3 {
+  color: #fff;
+}
+.timeline-block.overflow .timeline .slick-current.slick-active .date--description {
+  color: #fff;
+}
+
+.section-files {
+  padding: 25vh 0;
+}
+.section-files .files-controls {
+  padding: 5rem 0;
+}
+.section-files .files-controls .years {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 2rem;
+}
+.section-files .files-controls .years li {
+  cursor: pointer;
+  position: relative;
+}
+.section-files .files-controls .years li span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-family: "cora", sans-serif;
+  font-size: 1.6rem;
+}
+.section-files .files-controls .mixitup-control-active svg path {
+  fill: #ebe9e7;
+}
+.section-files .files-controls .mixitup-control-active span {
+  color: #000;
+}
+.section-files .files-wrapper {
+  padding: 5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  grid-gap: 5rem;
+}
+.section-files .files-wrapper .files {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40rem;
+          flex: 1 1 40rem;
+  padding: 0 0 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  border-bottom: 1px solid #fff;
+}
+.section-files .files-wrapper .files .link a {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.section-files .files-wrapper .files .link a i {
+  padding-left: 2rem;
+}
+.section-files .files-wrapper .files .link a:hover {
+  color: #9bd866;
+}
+
 .numbers-block {
   border-bottom: 1px solid #fff;
 }
