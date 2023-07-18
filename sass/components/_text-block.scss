@@ -197,6 +197,10 @@
       justify-content: space-between;
       align-items: flex-end;
       border-bottom: 1px solid $color-white;
+      @media only screen and (min-width: $bp-large) {
+        flex: 1 1 calc(50% - 5rem);
+        max-width: calc(50% - 5rem);
+      }
       .link {
         a {
           text-transform: uppercase;
@@ -209,6 +213,9 @@
           }
         }
       }
+    }
+    .mixitup-page-list {
+      padding: 3rem 0;
     }
   }
 }

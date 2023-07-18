@@ -159,7 +159,7 @@ jQuery(document).ready(function ($) {
         limit: 8, // impose a limit of 8 targets per page
         maintainActivePage: false,
         loop: true,
-        hidePageListIfSinglePage: true,
+        // hidePageListIfSinglePage: true,
       },
     });
   }

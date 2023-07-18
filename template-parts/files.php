@@ -5,12 +5,35 @@
         <h2 class="heading-2 heading-2--green"><?php the_sub_field('main_title'); ?></h2>
     </div>
     <div class="files-controls row <?php the_sub_field('column_size'); ?>">
+        <?php
+// Get the list of years for uploaded documents
+$years = array();
+$args = array(
+  'post_type' => 'attachment',
+  'post_status' => 'inherit',
+  'posts_per_page' => -1
+);
+$attachments = get_posts($args);
+foreach ($attachments as $attachment) {
+  $year = date('Y', strtotime($attachment->post_date));
+  $years[] = $year;
+}
+$years = array_unique($years);
+rsort($years); ?>
+
         <ul class="years">
-            <li data-filter=".year2023"><?php get_template_part('inc/img/folder'); ?><span>2023</span></li>
-            <li data-filter=".year2022"><?php get_template_part('inc/img/folder'); ?><span>2022</span></li>
-            <li data-filter=".year2021"><?php get_template_part('inc/img/folder'); ?><span>2021</span></li>
-            <li data-filter=".year2020"><?php get_template_part('inc/img/folder'); ?><span>2020</span></li>
+            <li data-filter="all">
+                <?php get_template_part('inc/img/folder'); ?><span>ALL</span>
+            </li>
+            <?php foreach ($years as $year) { ?>
+            <li data-filter=".year<?php echo $year; ?>">
+                <?php get_template_part('inc/img/folder'); ?><span><?php echo $year; ?></span>
+            </li>
+            <?php } ?>
         </ul>
+
+
+
     </div>
     <div class="files-wrapper row <?php the_sub_field('column_size'); ?> <?php if ( is_singular( 'post' ) ) { echo 'col-10';
     //your code here...
@@ -42,7 +65,7 @@
                 <div class="file-date"><?php $post_date = get_the_date( 'd/m/Y' ); echo $post_date; ?></div>
             </div>
             <div class="link">
-                <a href="<?php the_permalink(); ?>" class="textonly"
+                <a href="<?php the_permalink(); ?>" class="textonly" target="_blank"
                     aria-label="Find out more about <?php the_title(); ?>"><?php echo $pageElements['file_button_text']; ?><i
                         class="fa-sharp  fa-arrow-down-right"></i></a>
             </div>
@@ -52,8 +75,12 @@
             endif;
             // Restore original post data.
             wp_reset_postdata(); ?>
+
     </div>
-    <div class="mixitup-page-list"></div>
+    <div class="row <?php the_sub_field('column_size'); ?>">
+        <div class="mixitup-page-list"></div>
+    </div>
+
 
 </section>
 <section class="animate-right">
