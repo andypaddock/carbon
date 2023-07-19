@@ -1,8 +1,8 @@
 <div class="cloud-two">
-    <img src="https://noiseless-dinner.mysites.io/wp-content/uploads/2023/07/cloud1.png">
+    <img src="https://noiseless-dinner.mysites.io/wp-content/uploads/2023/07/cloud1-scaled.webp">
 </div>
 <div class="cloud-one">
-    <img src="https://noiseless-dinner.mysites.io/wp-content/uploads/2023/07/cloud2.png">
+    <img src="https://noiseless-dinner.mysites.io/wp-content/uploads/2023/07/cloud2-scaled.webp">
 </div>
 
 <div class="base-video">
@@ -11,4 +11,5 @@
         src="https://noiseless-dinner.mysites.io/wp-content/uploads/2023/07/359-30seconds.mp4" muted>
 
     </video>
+    <div class="project-blur"></div>
 </div>

@@ -163,6 +163,23 @@ jQuery(document).ready(function ($) {
       },
     });
   }
+
+  var containerNews = document.querySelector(".news-content");
+  var mixerNews;
+
+  if (containerNews) {
+    mixerNews = mixitup(containerNews, {
+      pagination: {
+        limit: 6, // impose a limit of 8 targets per page
+        maintainActivePage: false,
+        loop: true,
+        // hidePageListIfSinglePage: true,
+      },
+      multifilter: {
+        enable: true, // enable the multifilter extension for the mixer
+      },
+    });
+  }
 }); //Don't remove ---- end of jQuery wrapper
 
 //COUNTER
@@ -306,19 +323,23 @@ window.addEventListener("load", function () {
     scrollTrigger: {
       trigger: ".block-1",
       // toggleActions: "play complete reverse reset",
-      start: "top 40%",
+      start: "top 50%",
       end: () => "+=" + this.document.querySelector(".block-1").offsetHeight,
       onEnter: () => {
         gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-1 h3", { color: "#9bd866" });
       },
       onEnterBack: () => {
         gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-1 h3", { color: "#9bd866" });
       },
       onLeave: () => {
         gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-1 h3", { color: "#ffffff" });
       },
       onLeaveBack: () => {
         gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-1 h3", { color: "#ffffff" });
       },
     },
   });
@@ -327,19 +348,23 @@ window.addEventListener("load", function () {
     scrollTrigger: {
       trigger: ".block-2",
       // toggleActions: "restart none none reverse",
-      start: "top 40%",
+      start: "top 50%",
       end: () => "+=" + this.document.querySelector(".block-2").offsetHeight,
       onEnter: () => {
         gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-2 h3", { color: "#9bd866" });
       },
       onEnterBack: () => {
         gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-2 h3", { color: "#9bd866" });
       },
       onLeave: () => {
         gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-2 h3", { color: "#ffffff" });
       },
       onLeaveBack: () => {
         gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-2 h3", { color: "#ffffff" });
       },
     },
   });
@@ -347,19 +372,23 @@ window.addEventListener("load", function () {
     scrollTrigger: {
       trigger: ".block-3",
       // toggleActions: "restart none none reverse",
-      start: "top 40%",
+      start: "top 50%",
       end: () => "+=" + this.document.querySelector(".block-3").offsetHeight,
       onEnter: () => {
         gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-3 h3", { color: "#9bd866" });
       },
       onEnterBack: () => {
         gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-3 h3", { color: "#9bd866" });
       },
       onLeave: () => {
         gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-3 h3", { color: "#ffffff" });
       },
       onLeaveBack: () => {
         gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-3 h3", { color: "#ffffff" });
       },
     },
   });
@@ -367,19 +396,23 @@ window.addEventListener("load", function () {
     scrollTrigger: {
       trigger: ".block-4",
       // toggleActions: "restart none none reverse",
-      start: "top 40%",
+      start: "top 50%",
       end: () => "+=" + this.document.querySelector(".block-4").offsetHeight,
       onEnter: () => {
         gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-4 h3", { color: "#9bd866" });
       },
       onEnterBack: () => {
         gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(".block-4 h3", { color: "#9bd866" });
       },
       onLeave: () => {
         gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-4 h3", { color: "#ffffff" });
       },
       onLeaveBack: () => {
         gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
+        gsap.to(".block-4 h3", { color: "#ffffff" });
       },
     },
   });
@@ -392,53 +425,6 @@ window.addEventListener("load", function () {
       onEnterBack: () => challengeVideo.play(), // Resume playing the video when the trigger re-enters the viewport
     },
   });
-
-  const panelFourHeadImages = document.querySelectorAll(
-    ".panel-four-head-image"
-  );
-  const panelFourImages = document.querySelectorAll(".panel-four-image");
-
-  const imgtl = gsap.timeline();
-
-  imgtl.set([panelFourHeadImages, panelFourImages], { opacity: 0 });
-
-  imgtl
-    .to([panelFourHeadImages, panelFourImages], {
-      opacity: 1,
-      duration: 0.1,
-      ease: "power1.inOut",
-    })
-    .to([panelFourHeadImages, panelFourImages], {
-      opacity: 0,
-      duration: 0.1,
-      ease: "power1.inOut",
-    })
-    .to([panelFourHeadImages, panelFourImages], {
-      opacity: 1,
-      duration: 0.1,
-      ease: "power1.inOut",
-    });
-
-  // Show the elements with a smooth transition
-  imgtl.to([panelFourHeadImages, panelFourImages], {
-    opacity: 1,
-    duration: 0.3,
-    ease: "power1.inOut",
-  });
-
-  // let sections = gsap.utils.toArray(".panel");
-
-  // gsap.to(sections, {
-  //   xPercent: -100 * (sections.length - 1),
-  //   ease: "none",
-  //   scrollTrigger: {
-  //     trigger: ".slidecontainer",
-  //     pin: true,
-  //     scrub: 1,
-  //     // snap: 1 / (sections.length - 1),
-  //     end: () => "+=" + document.querySelector(".slidecontainer").offsetWidth,
-  //   },
-  // });
 });
 
 // Get all the anchor tags inside the "buttons" div

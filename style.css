@@ -1413,24 +1413,57 @@ video {
 }
 
 .section-news-feed .news-feed-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2rem 3fr;
+  grid-template-columns: 1fr 3fr;
   grid-gap: 2rem;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.section-news-feed .news-feed-wrapper .news {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 calc(50% - 2rem);
-          flex: 1 1 calc(50% - 2rem);
-  max-width: calc(50% - 2rem);
 }
 .section-news-feed .news-feed-wrapper .news img {
   width: 100%;
   height: 25rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.section-news-feed .news-feed-wrapper .news-content {
+  padding: 8rem 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4rem 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+}
+.section-news-feed .news-feed-wrapper .news-content .mixitup-page-list {
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+  text-align: right;
+}
+.section-news-feed .news-feed-wrapper .news-content .mixitup-page-list button {
+  padding: 1rem;
+  border: transparent;
+  background-color: #707070;
+}
+.section-news-feed .news-feed-wrapper .news-content .mixitup-page-list .mixitup-control-active {
+  background: #9bd866;
+}
+.section-news-feed .news-feed-wrapper .news-filters {
+  -ms-flex-preferred-size: 25rem;
+      flex-basis: 25rem;
+}
+.section-news-feed .news-feed-wrapper .news-filters ul {
+  list-style: none;
+  text-transform: uppercase;
+  padding: 7rem 0 0;
+  font-size: 1.6rem;
+}
+.section-news-feed .news-feed-wrapper .news-filters ul li {
+  padding: 1rem 0;
+}
+.section-news-feed .news-feed-wrapper .news-filters ul li.filter-head {
+  font-weight: 700;
+}
+.section-news-feed .news-feed-wrapper .news-filters ul li.mixitup-control-active {
+  color: #9bd866;
 }
 
 .aligncenter,
@@ -1450,6 +1483,20 @@ div.aligncenter {
   float: right;
   margin-left: 2rem;
   margin-top: 1rem;
+}
+
+.mixitup-page-list {
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+  text-align: right;
+}
+.mixitup-page-list button {
+  padding: 1rem;
+  border: transparent;
+  background-color: #707070;
+}
+.mixitup-page-list .mixitup-control-active {
+  background: #9bd866;
 }
 
 .popup {
@@ -3723,6 +3770,8 @@ section.panel-project .project-image img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .slidecontainer {
@@ -3786,6 +3835,16 @@ section.panel-project .project-image img {
 
 .slide-wrapper {
   overflow-x: hidden;
+}
+
+.project-blur {
+  height: 10rem;
+  width: 100%;
+  margin-top: -10rem;
+  z-index: 10;
+  background: rgb(255, 255, 255);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgb(23, 23, 23)));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(23, 23, 23) 100%);
 }
 
 #video-container {

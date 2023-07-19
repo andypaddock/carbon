@@ -15,10 +15,10 @@ if( $image ) {
             <?php if( have_rows('how_blocks') ): ?>
 
             <?php while( have_rows('how_blocks') ): the_row(); ?>
-
-            <span class="how-number"><?php echo get_row_index(); ?>.</span>
-            <?php the_sub_field('explanation'); ?>
-
+            <div class="how-block tile">
+                <span class="how-number"><?php echo get_row_index(); ?>.</span>
+                <?php the_sub_field('explanation'); ?>
+            </div>
             <?php endwhile; ?>
 
             <?php endif; ?>
@@ -33,6 +33,10 @@ if( $image ) {
 }?>
     </div>
 </div>
-<div class="row panel-four-video">
+<div class="row extended panel-four-video">
+    <?php $project_video = get_sub_field('project_video');?>
+    <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload" autoplay
+        src="<?php echo $project_video['url']; ?>" muted>
 
+    </video>
 </div>

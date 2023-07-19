@@ -1,6 +1,8 @@
 <section class="panel-project">
+
     <div class="container">
         <div class="row extended">
+
             <div class="project-image">
                 <?php 
 $image = get_sub_field('project_image');

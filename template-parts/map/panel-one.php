@@ -180,7 +180,38 @@ $args = array(
             'fill-opacity': 0.3
         },
     });
+    <?php
+                endwhile;
+            endif;
+            // Restore original post data.
+            wp_reset_postdata(); ?>
+});
 
+
+const layerIds = {
+    <?php
+// WP_Query arguments
+$args = array(
+    'post_type'      => 'project',
+    'posts_per_page' => -1, // Display all posts
+);
+
+            $query = new WP_Query($args);
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post();
+                 // Get the post title and slug
+                $post_title = get_the_title();
+                $post_slug  = $post->post_name;
+                $location = get_field('center_point');
+            ?>
+
+
+    '<?php echo $post_slug; ?>': {
+        center: [<?php echo esc_attr($location['lng']); ?>, <?php echo esc_attr($location['lat']); ?>],
+        zoom: <?php the_field('zoom');?>,
+        pitch: <?php the_field('pitch');?>,
+        bearing: <?php the_field('bearing');?>,
+    },
 
 
     <?php
@@ -188,90 +219,67 @@ $args = array(
             endif;
             // Restore original post data.
             wp_reset_postdata(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
-
-
-
-
-
-const kanziLayerId = 'kanzi';
-const chyuluLayerId = 'chyulu-hills';
-const kukuaLayerId = 'kukua';
-
+};
 // Function to show a layer on the map
-function showLayer(layerId, center, zoom, pitch, bearing) {
+function showLayer(layerId) {
+    const {
+        center,
+        zoom,
+        pitch,
+        bearing
+    } = layerIds[layerId];
     map.setLayoutProperty(layerId, 'visibility', 'visible');
     map.flyTo({
         center: center,
         zoom: zoom,
         pitch: pitch,
         bearing: bearing,
-        duration: 2000, // Adjust the duration (in milliseconds) for smoother animation
+        duration: 2000,
         easing: function(t) {
             return t;
-            // Experiment with different easing functions for smoother animation,
-            // such as "t * (2 - t)" or "Math.pow(t, 2)"
         }
     });
 }
 
-
-
-
-// Function to hide a layer on the map
-function hideLayer(layerId) {
-    map.setLayoutProperty(layerId, 'visibility', 'none');
+// Function to hide all layers on the map except the specified one
+function hideLayers(exceptLayerId) {
+    for (const id in layerIds) {
+        if (id !== exceptLayerId) {
+            map.setLayoutProperty(id, 'visibility', 'none');
+        }
+    }
 }
 
-// Handle click event for Kanzi link
-document.getElementById('kanzi-link').addEventListener('click', function(e) {
+// Click handler for all map links
+function handleMapLinkClick(layerId, e) {
     e.preventDefault();
-    if (map.getLayoutProperty(kanziLayerId, 'visibility') === 'none') {
-        showLayer(kanziLayerId, [37.890864,
-            -2.7889171
-        ], 10, 60, 30);
-        hideLayer(chyuluLayerId);
-        hideLayer(kukuaLayerId);
+    if (map.getLayoutProperty(layerId, 'visibility') === 'none') {
+        showLayer(layerId);
+        hideLayers(layerId);
     }
-});
+}
 
-// Handle click event for Chyulu link
-document.getElementById('chyulu-hills-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    if (map.getLayoutProperty(chyuluLayerId, 'visibility') === 'none') {
-        showLayer(chyuluLayerId, [37.9236406,
-            -2.4418396
-        ], 12, 40, 90);
-        hideLayer(kanziLayerId);
-        hideLayer(kukuaLayerId);
-    }
-});
 
-// Handle click event for Kuku a link
-document.getElementById('kukua-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    if (map.getLayoutProperty(kukuaLayerId, 'visibility') === 'none') {
-        showLayer(kukuaLayerId, [37.347092, -2.319405], 12, 40, 90);
-        hideLayer(kanziLayerId);
-        hideLayer(chyuluLayerId);
-    }
-});
+
+<?php
+// WP_Query arguments
+$args = array(
+    'post_type'      => 'project',
+    'posts_per_page' => -1, // Display all posts
+);
+            $query = new WP_Query($args);
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post();
+                 // Get the post title and slug
+                $post_title = get_the_title();
+                $post_slug  = $post->post_name;
+                
+            ?>
+document.getElementById('<?php echo $post_slug; ?>-link').addEventListener('click', handleMapLinkClick.bind(null,
+    '<?php echo $post_slug; ?>'));
+<?php
+                endwhile;
+            endif;
+            // Restore original post data.
+            wp_reset_postdata(); ?>
 </script>
