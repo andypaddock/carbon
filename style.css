@@ -1057,10 +1057,10 @@ section.hero .hero--panel-two {
   display: -ms-flexbox;
   display: flex;
   grid-gap: 10rem;
+  padding-bottom: 50vh;
 }
 section.hero .hero--panel-two .map-elements {
   padding-top: 10rem;
-  padding-bottom: 50vh;
 }
 section.hero .hero--panel-two .map-elements--block {
   margin-bottom: 10rem;
@@ -1109,11 +1109,24 @@ section.hero .hero--panel-two .sticky-map #block-4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   z-index: 1;
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   opacity: 0.4;
+}
+.base-video .video-blur {
+  height: 15rem;
+  width: 100%;
+  margin-bottom: -15rem;
+  z-index: 10;
+  background: rgb(47, 46, 44);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(11%, rgb(47, 46, 44)), color-stop(81%, rgba(239, 236, 233, 0)));
+  background: linear-gradient(180deg, rgb(47, 46, 44) 11%, rgba(239, 236, 233, 0) 81%);
 }
 
 video {
@@ -1790,6 +1803,7 @@ div.aligncenter {
 
 section.section-map {
   padding-top: 0 !important;
+  overflow-x: hidden;
 }
 
 .map-wrapper {
@@ -1798,7 +1812,6 @@ section.section-map {
 
 #map {
   height: 80vh;
-  margin-bottom: 5rem;
 }
 #map .marker {
   color: #ff9452;
@@ -1948,6 +1961,99 @@ section.section-map {
 
 .info-description {
   font-size: 14px;
+}
+
+.map-wrapper {
+  position: relative;
+}
+
+#button-container {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  top: 0;
+  left: 10vw;
+  z-index: 1;
+}
+#button-container .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+#button-container .buttons a {
+  text-transform: uppercase;
+  font-family: "cora", sans-serif;
+  font-size: 1.7rem;
+  color: #ebe9e7;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+#button-container .buttons a.active {
+  font-size: 4.5rem;
+  color: #fff;
+}
+
+#map-settings {
+  color: black;
+}
+
+.area-link-wrapper {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  translate: -50%;
+}
+.area-link-wrapper .area-link {
+  opacity: 0;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  z-index: -1;
+}
+.area-link-wrapper .area-link.active {
+  opacity: 1;
+  z-index: 3;
+}
+.area-link-wrapper ul {
+  list-style: none;
+  position: relative;
+}
+.area-link-wrapper ul li {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #fff;
+  padding: 1rem 3rem;
+  width: 18rem;
+  position: absolute;
+}
+.area-link-wrapper ul li span {
+  font-weight: 400;
+}
+.area-link-wrapper ul li i {
+  display: block;
+  color: #9bd866;
+  padding-top: 1rem;
+}
+
+.offcanvas {
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: -100%;
+  width: 90%;
+  height: 100%;
+  background-color: #262626;
+  -webkit-transition: right 0.7s ease-in-out;
+  transition: right 0.7s ease-in-out;
+}
+.offcanvas.active {
+  right: 0;
 }
 
 .timeline-wrapper .timeline-event {

@@ -204,3 +204,13 @@ function theme_gsap_script(){
 //   wp_enqueue_script( 'gsap-js2', get_template_directory_uri() . 'js/app.js', array('gsap-js'), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );
+
+// add google maps API key for ACF
+
+function my_acf_init()
+{
+
+	acf_update_setting('google_api_key', 'AIzaSyDMoZWtHGaeWcZ4Tbh1NvPDP-H1IniquP0');
+}
+
+add_action('acf/init', 'my_acf_init');

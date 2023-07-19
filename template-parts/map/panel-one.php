@@ -1,23 +1,110 @@
 <div class="row extended map-wrapper">
     <div id="map"></div>
-    <div id="button-container">
 
-        <!-- <button onclick="toggleLayer('kanzibutton')">Layer 1</button>
-        <button onclick="toggleLayer('chyulubutton')">Layer 2</button> -->
-        <div>
-            <a href="#" id="kanzi-link">Show Kanzi Layer</a>
-            <a href="#" id="chyulu-link">Show Chyulu Layer</a>
-        </div>
+
+    <?php
+// WP_Query arguments
+$args = array(
+    'post_type'      => 'project',
+    'posts_per_page' => -1, // Display all posts
+);
+
+// The Query
+$query = new WP_Query( $args );
+
+// The Loop
+if ( $query->have_posts() ) {
+    echo '<div id="button-container">';
+    echo '<div class="buttons">';
+
+    while ( $query->have_posts() ) {
+        $query->the_post();
+
+        // Get the post title and slug
+        $post_title = get_the_title();
+        $post_slug  = $post->post_name;
+
+        // Output the button using post name and slug
+        echo '<a href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">Show ' . $post_title . ' Layer</a>';
+    }
+
+    echo '</div>';
+    echo '</div>';
+
+    // Restore original post data
+    wp_reset_postdata();
+} else {
+    // No posts found
+    echo 'No projects found.';
+}
+?>
+
+    <div class="area-link-wrapper">
+        <ul>
+            <?php
+        // The Loop for area links
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
+
+                // Get the post title and slug
+                $post_title = get_the_title();
+                $post_slug  = $post->post_name;
+        ?>
+            <li class="area-link <?php echo $post_slug; ?>-link"><a href="#<?php echo $post_slug; ?>">Read more about
+                    our projects in <span><?php echo $post_title; ?></span><i class="fa-sharp fa-arrow-right"></i></a>
+            </li>
+            <?php
+            }
+        } else {
+            // No posts found
+            echo '<li>No projects found.</li>';
+        }
+        ?>
+        </ul>
     </div>
-    <!-- <div id="info-panel">
-        <h3>Point 1</h3>
-        <p>Basic information about Point 1.</p>
-    </div> -->
-    <div id="map-settings">
+
+    <!-- <div id="map-settings">
         <p id="map-pitch"></p>
         <p id="map-zoom"></p>
         <p id="map-bearing"></p>
-    </div>
+        <p id="map-center"></p>
+
+    </div> -->
+    <?php
+// WP_Query arguments
+$args = array(
+    'post_type'      => 'project',
+    'posts_per_page' => -1, // Display all posts
+);
+
+// The Query
+$query = new WP_Query( $args );
+
+// The Loop
+if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+        $query->the_post();
+
+        // Get the post title and slug
+        $post_title = get_the_title();
+        $post_slug = sanitize_title( $post_title );
+
+        // Output the offcanvas element using post name and slug
+        echo '<div id="' . $post_slug . '" class="offcanvas">';
+        echo '<button class="close-button">&times;</button>';
+        echo $post_title;
+        echo '</div>';
+    }
+
+    // Restore original post data
+    wp_reset_postdata();
+} else {
+    // No posts found
+    echo 'No projects found.';
+}
+?>
+
 </div>
 
 <script>
@@ -26,44 +113,47 @@ mapboxgl.accessToken =
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/silverless/cley1vv5t002u01pfi8jdh49o', // style URL
-    center: [37.8891, -2.77589], // starting position [lng, lat]
-    pitch: 61,
-    bearing: 24,
-    zoom: 11, // starting zoom
+    center: [37.927829, -2.755729], // starting position [lng, lat]
+    pitch: 80,
+    bearing: -32,
+    zoom: 15, // starting zoom
     // interactive: false,
 });
 
 
-map.on('move', function() {
-    var pitchElement = document.getElementById('map-pitch');
-    var zoomElement = document.getElementById('map-zoom');
-    var bearingElement = document.getElementById('map-bearing');
+// map.on('move', function() {
+//     var pitchElement = document.getElementById('map-pitch');
+//     var zoomElement = document.getElementById('map-zoom');
+//     var bearingElement = document.getElementById('map-bearing');
+//     var centerElement = document.getElementById('map-center');
 
-    pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
-    zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
-    bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
-});
+//     pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
+//     zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
+//     bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
+//     centerElement.innerText = 'Center: ' + map.getCenter();
+// });
 
-// // Define your layers
-// const layers = [{
-//         id: 'layer1',
-//         visibility: 'visible'
-//     },
-//     {
-//         id: 'layer2',
-//         visibility: 'none'
-//     },
-//     {
-//         id: 'layer3',
-//         visibility: 'none'
-//     }
-// ];
 
 
 
 map.on('load', () => {
     // Add a data source containing GeoJSON data.
-    map.addSource('chyulu', {
+
+    <?php
+// WP_Query arguments
+$args = array(
+    'post_type'      => 'project',
+    'posts_per_page' => -1, // Display all posts
+);
+
+            $query = new WP_Query($args);
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post();
+                 // Get the post title and slug
+                $post_title = get_the_title();
+                $post_slug  = $post->post_name;
+            ?>
+    map.addSource('<?php echo $post_slug; ?>', {
         'type': 'geojson',
         'data': {
             'type': 'Feature',
@@ -72,154 +162,59 @@ map.on('load', () => {
                 // These coordinates outline Maine.
                 'coordinates': [
                     [
-                        [
-                            37.8807253,
-                            -2.4332643
-                        ],
-                        [
-                            37.922954,
-                            -2.4027358
-                        ],
-                        [
-                            37.963466,
-                            -2.4531589
-                        ],
-                        [
-                            37.9178041,
-                            -2.4864303
-                        ],
-                        [
-                            37.8810686,
-                            -2.4336073
-                        ]
+                        <?php the_field('json');?>
                     ]
                 ]
             }
         }
     });
-    map.addSource('kanzi', {
-        'type': 'geojson',
-        'data': {
-            'type': 'Feature',
-            'geometry': {
-                'type': 'Polygon',
-                // These coordinates outline Maine.
-                'coordinates': [
-                    [
-                        [
-                            37.8329642,
-                            -2.7496455
-                        ],
-                        [
-                            37.8896124,
-                            -2.7379859
-                        ],
-                        [
-                            37.908581,
-                            -2.7641341
-                        ],
-                        [
-                            37.9097826,
-                            -2.7716784
-                        ],
-                        [
-                            37.8930457,
-                            -2.8094849
-                        ],
-                        [
-                            37.8892691,
-                            -2.811628
-                        ],
-                        [
-                            37.8847201,
-                            -2.8096563
-                        ],
-                        [
-                            37.8329745,
-                            -2.7496492
-                        ]
-                    ]
-                ]
-            }
-        }
-    });
-
-    // Add a new layer to visualize the polygon.
     map.addLayer({
-        'id': 'chyulu',
+        'id': '<?php echo $post_slug; ?>',
         'type': 'fill',
-        'source': 'chyulu', // reference the data source
+        'source': '<?php echo $post_slug; ?>',
         'layout': {
             visibility: 'none'
         },
         'paint': {
-            'fill-color': '#9bd866', // blue color fill
+            'fill-color': '#9bd866',
             'fill-opacity': 0.3
         },
-        zoom: 12,
-        pitch: 65,
-        bearing: 180,
     });
-    // // Add a black outline around the polygon.
-    // map.addLayer({
-    //     'id': 'outline',
-    //     'type': 'line',
-    //     'source': 'chyulu',
-    //     'layout': {
 
-    //     },
-    //     'paint': {
-    //         'line-color': '#9bd866',
-    //         'line-width': 3
-    //     }
-    // });
-    // Add a new layer to visualize the polygon.
-    map.addLayer({
-        'id': 'kanzi',
-        'type': 'fill',
-        'source': 'kanzi', // reference the data source
-        'layout': {
-            visibility: 'none'
-        },
-        'paint': {
-            'fill-color': '#9bd866', // blue color fill
-            'fill-opacity': 0.3
-        },
-        zoom: 11,
-        pitch: 35,
-        bearing: 120,
-    });
-    // // Add a black outline around the polygon.
-    // map.addLayer({
-    //     'id': 'kanzi-outline',
-    //     'type': 'line',
-    //     'source': 'kanzi',
-    //     'layout': {
 
-    //     },
-    //     'paint': {
-    //         'line-color': '#9bd866',
-    //         'line-width': 3
-    //     }
-    // });
+
+    <?php
+                endwhile;
+            endif;
+            // Restore original post data.
+            wp_reset_postdata(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
-// // Function to toggle layer visibility
-// function toggleLayer(layerId) {
-//     map.getStyle().layers.forEach(layer => {
-//         if (layer.id === layerId) {
-//             map.setLayoutProperty(layerId, 'visibility', 'visible');
-//         } else {
-//             map.setLayoutProperty(layer.id, 'visibility', 'none');
-//         }
-//     });
-// }
+
 
 
 
 
 const kanziLayerId = 'kanzi';
-const chyuluLayerId = 'chyulu';
+const chyuluLayerId = 'chyulu-hills';
+const kukuaLayerId = 'kukua';
 
 // Function to show a layer on the map
 function showLayer(layerId, center, zoom, pitch, bearing) {
@@ -238,6 +233,9 @@ function showLayer(layerId, center, zoom, pitch, bearing) {
     });
 }
 
+
+
+
 // Function to hide a layer on the map
 function hideLayer(layerId) {
     map.setLayoutProperty(layerId, 'visibility', 'none');
@@ -251,42 +249,29 @@ document.getElementById('kanzi-link').addEventListener('click', function(e) {
             -2.7889171
         ], 10, 60, 30);
         hideLayer(chyuluLayerId);
-    } else {
-        hideLayer(kanziLayerId);
+        hideLayer(kukuaLayerId);
     }
 });
 
 // Handle click event for Chyulu link
-document.getElementById('chyulu-link').addEventListener('click', function(e) {
+document.getElementById('chyulu-hills-link').addEventListener('click', function(e) {
     e.preventDefault();
     if (map.getLayoutProperty(chyuluLayerId, 'visibility') === 'none') {
         showLayer(chyuluLayerId, [37.9236406,
             -2.4418396
         ], 12, 40, 90);
         hideLayer(kanziLayerId);
-    } else {
+        hideLayer(kukuaLayerId);
+    }
+});
+
+// Handle click event for Kuku a link
+document.getElementById('kukua-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (map.getLayoutProperty(kukuaLayerId, 'visibility') === 'none') {
+        showLayer(kukuaLayerId, [37.347092, -2.319405], 12, 40, 90);
+        hideLayer(kanziLayerId);
         hideLayer(chyuluLayerId);
     }
 });
 </script>
-
-<style>
-.map-wrapper {
-    position: relative;
-}
-
-#button-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-}
-
-button {
-    padding: 10px;
-}
-
-#map-settings {
-    color: black;
-}
-</style>

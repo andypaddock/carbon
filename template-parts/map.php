@@ -1,4 +1,4 @@
-<section class="map">
+<section class="section-map">
     <div class="container">
         <?php get_template_part('template-parts/map/panel-one'); ?>
         <?php get_template_part('template-parts/map/panel-two'); ?>

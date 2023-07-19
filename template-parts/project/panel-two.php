@@ -7,13 +7,13 @@
 
 
             <div class="challenge">
-                <div class="challenge--icon"><?php 
+                <div class="challenge--icon fmleft"><?php 
 $image = get_sub_field('icon');
 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 if( $image ) {
     echo wp_get_attachment_image( $image, $size );
 }?></div>
-                <div class="challenge--text">
+                <div class="challenge--text fmright">
                     <p class="upper"><?php the_sub_field('title');?></p>
                     <?php the_sub_field('description');?>
                 </div>

@@ -426,17 +426,85 @@ window.addEventListener("load", function () {
     ease: "power1.inOut",
   });
 
-  let sections = gsap.utils.toArray(".panel");
+  // let sections = gsap.utils.toArray(".panel");
 
-  gsap.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".slidecontainer",
-      pin: true,
-      scrub: 1,
-      // snap: 1 / (sections.length - 1),
-      end: () => "+=" + document.querySelector(".slidecontainer").offsetWidth,
-    },
+  // gsap.to(sections, {
+  //   xPercent: -100 * (sections.length - 1),
+  //   ease: "none",
+  //   scrollTrigger: {
+  //     trigger: ".slidecontainer",
+  //     pin: true,
+  //     scrub: 1,
+  //     // snap: 1 / (sections.length - 1),
+  //     end: () => "+=" + document.querySelector(".slidecontainer").offsetWidth,
+  //   },
+  // });
+});
+
+// Get all the anchor tags inside the "buttons" div
+const buttons = document.querySelectorAll(".buttons a");
+
+// Add a click event listener to each anchor tag
+buttons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent default link behavior
+
+    // Remove the "active" class from all other elements
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    // Add the "active" class to the clicked button
+    this.classList.add("active");
+
+    // Get the corresponding area-link using the button's ID
+    const buttonId = this.id;
+    const areaLink = document.querySelector(".area-link." + buttonId);
+
+    // Remove the "active" class from all other area-links
+    const areaLinks = document.querySelectorAll(".area-link");
+    areaLinks.forEach((link) => {
+      link.classList.remove("active");
+    });
+
+    // Add the "active" class to the corresponding area-link
+    areaLink.classList.add("active");
   });
+});
+
+// Get all off-canvas elements
+const offcanvasElements = document.querySelectorAll(".offcanvas");
+
+// Function to handle link clicks
+function handleLinkClick(event) {
+  event.preventDefault();
+
+  const target = event.currentTarget.getAttribute("href"); // Get the target off-canvas id
+
+  // Add "active" class to the target off-canvas element and remove it from others
+  offcanvasElements.forEach((offcanvas) => {
+    if (offcanvas.id === target.substring(1)) {
+      offcanvas.classList.add("active");
+    } else {
+      offcanvas.classList.remove("active");
+    }
+  });
+}
+
+// Function to handle close button clicks
+function handleCloseButtonClick(event) {
+  const offcanvas = event.currentTarget.parentElement;
+  offcanvas.classList.remove("active");
+}
+
+// Example: Add click event listeners to all links with the 'area-link' class
+const links = document.querySelectorAll(".area-link a");
+links.forEach((link) => {
+  link.addEventListener("click", handleLinkClick);
+});
+
+// Example: Add click event listeners to all close buttons
+const closeButtons = document.querySelectorAll(".close-button");
+closeButtons.forEach((button) => {
+  button.addEventListener("click", handleCloseButtonClick);
 });

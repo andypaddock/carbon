@@ -20,9 +20,9 @@ section.hero {
     grid-column: col-start 2 / center-end;
     display: flex;
     grid-gap: 10rem;
+    padding-bottom: 50vh;
     .map-elements {
       padding-top: 10rem;
-      padding-bottom: 50vh;
       &--block {
         margin-bottom: 10rem;
       }
@@ -70,10 +70,23 @@ section.hero {
 
 .base-video {
   display: flex;
+  flex-direction: column;
   width: 100%;
   z-index: 1;
   filter: grayscale(1);
   opacity: 0.4;
+  .video-blur {
+    height: 15rem;
+    width: 100%;
+    margin-bottom: -15rem;
+    z-index: 10;
+    background: rgb(47, 46, 44);
+    background: linear-gradient(
+      180deg,
+      rgba(47, 46, 44, 1) 11%,
+      rgba(239, 236, 233, 0) 81%
+    );
+  }
 }
 video {
   width: 100%;
