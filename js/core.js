@@ -54,6 +54,10 @@ jQuery(document).ready(function ($) {
 
   $(".timeline").slick({
     slidesToShow: 3,
+    prevArrow:
+      "<button type='button' class='slick-prev pull-left'><i class='fa-thin fa-angle-left' aria-hidden='true'></i></button>",
+    nextArrow:
+      "<button type='button' class='slick-next pull-right'><i class='fa-thin fa-angle-right' aria-hidden='true'></i></button>",
   });
 
   //=========== Scroll Reveal
@@ -88,12 +92,21 @@ jQuery(document).ready(function ($) {
     mobile: false,
   };
   var tileDown = {
-    distance: "40px",
-    origin: "top",
+    // distance: "40px",
+    // origin: "top",
+    // opacity: 0.0,
+    // duration: 1500,
+    // mobile: false,
+    // interval: 40,
+    duration: 600,
+    distance: "50px",
+    easing: "ease-out",
+    origin: "bottom",
     opacity: 0.0,
-    duration: 1500,
-    mobile: false,
-    interval: 40,
+    reset: true,
+    scale: 1,
+    viewFactor: 0,
+    interval: 50,
   };
 
   ScrollReveal().reveal(".fmleft", slideLeft);
@@ -159,7 +172,7 @@ jQuery(document).ready(function ($) {
         limit: 8, // impose a limit of 8 targets per page
         maintainActivePage: false,
         loop: true,
-        // hidePageListIfSinglePage: true,
+        hidePageListIfSinglePage: true,
       },
     });
   }
@@ -173,7 +186,7 @@ jQuery(document).ready(function ($) {
         limit: 6, // impose a limit of 8 targets per page
         maintainActivePage: false,
         loop: true,
-        // hidePageListIfSinglePage: true,
+        hidePageListIfSinglePage: true,
       },
       multifilter: {
         enable: true, // enable the multifilter extension for the mixer
@@ -419,10 +432,44 @@ window.addEventListener("load", function () {
   gsap.to(challengeVideo, {
     scrollTrigger: {
       trigger: "#challenge",
-      start: "top top",
+      start: "top center",
       onEnter: () => challengeVideo.play(), // Play the video when the trigger enters the viewport
       onLeaveBack: () => challengeVideo.pause(), // Pause the video when the trigger leaves the viewport
       onEnterBack: () => challengeVideo.play(), // Resume playing the video when the trigger re-enters the viewport
+    },
+  });
+
+  // Get the video element
+  const video = document.querySelector("#projectvideo");
+
+  // Configure ScrollTrigger
+  ScrollTrigger.create({
+    trigger: video, // The element that triggers the animation
+    start: "bottom bottom", // Animation starts when the top of the element reaches the center of the viewport
+    end: "bottom 20%", // Animation ends when the bottom of the element reaches the center of the viewport
+    pin: true, // Pin the element to the bottom of the viewport until animation ends
+    pinSpacing: false, // Disable automatic adjustment of pin spacing
+    onUpdate: (self) => {
+      // Calculate the scroll progress within the trigger area
+      const progress = self.progress.toFixed(2);
+
+      // Adjust the opacity of the video based on scroll progress
+      gsap.to(video, {
+        opacity: 1 - progress, // Fade out the video as scroll progresses
+        duration: 0.2,
+      });
+    },
+  });
+
+  var largeTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".project--panel-one-wrapper",
+      pin: ".project-image",
+      pinSpacing: false,
+      start: "top top",
+
+      endTrigger: ".project-bleed",
+      end: "top bottom",
     },
   });
 });

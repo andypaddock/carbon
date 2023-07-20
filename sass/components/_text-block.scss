@@ -118,7 +118,7 @@
   }
 }
 .section-timeline {
-  padding-bottom: 25vh;
+  padding: 25vh 0;
 }
 .timeline-block.overflow {
   grid-column: col-start 2 / full-end;
@@ -151,6 +151,15 @@
         color: $color-white;
       }
     }
+  }
+  .slick-arrow {
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    bottom: -10rem;
+  }
+  .slick-next {
+    left: 5rem;
   }
 }
 .section-files {

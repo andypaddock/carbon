@@ -1412,6 +1412,9 @@ video {
   -webkit-text-fill-color: transparent;
 }
 
+.section-news-feed {
+  padding-top: 25vh;
+}
 .section-news-feed .news-feed-wrapper {
   display: -ms-grid;
   display: grid;
@@ -2467,7 +2470,7 @@ section.section-map {
 }
 
 .section-timeline {
-  padding-bottom: 25vh;
+  padding: 25vh 0;
 }
 
 .timeline-block.overflow {
@@ -2500,6 +2503,15 @@ section.section-map {
 }
 .timeline-block.overflow .timeline .slick-current.slick-active .date--description {
   color: #fff;
+}
+.timeline-block.overflow .slick-arrow {
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+  bottom: -10rem;
+}
+.timeline-block.overflow .slick-next {
+  left: 5rem;
 }
 
 .section-files {
@@ -2578,6 +2590,10 @@ section.section-map {
 }
 .section-files .files-wrapper .mixitup-page-list {
   padding: 3rem 0;
+}
+
+.section-numbers {
+  padding-top: 25vh;
 }
 
 .numbers-block {
@@ -3652,20 +3668,27 @@ section.panel-project {
   background-repeat: no-repeat;
 }
 section.panel-project .project--panel-one {
+  position: relative;
   min-height: 100vh;
   grid-column: col-start 2/col-end 6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 25vh;
+  padding-top: 45vh;
 }
 section.panel-project .project--panel-one .scroll-text {
   font-family: "cora", sans-serif;
   font-size: 2rem;
   text-transform: uppercase;
 }
+section.panel-project .project--panel-one .project-intro {
+  padding-bottom: 25vh;
+}
 section.panel-project .project--panel-one .project-intro .heading-3 {
   padding: 5rem 0;
+}
+section.panel-project .project--panel-one-wrapper {
+  position: relative;
 }
 section.panel-project .project--panel-two {
   grid-column: col-start 2/full-end;
@@ -3763,11 +3786,14 @@ section.panel-project .project--panel-four .panel-four-image img {
 section.panel-project .project-image {
   position: absolute;
   top: 0;
+  left: 0;
   z-index: -1;
   width: 100%;
+  height: 100vh;
 }
 section.panel-project .project-image img {
   width: 100%;
+  height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
@@ -3845,6 +3871,24 @@ section.panel-project .project-image img {
   background: rgb(255, 255, 255);
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgb(23, 23, 23)));
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(23, 23, 23) 100%);
+}
+
+#projectvideo {
+  z-index: 99;
+  height: 100vh;
+}
+
+.project-bleed {
+  height: 15rem;
+  background: rgb(18, 18, 18);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(18, 18, 18)), to(rgb(47, 46, 44)));
+  background: linear-gradient(180deg, rgb(18, 18, 18) 0%, rgb(47, 46, 44) 100%);
+  width: 100%;
+}
+
+.panel-four-video img {
+  width: 100%;
+  height: auto;
 }
 
 #video-container {

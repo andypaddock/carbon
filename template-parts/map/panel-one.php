@@ -117,7 +117,7 @@ var map = new mapboxgl.Map({
     pitch: 80,
     bearing: -32,
     zoom: 15, // starting zoom
-    // interactive: false,
+    interactive: false,
 });
 
 

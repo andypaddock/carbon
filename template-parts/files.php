@@ -26,7 +26,7 @@ rsort($years); ?>
                 <?php get_template_part('inc/img/folder'); ?><span>ALL</span>
             </li>
             <?php foreach ($years as $year) { ?>
-            <li data-filter=".year<?php echo $year; ?>">
+            <li class="file-filters" data-filter=".year<?php echo $year; ?>">
                 <?php get_template_part('inc/img/folder'); ?><span><?php echo $year; ?></span>
             </li>
             <?php } ?>

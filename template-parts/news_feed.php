@@ -22,7 +22,7 @@
                 <?php foreach($all_categories as $category): ?>
                 <!-- Output control button markup, setting the data-filter attribute as the category "slug" -->
 
-                <li data-filter=".<?php echo $category->slug; ?>"><?php echo $category->name; ?></li>
+                <li class="news-filters" data-filter=".<?php echo $category->slug; ?>"><?php echo $category->name; ?></li>
                 <?php endforeach; ?>
             </ul>
             <?php
@@ -44,7 +44,7 @@ rsort($years); ?>
             <ul class="archive" data-filter-group>
                 <li class="filter-head">Archive</li>
                 <?php foreach ($years as $year) { ?>
-                <li data-filter=".year<?php echo $year; ?>">
+                <li class="year-filters" data-filter=".year<?php echo $year; ?>">
                     <?php echo $year; ?>
                 </li>
                 <?php } ?>
@@ -66,7 +66,7 @@ rsort($years); ?>
         $class_names = join(' ', $slugs);
             ?>
             <div
-                class="news tileup mix<?php if ($class_names) { echo ' ' . $class_names;} ?> year<?php $class_date = get_the_date( 'Y' ); echo $class_date; ?>">
+                class="news tile mix<?php if ($class_names) { echo ' ' . $class_names;} ?> year<?php $class_date = get_the_date( 'Y' ); echo $class_date; ?>">
                 <div class="news-image">
                     <a href="<?php the_permalink(); ?>" aria-label="Find out more about <?php the_title(); ?>"><img
                             src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
