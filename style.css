@@ -3764,6 +3764,7 @@ section.panel-project .panel-four-head-image {
 }
 section.panel-project .project--panel-four {
   grid-column: col-start 2/col-end 11;
+  padding: 25vh 0;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 55rem auto;
@@ -3887,7 +3888,9 @@ section.panel-project .project-image img {
 }
 
 .panel-four-video img {
-  width: 100%;
+  float: right;
+  translate: 0 -80vh;
+  width: 50%;
   height: auto;
 }
 

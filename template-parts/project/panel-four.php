@@ -1,9 +1,10 @@
-<div class="container"><div class="row panel-four-head-image"><?php 
+<div class="container">
+    <!-- <div class="row panel-four-head-image"><?php 
 $image = get_sub_field('how_intro_image');
 $size = 'medium'; // (thumbnail, medium, large, full or custom size)
 if( $image ) {
     echo wp_get_attachment_image( $image, $size );
-}?></div>
+}?></div> -->
 <div class="row col-10 project--panel-four">
     <div class="panel-four--text">
         <h3 class="heading-3 how-title">
@@ -34,12 +35,12 @@ if( $image ) {
     </div>
 </div>
 <div class="row extended panel-four-video">
-    <?php 
+    <!-- <?php 
 $image = get_sub_field('how_intro_image');
 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 if( $image ) {
     echo wp_get_attachment_image( $image, $size, false, array("class" => "video-img") );
-}?>
+}?> -->
     <?php $project_video = get_sub_field('project_video');?>
     <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload" autoplay
         src="<?php echo $project_video['url']; ?>" muted>

@@ -472,6 +472,17 @@ window.addEventListener("load", function () {
       end: "top bottom",
     },
   });
+
+  // gsap.to(".video-img", {
+  //   scrollTrigger: {
+  //     trigger: ".how-blocks",
+  //     start: "bottom center",
+  //     pin: ".video-img",
+  //     pinSpacing: false,
+  //   },
+
+  //   width: "100%",
+  // });
 });
 
 // Get all the anchor tags inside the "buttons" div
