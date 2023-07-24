@@ -32,6 +32,9 @@ section.panel-project {
     grid-gap: 5rem;
     grid-template-columns: 55rem auto;
     padding-top: 25vh;
+    .panel-two--text {
+      padding: 20rem 0;
+    }
     .challenge-head {
       line-height: 1.2;
     }
@@ -62,7 +65,9 @@ section.panel-project {
       height: 100%;
       video {
         width: unset;
-        height: 100%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
       }
     }
   }
@@ -96,11 +101,12 @@ section.panel-project {
   }
   .project--panel-four {
     grid-column: col-start 2 / col-end 11;
-    padding: 25vh 0;
+    padding: 25vh 0 0;
 
     display: grid;
     grid-template-columns: 55rem auto;
     .panel-four--text {
+      padding-bottom: 25vh;
       .how-number {
         padding: 5rem 0 2rem;
         font-family: $font-header;
@@ -113,6 +119,9 @@ section.panel-project {
       place-content: center;
       img {
         width: 100%;
+        height: auto;
+        position: sticky;
+        top: 25vh;
       }
     }
   }
@@ -204,5 +213,7 @@ section.panel-project {
     translate: 0 -80vh;
     width: 50%;
     height: auto;
+    padding-left: 10rem;
+    background-color: transparent !important;
   }
 }

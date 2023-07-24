@@ -3699,6 +3699,9 @@ section.panel-project .project--panel-two {
   grid-template-columns: 55rem auto;
   padding-top: 25vh;
 }
+section.panel-project .project--panel-two .panel-two--text {
+  padding: 20rem 0;
+}
 section.panel-project .project--panel-two .challenge-head {
   line-height: 1.2;
 }
@@ -3729,7 +3732,9 @@ section.panel-project .project--panel-two .sticky-video {
 }
 section.panel-project .project--panel-two .sticky-video video {
   width: unset;
-  height: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 }
 section.panel-project .project--panel-three {
   grid-column: col-start 2/col-end 11;
@@ -3764,11 +3769,14 @@ section.panel-project .panel-four-head-image {
 }
 section.panel-project .project--panel-four {
   grid-column: col-start 2/col-end 11;
-  padding: 25vh 0;
+  padding: 25vh 0 0;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 55rem auto;
   grid-template-columns: 55rem auto;
+}
+section.panel-project .project--panel-four .panel-four--text {
+  padding-bottom: 25vh;
 }
 section.panel-project .project--panel-four .panel-four--text .how-number {
   padding: 5rem 0 2rem;
@@ -3783,6 +3791,9 @@ section.panel-project .project--panel-four .panel-four-image {
 }
 section.panel-project .project--panel-four .panel-four-image img {
   width: 100%;
+  height: auto;
+  position: sticky;
+  top: 25vh;
 }
 section.panel-project .project-image {
   position: absolute;
@@ -3892,6 +3903,8 @@ section.panel-project .project-image img {
   translate: 0 -80vh;
   width: 50%;
   height: auto;
+  padding-left: 10rem;
+  background-color: transparent !important;
 }
 
 #video-container {
