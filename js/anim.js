@@ -209,7 +209,6 @@ window.addEventListener("load", function () {
       pin: ".project-image",
       pinSpacing: false,
       start: "top top",
-
       endTrigger: ".project-bleed",
       end: "top bottom",
     },
@@ -226,7 +225,7 @@ window.addEventListener("load", function () {
 
   tl.to(".video-img", {
     translate: "0 0", // Change this to your desired translation values
-    ease: "power2.out",
+    ease: "power2.inOut",
   });
 
   tl.to(".video-img", {

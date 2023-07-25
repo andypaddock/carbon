@@ -35,28 +35,3 @@
 
     </div>
 </section>
-<!-- <section class="slide-wrapper">
-    <div class="firstContainer">
-        <h1>Could show project with horizontal scrolling w/ three sections</h1>
-        <h2>First Container</h2>
-    </div>
-    <div class="slidecontainer">
-        <div class="description panel blue">
-            SCROLL DOWN
-        </div>
-
-        <section class="panel red">
-            ONE f;lvkfkv;lf fvkfvkflv vf[kv[fgrkv[fgv fv[p,v[,fv vvkopmvpl;gfmvf vvfovkpfv ]]]]] jijoijih hguigyg
-            uygfuygf [p[po[pih oh yguyguygug [pk[pk[pk ouhuiohiuhgguyfytdfyfcyfc jnijhihgufugvfugv igguyfufu]]]]]]
-        </section>
-        <section class="panel orange">
-            TWO
-        </section>
-        <section class="panel purple">
-            THREE
-        </section>
-    </div>
-    <div class="lastContainer">
-        Last Container
-    </div>
-</section> -->

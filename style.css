@@ -2106,6 +2106,107 @@ section.section-map {
   right: 0;
 }
 
+.map-details button {
+  color: #fff;
+  background: transparent;
+  border: none;
+  position: absolute;
+  left: -5rem;
+  top: 2rem;
+  font-size: 3rem;
+  font-weight: 100;
+}
+.map-details--wrapper {
+  position: relative;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0 5rem;
+  margin: 5rem 0;
+  font-size: 1.6rem;
+}
+@media only screen and (min-width: 62.5em) {
+  .map-details--wrapper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.map-details--wrapper p {
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+.map-details--wrapper::-webkit-scrollbar {
+  width: 15px;
+}
+.map-details--wrapper::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  background-color: #9bd866;
+}
+.map-details--wrapper::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+.map-details--description {
+  padding: 0 2rem 0 0;
+  margin-bottom: 10rem;
+}
+.map-details--description img {
+  width: 100%;
+  padding: 4rem 0;
+}
+.map-details--description .show-hide-span {
+  cursor: pointer;
+}
+.map-details--description .hidden-text {
+  display: none;
+}
+.map-details--description .heading-2 {
+  position: relative;
+}
+.map-details--description .heading-2 i {
+  position: absolute;
+  left: -5rem;
+  top: 2rem;
+  font-size: 3rem;
+  color: #9bd866;
+}
+.map-details--description #toggle {
+  text-transform: uppercase;
+  color: #9bd866;
+  font-weight: 400;
+}
+.map-details--description .sticky-wrapper {
+  position: sticky;
+  top: 0rem;
+}
+.map-details--list {
+  padding: 3rem 2rem;
+}
+.map-details--list .toggle-block {
+  -webkit-column-count: unset;
+     -moz-column-count: unset;
+          column-count: unset;
+}
+.map-details--list .heading-4 {
+  font-size: 1.4rem;
+  font-weight: 100;
+}
+.map-details--list p {
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
 .timeline-wrapper .timeline-event {
   display: -ms-grid;
   display: grid;

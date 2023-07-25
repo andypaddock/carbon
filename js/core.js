@@ -193,6 +193,21 @@ jQuery(document).ready(function ($) {
       },
     });
   }
+
+  $(document).ready(function () {
+    var hiddenParagraphs = $(".read-more-text p:not(:first)");
+    var toggleBtn = $("#toggle");
+
+    // Add the "hidden-paragraph" class to subsequent paragraphs
+    hiddenParagraphs.addClass("hidden-text");
+
+    toggleBtn.on("click", function () {
+      hiddenParagraphs.slideToggle();
+      toggleBtn.text(function (i, text) {
+        return text === "Read More" ? "Read Less" : "Read More";
+      });
+    });
+  });
 }); //Don't remove ---- end of jQuery wrapper
 
 //COUNTER
@@ -323,3 +338,39 @@ const closeButtons = document.querySelectorAll(".close-button");
 closeButtons.forEach((button) => {
   button.addEventListener("click", handleCloseButtonClick);
 });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   var toggleBtn = document.getElementById("toggle");
+//   var readMoreText = document.querySelector(".read-more-text");
+//   var paragraphs = readMoreText.getElementsByTagName("p");
+
+//   // Add class "hidden-paragraph" to subsequent paragraphs (excluding the first one)
+//   for (var i = 1; i < paragraphs.length; i++) {
+//     paragraphs[i].classList.add("hidden-text");
+//   }
+
+//   toggleBtn.addEventListener("click", function () {
+//     var elem = toggleBtn.textContent;
+//     var hiddenParagraphs = document.querySelectorAll(".hidden-text");
+
+//     if (elem === "Read More") {
+//       toggleBtn.textContent = "Read Less";
+//       showHiddenParagraphs(hiddenParagraphs);
+//     } else {
+//       toggleBtn.textContent = "Read More";
+//       hideHiddenParagraphs(hiddenParagraphs);
+//     }
+//   });
+
+//   function showHiddenParagraphs(paragraphs) {
+//     paragraphs.forEach(function (paragraph) {
+//       paragraph.style.display = "block";
+//     });
+//   }
+
+//   function hideHiddenParagraphs(paragraphs) {
+//     paragraphs.forEach(function (paragraph) {
+//       paragraph.style.display = "none";
+//     });
+//   }
+// });

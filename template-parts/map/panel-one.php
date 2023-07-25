@@ -82,28 +82,56 @@ $args = array(
 $query = new WP_Query( $args );
 
 // The Loop
-if ( $query->have_posts() ) {
-    while ( $query->have_posts() ) {
+if ( $query->have_posts() ):
+    while ( $query->have_posts() ):
         $query->the_post();
 
         // Get the post title and slug
         $post_title = get_the_title();
-        $post_slug = sanitize_title( $post_title );
+        $post_slug = sanitize_title( $post_title );?>
 
-        // Output the offcanvas element using post name and slug
-        echo '<div id="' . $post_slug . '" class="offcanvas">';
-        echo '<button class="close-button">&times;</button>';
-        echo $post_title;
-        echo '</div>';
-    }
 
-    // Restore original post data
-    wp_reset_postdata();
-} else {
-    // No posts found
-    echo 'No projects found.';
-}
-?>
+    <div id="<?php echo ($post_slug);?>" class="offcanvas container map-details">
+        <button class="close-button">&times;</button>
+        <div class="row cols map-details--wrapper">
+            <div class="map-details--description">
+                <div class="sticky-wrapper">
+                    <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title);?>
+                    </h2>
+                    <div class="read-more-text">
+                        <?php the_field('project_description');?>
+                        <span id="toggle">Read More</span>
+                    </div>
+                    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                        alt="<?php the_title_attribute(); ?>" />
+                </div>
+            </div>
+            <div class="map-details--list"><?php if( have_rows('q_and_a') ): ?>
+                <div class="faq-block--items toggle-block">
+                    <?php while( have_rows('q_and_a') ): the_row(); ?>
+                    <div class="item ">
+
+                        <label>
+                            <h2 class="heading-4 font-default"><?php the_sub_field('question'); ?></h2>
+                            <i class="fa-sharp fa-light fa-arrow-down-right fa-2x"></i>
+                        </label>
+                        <div class="content mb2">
+                            <?php the_sub_field('answer'); ?>
+                        </div>
+
+                    </div>
+                    <?php endwhile; ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php
+                endwhile;
+            endif;
+            // Restore original post data.
+            wp_reset_postdata(); ?>
 
 </div>
 
