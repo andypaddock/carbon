@@ -25,7 +25,7 @@ if ( $query->have_posts() ) {
         $post_slug  = $post->post_name;
 
         // Output the button using post name and slug
-        echo '<a href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">Show ' . $post_title . ' Layer</a>';
+        echo '<a href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
     }
 
     echo '</div>';

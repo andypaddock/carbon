@@ -22,7 +22,8 @@
                 <?php foreach($all_categories as $category): ?>
                 <!-- Output control button markup, setting the data-filter attribute as the category "slug" -->
 
-                <li class="news-filters" data-filter=".<?php echo $category->slug; ?>"><?php echo $category->name; ?></li>
+                <li class="news-filters" data-filter=".<?php echo $category->slug; ?>"><?php echo $category->name; ?>
+                </li>
                 <?php endforeach; ?>
             </ul>
             <?php

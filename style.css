@@ -2786,6 +2786,7 @@ section.section-map {
 }
 .site-footer--upper .contact-wrapper {
   z-index: 2;
+  margin-bottom: 6rem;
 }
 @media only screen and (min-width: 62.5em) {
   .site-footer--upper .carbon-form {
