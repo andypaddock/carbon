@@ -23,9 +23,10 @@ if ( $query->have_posts() ) {
         // Get the post title and slug
         $post_title = get_the_title();
         $post_slug  = $post->post_name;
+        $color_var = get_field('project_colour');
 
         // Output the button using post name and slug
-        echo '<a href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
+        echo '<a style="--marker-color:' . $color_var . '" href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
     }
 
     echo '</div>';
@@ -180,6 +181,7 @@ $args = array(
                  // Get the post title and slug
                 $post_title = get_the_title();
                 $post_slug  = $post->post_name;
+                $color_var = get_field('project_colour');
             ?>
     map.addSource('<?php echo $post_slug; ?>', {
         'type': 'geojson',
@@ -187,7 +189,6 @@ $args = array(
             'type': 'Feature',
             'geometry': {
                 'type': 'Polygon',
-                // These coordinates outline Maine.
                 'coordinates': [
                     [
                         <?php the_field('json');?>
@@ -204,9 +205,22 @@ $args = array(
             visibility: 'none'
         },
         'paint': {
-            'fill-color': '#9bd866',
+            'fill-color': '<?php echo $color_var;?>',
             'fill-opacity': 0.3
         },
+    });
+    map.addLayer({
+        'id': 'line-<?php echo $post_slug; ?>',
+        'type': 'line',
+        'source': '<?php echo $post_slug; ?>',
+        'layout': {
+            visibility: 'none'
+        },
+        'paint': {
+            'line-color': '<?php echo $color_var;?>',
+            'line-width': 2,
+            'line-dasharray': [2, 2],
+        }
     });
     <?php
                 endwhile;
@@ -242,6 +256,7 @@ $args = array(
     },
 
 
+
     <?php
                 endwhile;
             endif;
@@ -257,6 +272,7 @@ function showLayer(layerId) {
         bearing
     } = layerIds[layerId];
     map.setLayoutProperty(layerId, 'visibility', 'visible');
+    map.setLayoutProperty(`line-${layerId}`, 'visibility', 'visible'); // Show the line layer too
     map.flyTo({
         center: center,
         zoom: zoom,
@@ -274,6 +290,7 @@ function hideLayers(exceptLayerId) {
     for (const id in layerIds) {
         if (id !== exceptLayerId) {
             map.setLayoutProperty(id, 'visibility', 'none');
+            map.setLayoutProperty(`line-${id}`, 'visibility', 'none'); // Hide the line layer too
         }
     }
 }

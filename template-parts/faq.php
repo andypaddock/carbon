@@ -5,7 +5,7 @@
         <?php if( have_rows('q_and_a') ): ?>
         <div class="faq-block--items toggle-block">
             <?php while( have_rows('q_and_a') ): the_row(); ?>
-            <div class="item tile">
+            <div class="item animate-tile">
 
                 <label>
                     <h2 class="heading-4 font-default"><?php the_sub_field('question'); ?></h2>

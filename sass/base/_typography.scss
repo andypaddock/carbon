@@ -1,6 +1,6 @@
 %heading {
   font-family: $font-header;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 1.7px;
   text-transform: uppercase;
 }
@@ -28,6 +28,7 @@
 .heading-2 {
   @extend %heading;
   font-size: 4.5rem;
+  font-weight: 700;
   // line-height: 1;
 
   &--light {

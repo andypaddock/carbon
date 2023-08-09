@@ -6,7 +6,7 @@ section.section-map {
   position: relative;
 }
 #map {
-  height: 80vh;
+  height: 100vh;
   // &::after {
   //   content: "";
   //   background: rgb(239, 236, 233);
@@ -178,6 +178,15 @@ section.section-map {
       &.active {
         font-size: 4.5rem;
         color: $color-white;
+        &::before {
+          content: "\f061";
+          font: var(--fa-font-sharp-solid);
+        }
+      }
+      &::before {
+        content: "\2014";
+        padding-right: 1rem;
+        color: var(--marker-color);
       }
     }
   }

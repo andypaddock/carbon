@@ -73,6 +73,7 @@ section.hero {
   flex-direction: column;
   width: 100%;
   z-index: 1;
+  height: 100vh;
   filter: grayscale(1);
   opacity: 0.4;
   .video-blur {
@@ -90,10 +91,15 @@ section.hero {
 }
 video {
   width: 100%;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .cloud-one,
-.cloud-two {
+.cloud-two,
+.cloud-three,
+.cloud-four,
+.cloud-five {
   position: absolute;
   top: -100px;
   left: 50%;
@@ -116,4 +122,19 @@ video {
 .cloud-one {
   top: 5vh;
   opacity: 0.5;
+}
+.cloud-three {
+  top: 30vh;
+  opacity: 0.4;
+}
+.cloud-four {
+  top: unset;
+  bottom: 90rem;
+  opacity: 0.4;
+  // z-index: 3;
+}
+.cloud-five {
+  top: unset;
+  opacity: 0.4;
+  // z-index: 3;
 }

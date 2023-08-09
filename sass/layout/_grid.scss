@@ -5,7 +5,7 @@
   // grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns:
     [full-start] minmax(6rem, 1fr)
-    [center-start] repeat(12, [col-start] minmax(min-content, 11rem) [col-end])
+    [center-start] repeat(12, [col-start] minmax(0.1rem, 11rem) [col-end])
     [center-end] minmax(6rem, 1fr)
     [full-end];
 
@@ -13,7 +13,7 @@
     grid-template-columns:
       [full-start] minmax(1rem, 1fr) [center-start] repeat(
         12,
-        [col-start] minmax(min-content, 11rem) [col-end]
+        [col-start] minmax(0.1rem, 11rem) [col-end]
       )
       [center-end] minmax(1rem, 1fr) [full-end];
   }

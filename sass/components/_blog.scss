@@ -1,5 +1,6 @@
 .section-news-feed {
-  padding-top: 25vh;
+  padding: 25vh 0 0;
+
   .news-feed-wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -28,6 +29,12 @@
           background: $color-primary;
         }
       }
+      .news-date {
+        padding: 1rem 0 0.5rem;
+      }
+      .description {
+        padding: 1rem 0;
+      }
     }
     .news-filters {
       flex-basis: 25rem;
@@ -37,7 +44,8 @@
         padding: 7rem 0 0;
         font-size: 1.6rem;
         li {
-          padding: 1rem 0;
+          padding: 1rem 0 2rem;
+          letter-spacing: 1.1px;
           &.filter-head {
             font-weight: 700;
           }

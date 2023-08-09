@@ -73,6 +73,28 @@ window.addEventListener("load", function () {
     // Adjust the value to control the cloud's movement
     scale: 2.4, // Adjust the value to control the cloud's scaling
   });
+  gsap.to(".cloud-four", {
+    scrollTrigger: {
+      trigger: ".base-video",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+    y: -500,
+    // Adjust the value to control the cloud's movement
+    scale: 1.4, // Adjust the value to control the cloud's scaling
+  });
+  gsap.to(".cloud-five", {
+    scrollTrigger: {
+      trigger: ".base-video",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+    y: -600,
+    // Adjust the value to control the cloud's movement
+    scale: 1.7, // Adjust the value to control the cloud's scaling
+  });
 
   gsap.to("#block-1", {
     scrollTrigger: {
@@ -233,5 +255,90 @@ window.addEventListener("load", function () {
     paddingLeft: 0,
     ease: "power2.inOut",
     // delay: 0.5, // Adjust the delay value as needed (in seconds)
+  });
+});
+
+// GSAP Animation replace ScrollReveal
+const animateRight = document.querySelectorAll(".animate-right");
+
+// Set initial position and opacity of divs
+gsap.set(animateRight, { x: -40, opacity: 0 });
+
+animateRight.forEach((div, index) => {
+  gsap.to(div, {
+    opacity: 1,
+    x: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: div,
+      start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+      end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+      toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
+      delay: index * 0.2, // Stagger the animation for each div
+    },
+  });
+});
+
+const animateLeft = document.querySelectorAll(".animate-left");
+
+// Set initial position and opacity of divs
+gsap.set(animateLeft, { x: 40, opacity: 0 });
+
+animateLeft.forEach((div, index) => {
+  gsap.to(div, {
+    opacity: 1,
+    x: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: div,
+      start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+      end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+      toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
+      delay: index * 0.2, // Stagger the animation for each div
+    },
+  });
+});
+
+const animateTile = document.querySelectorAll(".animate-tile");
+
+// Set initial position and opacity of divs
+gsap.set(animateTile, { y: -100, opacity: 0 });
+
+animateTile.forEach((div, index) => {
+  gsap.to(div, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: div,
+      start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+      end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+      toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
+      delay: index * 0.2, // Stagger the animation for each div
+    },
+  });
+});
+
+const animateDown = document.querySelectorAll(".animate-down");
+
+// Set initial position and opacity of divs
+gsap.set(animateDown, { y: -100, opacity: 0 });
+
+animateDown.forEach((div, index) => {
+  gsap.to(div, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: div,
+      start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+      end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+      toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
+      delay: index * 0.2, // Stagger the animation for each div
+    },
   });
 });

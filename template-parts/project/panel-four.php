@@ -16,7 +16,7 @@ if( $image ) {
                 <?php if( have_rows('how_blocks') ): ?>
 
                 <?php while( have_rows('how_blocks') ): the_row(); ?>
-                <div class="how-block tile">
+                <div class="how-block animate-down">
                     <span class="how-number"><?php echo get_row_index(); ?>.</span>
                     <?php the_sub_field('explanation'); ?>
                 </div>

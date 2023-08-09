@@ -10,11 +10,11 @@
 
         <div class="goals-wrapper">
             <?php if( have_rows('goals') ): ?>
-            <div class="goals tile">
+            <div class="goals">
                 <?php while( have_rows('goals') ): the_row(); 
         $image = get_sub_field('goal_image');
         ?>
-                <div class="goal tile">
+                <div class="goal animate-tile ">
                     <div class="goal--image">
                         <?php echo wp_get_attachment_image( $image, 'full' ); ?>
                     </div>

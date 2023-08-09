@@ -77,7 +77,7 @@ a {
 .tabs-content .tab-content .section-text-image h2, .heading-4, .heading-3,
 h3, .heading-2, .heading-1 {
   font-family: "cora", sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 1.7px;
   text-transform: uppercase;
 }
@@ -103,6 +103,7 @@ h3, .heading-2, .heading-1 {
 
 .heading-2 {
   font-size: 4.5rem;
+  font-weight: 700;
 }
 .heading-2--light {
   color: #f9f7f6;
@@ -918,6 +919,16 @@ blockquote {
   font-family: "lato", sans-serif;
   font-weight: 100;
   color: #000;
+  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
 input::-webkit-input-placeholder {
@@ -1115,6 +1126,7 @@ section.hero .hero--panel-two .sticky-map #block-4 {
           flex-direction: column;
   width: 100%;
   z-index: 1;
+  height: 100vh;
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   opacity: 0.4;
@@ -1131,10 +1143,16 @@ section.hero .hero--panel-two .sticky-map #block-4 {
 
 video {
   width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .cloud-one,
-.cloud-two {
+.cloud-two,
+.cloud-three,
+.cloud-four,
+.cloud-five {
   position: absolute;
   top: -100px;
   left: 50%;
@@ -1146,7 +1164,10 @@ video {
           animation: cloudAnimation 10s infinite linear;
 }
 .cloud-one img,
-.cloud-two img {
+.cloud-two img,
+.cloud-three img,
+.cloud-four img,
+.cloud-five img {
   width: 100%;
 }
 
@@ -1160,6 +1181,22 @@ video {
 .cloud-one {
   top: 5vh;
   opacity: 0.5;
+}
+
+.cloud-three {
+  top: 30vh;
+  opacity: 0.4;
+}
+
+.cloud-four {
+  top: unset;
+  bottom: 90rem;
+  opacity: 0.4;
+}
+
+.cloud-five {
+  top: unset;
+  opacity: 0.4;
 }
 
 .testimonial-carousel {
@@ -1413,7 +1450,7 @@ video {
 }
 
 .section-news-feed {
-  padding-top: 25vh;
+  padding: 25vh 0 0;
 }
 .section-news-feed .news-feed-wrapper {
   display: -ms-grid;
@@ -1449,6 +1486,12 @@ video {
 .section-news-feed .news-feed-wrapper .news-content .mixitup-page-list .mixitup-control-active {
   background: #9bd866;
 }
+.section-news-feed .news-feed-wrapper .news-content .news-date {
+  padding: 1rem 0 0.5rem;
+}
+.section-news-feed .news-feed-wrapper .news-content .description {
+  padding: 1rem 0;
+}
 .section-news-feed .news-feed-wrapper .news-filters {
   -ms-flex-preferred-size: 25rem;
       flex-basis: 25rem;
@@ -1460,7 +1503,8 @@ video {
   font-size: 1.6rem;
 }
 .section-news-feed .news-feed-wrapper .news-filters ul li {
-  padding: 1rem 0;
+  padding: 1rem 0 2rem;
+  letter-spacing: 1.1px;
 }
 .section-news-feed .news-feed-wrapper .news-filters ul li.filter-head {
   font-weight: 700;
@@ -1861,7 +1905,7 @@ section.section-map {
 }
 
 #map {
-  height: 80vh;
+  height: 100vh;
 }
 #map .marker {
   color: #ff9452;
@@ -2049,6 +2093,15 @@ section.section-map {
 #button-container .buttons a.active {
   font-size: 4.5rem;
   color: #fff;
+}
+#button-container .buttons a.active::before {
+  content: "\f061";
+  font: var(--fa-font-sharp-solid);
+}
+#button-container .buttons a::before {
+  content: "—";
+  padding-right: 1rem;
+  color: var(--marker-color);
 }
 
 #map-settings {
@@ -2350,6 +2403,7 @@ section.section-map {
 .toggle-block .content {
   display: none;
   padding: 3rem 2rem;
+  border-top: 1px solid #fff;
 }
 .toggle-block .item {
   border: 1px solid #fff;
@@ -2616,7 +2670,7 @@ section.section-map {
 }
 
 .section-files {
-  padding: 25vh 0;
+  padding: 25vh 0 0;
 }
 .section-files .files-controls {
   padding: 5rem 0;
@@ -2655,6 +2709,14 @@ section.section-map {
       flex-wrap: wrap;
   grid-gap: 5rem;
 }
+@media only screen and (min-width: 62.5em) {
+  .section-files .files-wrapper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 5rem 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 .section-files .files-wrapper .files {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 40rem;
@@ -2670,14 +2732,6 @@ section.section-map {
       -ms-flex-align: end;
           align-items: flex-end;
   border-bottom: 1px solid #fff;
-}
-@media only screen and (min-width: 62.5em) {
-  .section-files .files-wrapper .files {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 calc(50% - 5rem);
-            flex: 1 1 calc(50% - 5rem);
-    max-width: calc(50% - 5rem);
-  }
 }
 .section-files .files-wrapper .files .link a {
   text-transform: uppercase;
@@ -2904,17 +2958,13 @@ section.section-map {
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: [full-start] minmax(6rem, 1fr) [center-start] ([col-start] minmax(-webkit-min-content, 11rem) [col-end])[12] [center-end] minmax(6rem, 1fr) [full-end];
-  -ms-grid-columns: [full-start] minmax(6rem, 1fr) [center-start] ([col-start] minmax(min-content, 11rem) [col-end])[12] [center-end] minmax(6rem, 1fr) [full-end];
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(12, [col-start] minmax(-webkit-min-content, 11rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(12, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  -ms-grid-columns: [full-start] minmax(6rem, 1fr) [center-start] ([col-start] minmax(0.1rem, 11rem) [col-end])[12] [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(12, [col-start] minmax(0.1rem, 11rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 }
 @media only screen and (max-width: 62.5em) {
   .container {
-    -ms-grid-columns: [full-start] minmax(1rem, 1fr) [center-start] ([col-start] minmax(-webkit-min-content, 11rem) [col-end])[12] [center-end] minmax(1rem, 1fr) [full-end];
-    -ms-grid-columns: [full-start] minmax(1rem, 1fr) [center-start] ([col-start] minmax(min-content, 11rem) [col-end])[12] [center-end] minmax(1rem, 1fr) [full-end];
-    grid-template-columns: [full-start] minmax(1rem, 1fr) [center-start] repeat(12, [col-start] minmax(-webkit-min-content, 11rem) [col-end]) [center-end] minmax(1rem, 1fr) [full-end];
-    grid-template-columns: [full-start] minmax(1rem, 1fr) [center-start] repeat(12, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(1rem, 1fr) [full-end];
+    -ms-grid-columns: [full-start] minmax(1rem, 1fr) [center-start] ([col-start] minmax(0.1rem, 11rem) [col-end])[12] [center-end] minmax(1rem, 1fr) [full-end];
+    grid-template-columns: [full-start] minmax(1rem, 1fr) [center-start] repeat(12, [col-start] minmax(0.1rem, 11rem) [col-end]) [center-end] minmax(1rem, 1fr) [full-end];
   }
 }
 

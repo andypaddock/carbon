@@ -67,13 +67,13 @@ rsort($years); ?>
         $class_names = join(' ', $slugs);
             ?>
             <div
-                class="news tile mix<?php if ($class_names) { echo ' ' . $class_names;} ?> year<?php $class_date = get_the_date( 'Y' ); echo $class_date; ?>">
-                <div class="news-image">
+                class="news mix<?php if ($class_names) { echo ' ' . $class_names;} ?> year<?php $class_date = get_the_date( 'Y' ); echo $class_date; ?>">
+                <div class="news-image animate-tile ">
                     <a href="<?php the_permalink(); ?>" aria-label="Find out more about <?php the_title(); ?>"><img
                             src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
                             alt="<?php the_title_attribute(); ?>" /></a>
                 </div>
-                <div class="text">
+                <div class="text animate-tile ">
                     <div class="news-date"><?php $post_date = get_the_date( 'd.m.Y' ); echo $post_date; ?></div>
 
                     <div class="heading">

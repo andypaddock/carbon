@@ -1,6 +1,6 @@
 //@prepros-prepend fslightbox.js
 //@prepros-prepend slick.min.js
-//@prepros-prepend scrollreveal.js
+
 //@prepros-prepend mixitup.js
 //@prepros-prepend mixitup-pagination.js
 //@prepros-prepend mixitup-multifilter.js
@@ -62,60 +62,60 @@ jQuery(document).ready(function ($) {
 
   //=========== Scroll Reveal
 
-  var slideLeft = {
-    distance: "40px",
-    origin: "left",
-    opacity: 0.0,
-    duration: 1000,
-    delay: 250,
-    mobile: false,
-  };
-  var slideRight = {
-    distance: "40px",
-    origin: "right",
-    opacity: 0.0,
-    duration: 1000,
-    mobile: false,
-  };
-  var slideDown = {
-    distance: "40px",
-    origin: "top",
-    opacity: 0.0,
-    duration: 1000,
-    mobile: false,
-  };
-  var slideUp = {
-    distance: "40px",
-    origin: "bottom",
-    opacity: 0.0,
-    duration: 1000,
-    mobile: false,
-  };
-  var tileDown = {
-    // distance: "40px",
-    // origin: "top",
-    // opacity: 0.0,
-    // duration: 1500,
-    // mobile: false,
-    // interval: 40,
-    duration: 600,
-    distance: "50px",
-    easing: "ease-out",
-    origin: "bottom",
-    opacity: 0.0,
-    reset: true,
-    scale: 1,
-    viewFactor: 0,
-    interval: 50,
-  };
+  // var slideLeft = {
+  //   distance: "40px",
+  //   origin: "left",
+  //   opacity: 0.0,
+  //   duration: 1000,
+  //   delay: 250,
+  //   mobile: false,
+  // };
+  // var slideRight = {
+  //   distance: "40px",
+  //   origin: "right",
+  //   opacity: 0.0,
+  //   duration: 1000,
+  //   mobile: false,
+  // };
+  // var slideDown = {
+  //   distance: "40px",
+  //   origin: "top",
+  //   opacity: 0.0,
+  //   duration: 1000,
+  //   mobile: false,
+  // };
+  // var slideUp = {
+  //   distance: "40px",
+  //   origin: "bottom",
+  //   opacity: 0.0,
+  //   duration: 1000,
+  //   mobile: false,
+  // };
+  // var tileDown = {
+  //   // distance: "40px",
+  //   // origin: "top",
+  //   // opacity: 0.0,
+  //   // duration: 1500,
+  //   // mobile: false,
+  //   // interval: 40,
+  //   duration: 600,
+  //   distance: "50px",
+  //   easing: "ease-out",
+  //   origin: "bottom",
+  //   opacity: 0.0,
+  //   reset: true,
+  //   scale: 1,
+  //   viewFactor: 0,
+  //   interval: 50,
+  // };
 
-  ScrollReveal().reveal(".fmleft", slideLeft);
-  ScrollReveal().reveal(".fmtop", slideDown);
-  ScrollReveal().reveal(".fmbottom", slideUp);
-  ScrollReveal().reveal(".fmright", slideRight);
-  ScrollReveal().reveal(".tile", tileDown);
-  ScrollReveal().reveal(".row-default", slideRight);
-  ScrollReveal().reveal(".row-reverse", slideLeft);
+  // ScrollReveal().reveal(".fmleft", slideLeft);
+  // ScrollReveal().reveal(".fmtop", slideDown);
+  // ScrollReveal().reveal(".fmbottom", slideUp);
+  // ScrollReveal().reveal(".fmright", slideRight);
+  // ScrollReveal().reveal(".tile", tileDown);
+  // ScrollReveal().reveal(".row-default", slideRight);
+  // ScrollReveal().reveal(".row-reverse", slideLeft);
 
   //==============BLOG READ MORE AJAX CALL
 
@@ -374,3 +374,17 @@ closeButtons.forEach((button) => {
 //     });
 //   }
 // });
+// Wait for the page to load before accessing the DOM elements
+document.addEventListener("DOMContentLoaded", function () {
+  // Get references to the elements
+  const baseVideoElement = document.querySelector(".base-video");
+  const cloudFourElement = document.querySelector(".cloud-four");
+  const cloudFiveElement = document.querySelector(".cloud-five");
+
+  // Get the height of the base-video element
+  const baseVideoHeight = baseVideoElement.clientHeight + 150;
+
+  // Set the 'bottom' property of cloud-five to the baseVideoHeight
+  cloudFiveElement.style.bottom = baseVideoHeight + "px";
+  cloudFourElement.style.bottom = baseVideoHeight + "px";
+});

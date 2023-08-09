@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-            <div class="row col-8 contact-wrapper">
+            <div class="row col-10 contact-wrapper">
                 <div class="footer-contact--title">
 
                 </div>
