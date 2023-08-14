@@ -25,14 +25,7 @@ if( $image ) {
                 <?php endif; ?>
             </div>
         </div>
-        <div class="panel-four-image">
-            <!-- <?php 
-$image = get_sub_field('how_intro_image');
-$size = 'full'; // (thumbnail, medium, large, full or custom size)
-if( $image ) {
-    echo wp_get_attachment_image( $image, $size, false, array("class" => "video-img") );
-}?> -->
-        </div>
+
     </div>
     <div class="row extended panel-four-video">
         <?php 

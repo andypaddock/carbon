@@ -1127,9 +1127,6 @@ section.hero .hero--panel-two .sticky-map #block-4 {
   width: 100%;
   z-index: 1;
   height: 100vh;
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1);
-  opacity: 0.4;
 }
 .base-video .video-blur {
   height: 15rem;
@@ -1905,7 +1902,7 @@ section.section-map {
 }
 
 #map {
-  height: 100vh;
+  height: 80vh;
 }
 #map .marker {
   color: #ff9452;
@@ -4057,6 +4054,7 @@ section.panel-project .project-image img {
   height: auto;
   padding-left: 10rem;
   background-color: transparent !important;
+  mix-blend-mode: lighten;
 }
 
 #video-container {

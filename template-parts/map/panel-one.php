@@ -65,13 +65,13 @@ if ( $query->have_posts() ) {
         </ul>
     </div>
 
-    <!-- <div id="map-settings">
+    <div id="map-settings">
         <p id="map-pitch"></p>
         <p id="map-zoom"></p>
         <p id="map-bearing"></p>
         <p id="map-center"></p>
 
-    </div> -->
+    </div>
     <?php
 // WP_Query arguments
 $args = array(
@@ -146,21 +146,21 @@ var map = new mapboxgl.Map({
     pitch: 80,
     bearing: -32,
     zoom: 15, // starting zoom
-    interactive: false,
+    interactive: true,
 });
 
 
-// map.on('move', function() {
-//     var pitchElement = document.getElementById('map-pitch');
-//     var zoomElement = document.getElementById('map-zoom');
-//     var bearingElement = document.getElementById('map-bearing');
-//     var centerElement = document.getElementById('map-center');
+map.on('move', function() {
+    var pitchElement = document.getElementById('map-pitch');
+    var zoomElement = document.getElementById('map-zoom');
+    var bearingElement = document.getElementById('map-bearing');
+    var centerElement = document.getElementById('map-center');
 
-//     pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
-//     zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
-//     bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
-//     centerElement.innerText = 'Center: ' + map.getCenter();
-// });
+    pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
+    zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
+    bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
+    centerElement.innerText = 'Center: ' + map.getCenter();
+});
 
 
 
