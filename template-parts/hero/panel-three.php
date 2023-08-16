@@ -1,4 +1,4 @@
-<div class="cloud-two">
+<!-- <div class="cloud-two">
     <img src="/wp-content/uploads/2023/08/cloud003-scaled.webp">
 </div>
 <div class="cloud-one">
@@ -12,7 +12,7 @@
 </div>
 <div class="cloud-five">
     <img src="/wp-content/uploads/2023/08/cloud002-scaled.webp">
-</div>
+</div> -->
 
 <div class="base-video">
     <!-- <div class="video-blur"></div> -->

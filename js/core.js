@@ -373,56 +373,56 @@ closeButtons.forEach((button) => {
 //     });
 //   }
 // });
-// Wait for the page to load before accessing the DOM elements
-document.addEventListener("DOMContentLoaded", function () {
-  // Get references to the elements
-  const baseVideoElement = document.querySelector(".base-video");
-  const cloudFourElement = document.querySelector(".cloud-four");
-  const cloudFiveElement = document.querySelector(".cloud-five");
+// // Wait for the page to load before accessing the DOM elements
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Get references to the elements
+//   const baseVideoElement = document.querySelector(".base-video");
+//   const cloudFourElement = document.querySelector(".cloud-four");
+//   const cloudFiveElement = document.querySelector(".cloud-five");
 
-  // Get the height of the base-video element
-  const baseVideoHeight = baseVideoElement.clientHeight + 150;
+//   // Get the height of the base-video element
+//   const baseVideoHeight = baseVideoElement.clientHeight + 150;
 
-  // Set the 'bottom' property of cloud-five to the baseVideoHeight
-  cloudFiveElement.style.bottom = baseVideoHeight + "px";
-  cloudFourElement.style.bottom = baseVideoHeight + "px";
-});
+//   // Set the 'bottom' property of cloud-five to the baseVideoHeight
+//   cloudFiveElement.style.bottom = baseVideoHeight + "px";
+//   cloudFourElement.style.bottom = baseVideoHeight + "px";
+// });
 
-// Get a reference to the video element
-var vid = document.getElementById("intro");
+// // Get a reference to the video element
+// var vid = document.getElementById("intro");
 
-// Pause video on load
-vid.pause();
+// // Pause video on load
+// vid.pause();
 
-// Options for the Intersection Observer
-const options = {
-  root: null, // Use the viewport as the root
-  rootMargin: "0px",
-  threshold: 1, // The video is considered in the viewport when 100% of it is visible
-};
+// // Options for the Intersection Observer
+// const options = {
+//   root: null, // Use the viewport as the root
+//   rootMargin: "0px",
+//   threshold: 1, // The video is considered in the viewport when 100% of it is visible
+// };
 
-// Create a new Intersection Observer
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // Video is in the viewport, start playing
-      vid.play();
-    } else {
-      // Video is not in the viewport, pause
-      vid.pause();
-    }
-  });
-}, options);
+// // Create a new Intersection Observer
+// const observer = new IntersectionObserver((entries, observer) => {
+//   entries.forEach((entry) => {
+//     if (entry.isIntersecting) {
+//       // Video is in the viewport, start playing
+//       vid.play();
+//     } else {
+//       // Video is not in the viewport, pause
+//       vid.pause();
+//     }
+//   });
+// }, options);
 
-// Start observing the video element
-observer.observe(vid);
+// // Start observing the video element
+// observer.observe(vid);
 
-// Pause video on document scroll (stops autoplay once scroll started)
-window.onscroll = function () {
-  vid.pause();
-};
+// // Pause video on document scroll (stops autoplay once scroll started)
+// window.onscroll = function () {
+//   vid.pause();
+// };
 
-// Refresh video frames on interval for smoother playback
-setInterval(function () {
-  vid.currentTime = window.pageYOffset / 400;
-}, 40);
+// // Refresh video frames on interval for smoother playback
+// setInterval(function () {
+//   vid.currentTime = window.pageYOffset / 400;
+// }, 40);

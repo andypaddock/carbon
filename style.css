@@ -1895,6 +1895,8 @@ div.aligncenter {
 section.section-map {
   padding-top: 0 !important;
   overflow-x: hidden;
+  -webkit-transform: translateY(-150vh);
+          transform: translateY(-150vh);
 }
 
 .map-wrapper {
@@ -1902,7 +1904,7 @@ section.section-map {
 }
 
 #map {
-  height: 80vh;
+  height: 100vh;
 }
 #map .marker {
   color: #ff9452;
@@ -2761,13 +2763,10 @@ section.section-map {
 }
 @media only screen and (min-width: 62.5em) {
   .numbers-block--items {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    grid-gap: 3rem;
-    row-gap: 8rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 .numbers-block--item {
@@ -2778,6 +2777,30 @@ section.section-map {
   font-size: 2rem;
   font-weight: 100;
   text-transform: uppercase;
+}
+@media only screen and (min-width: 62.5em) {
+  .numbers-block--item {
+    border: 1px solid #76736e;
+    padding: 4rem 2rem;
+  }
+  .numbers-block--item:nth-child(-n+4) {
+    border-top: none;
+  }
+  .numbers-block--item:nth-last-child(-n+4) {
+    border-bottom: none;
+  }
+  .numbers-block--item:first-child {
+    border-left: none;
+  }
+  .numbers-block--item:nth-child(4) {
+    border-right: none;
+  }
+  .numbers-block--item:nth-child(5) {
+    border-left: none;
+  }
+  .numbers-block--item:nth-child(8) {
+    border-right: none;
+  }
 }
 .numbers-block--item span {
   font-size: 4.5rem;
@@ -3815,6 +3838,7 @@ section.panel-project {
   background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 3;
 }
 section.panel-project .project--panel-one {
   position: relative;
@@ -3831,13 +3855,17 @@ section.panel-project .project--panel-one .scroll-text {
   text-transform: uppercase;
 }
 section.panel-project .project--panel-one .project-intro {
-  padding-bottom: 25vh;
+  padding: 25vh 0;
 }
 section.panel-project .project--panel-one .project-intro .heading-3 {
   padding: 5rem 0;
 }
 section.panel-project .project--panel-one-wrapper {
   position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: top;
 }
 section.panel-project .project--panel-two {
   grid-column: col-start 2/full-end;
@@ -3926,6 +3954,7 @@ section.panel-project .project--panel-four {
 }
 section.panel-project .project--panel-four .panel-four--text {
   padding-bottom: 25vh;
+  z-index: 3;
 }
 section.panel-project .project--panel-four .panel-four--text .how-number {
   padding: 5rem 0 2rem;
@@ -3950,11 +3979,9 @@ section.panel-project .project-image {
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 100vh;
 }
 section.panel-project .project-image img {
   width: 100%;
-  height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
@@ -4030,13 +4057,17 @@ section.panel-project .project-image img {
   margin-top: -10rem;
   z-index: 10;
   background: rgb(255, 255, 255);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgb(23, 23, 23)));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(23, 23, 23) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgb(0, 0, 0)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
 }
 
 #projectvideo {
-  z-index: 99;
+  z-index: 3;
   height: 100vh;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
 }
 
 .project-bleed {
@@ -4047,9 +4078,22 @@ section.panel-project .project-image img {
   width: 100%;
 }
 
+.panel-four-video {
+  height: 100vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
 .panel-four-video img {
   float: right;
-  translate: 0 -80vh;
+  translate: 0 -100vh;
   width: 50%;
   height: auto;
   padding-left: 10rem;

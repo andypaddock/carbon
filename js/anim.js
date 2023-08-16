@@ -1,92 +1,130 @@
 //MOVE TO GREENSOCK
 
-// Select the necessary elements
-const videoElement = document.querySelector(".base-video");
-const panelOneSection = document.querySelector(".base-video");
-const videoFile = document.getElementById("intro");
-const challengeVideo = document.getElementById("challenge");
-
-// Set initial state of the video element
-// gsap.set(videoElement, { position: 'fixed', bottom: 0 });
-
 // Create the ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// Add ScrollTrigger animation
-
 // Define the base-video element
 const baseVideo = document.querySelector(".base-video");
+const firstVideo = baseVideo.querySelector("#intro"); // Assuming the video has the ID 'intro'
+const challengeVideo = document.getElementById("challenge");
 
 // Create a timeline for the pinning animation
 const pinTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: baseVideo,
     start: "top top", // Pinning starts when the top of the element reaches the top of the viewport
-    end: "+=2000px top",
+    // end: "bottom center",
     pin: true,
-    scrub: 1, // Enables smoother scrubbing effect
-    markers: true, // Adds markers for debugging
+    scrub: true, // Enables scrubbing effect
+    // markers: true, // Adds markers for debugging
+    onUpdate: (self) => {
+      const progress = self.progress; // Get the scroll trigger's progress
+
+      // Ensure firstVideo has a valid duration
+      if (!isNaN(firstVideo.duration)) {
+        const videoTime = progress * firstVideo.duration;
+
+        // Ensure videoTime is a valid number
+        if (!isNaN(videoTime) && isFinite(videoTime)) {
+          firstVideo.currentTime = videoTime; // Set the video's current time based on scrolling progress
+        }
+      }
+    },
   },
 });
 
-// // Create an animation within the pinned state (optional)
-// pinTimeline.to(baseVideo, {
-//   opacity: 0.5, // Example animation property
-//   scale: 1.2, // Example animation property
-// });
+// Function to set up the ScrollTrigger animation
 
-// // Add more animations or actions after the pinning
-// pinTimeline.to(baseVideo, {
+const videoImg = document.querySelector(".video-img");
+const projectVideo = document.getElementById("projectvideo");
+const projectWrapper = document.querySelector(".panel-project");
+
+const vtl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".panel-four-video",
+    start: "top top", // Adjust start position as needed
+    end: "bottom top",
+    scrub: true,
+    pin: true,
+    pinSpacing: "margin",
+    markers: true,
+    onUpdate: (self) => {
+      const progress = self.progress; // Get the scroll trigger's progress
+
+      // Ensure firstVideo has a valid duration
+      if (!isNaN(projectVideo.duration)) {
+        const projectTime = progress * projectVideo.duration;
+
+        // Ensure videoTime is a valid number
+        if (!isNaN(projectTime) && isFinite(projectTime)) {
+          projectVideo.currentTime = projectTime; // Set the video's current time based on scrolling progress
+        }
+      }
+    },
+  },
+});
+
+vtl.to(projectVideo, { opacity: 1, duration: 0.1 });
+
+vtl.to(videoImg, {
+  opacity: 0,
+  duration: 0.1,
+});
+vtl.to(videoImg, {
+  zIndex: -1,
+});
+vtl.to(projectWrapper, {
+  opacity: 0,
+  duration: 0.1,
+  zIndex: -1,
+});
+
+// gsap.to(".cloud-one", {
+//   scrollTrigger: {
+//     trigger: ".hero",
+//     start: "top center",
+//     end: "bottom center",
+//     scrub: true,
+//   },
+//   y: 200,
+//   // Adjust the value to control the cloud's movement
+//   scale: 1.9, // Adjust the value to control the cloud's scaling
 //   opacity: 1,
-//   scale: 1,
 // });
 
-gsap.to(".cloud-one", {
-  scrollTrigger: {
-    trigger: ".hero",
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-  },
-  y: 200,
-  // Adjust the value to control the cloud's movement
-  scale: 1.9, // Adjust the value to control the cloud's scaling
-  opacity: 1,
-});
-
-gsap.to(".cloud-two", {
-  scrollTrigger: {
-    trigger: ".hero",
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-  },
-  y: 500,
-  // Adjust the value to control the cloud's movement
-  scale: 2.4, // Adjust the value to control the cloud's scaling
-});
-gsap.to(".cloud-four", {
-  scrollTrigger: {
-    trigger: ".base-video",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-  },
-  y: -500,
-  // Adjust the value to control the cloud's movement
-  scale: 1.4, // Adjust the value to control the cloud's scaling
-});
-gsap.to(".cloud-five", {
-  scrollTrigger: {
-    trigger: ".base-video",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-  },
-  y: -600,
-  // Adjust the value to control the cloud's movement
-  scale: 1.7, // Adjust the value to control the cloud's scaling
-});
+// gsap.to(".cloud-two", {
+//   scrollTrigger: {
+//     trigger: ".hero",
+//     start: "top center",
+//     end: "bottom center",
+//     scrub: true,
+//   },
+//   y: 500,
+//   // Adjust the value to control the cloud's movement
+//   scale: 2.4, // Adjust the value to control the cloud's scaling
+// });
+// gsap.to(".cloud-four", {
+//   scrollTrigger: {
+//     trigger: ".base-video",
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//   },
+//   y: -500,
+//   // Adjust the value to control the cloud's movement
+//   scale: 1.4, // Adjust the value to control the cloud's scaling
+// });
+// gsap.to(".cloud-five", {
+//   scrollTrigger: {
+//     trigger: ".base-video",
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//   },
+//   y: -600,
+//   // Adjust the value to control the cloud's movement
+//   scale: 1.7, // Adjust the value to control the cloud's scaling
+// });
 
 gsap.to("#block-1", {
   scrollTrigger: {
@@ -195,58 +233,53 @@ gsap.to(challengeVideo, {
   },
 });
 
-// Get the video element
-const video = document.querySelector("#projectvideo");
+// // Get the video element
+// const video = document.querySelector("#projectvideo");
 
-// Configure ScrollTrigger
-ScrollTrigger.create({
-  trigger: video, // The element that triggers the animation
-  start: "bottom bottom", // Animation starts when the top of the element reaches the center of the viewport
-  end: "bottom 20%", // Animation ends when the bottom of the element reaches the center of the viewport
-  pin: true, // Pin the element to the bottom of the viewport until animation ends
-  pinSpacing: false, // Disable automatic adjustment of pin spacing
-  onUpdate: (self) => {
-    // Calculate the scroll progress within the trigger area
-    const progress = self.progress.toFixed(2);
+// // Configure ScrollTrigger
+// ScrollTrigger.create({
+//   trigger: video, // The element that triggers the animation
+//   start: "bottom bottom", // Animation starts when the top of the element reaches the center of the viewport
+//   end: "bottom 20%", // Animation ends when the bottom of the element reaches the center of the viewport
+//   pin: true, // Pin the element to the bottom of the viewport until animation ends
+//   pinSpacing: false, // Disable automatic adjustment of pin spacing
+//   onUpdate: (self) => {
+//     // Calculate the scroll progress within the trigger area
+//     const progress = self.progress.toFixed(2);
 
-    // Adjust the opacity of the video based on scroll progress
-    gsap.to(video, {
-      opacity: 1 - progress, // Fade out the video as scroll progresses
-      duration: 0.2,
-    });
-  },
-});
+//     // Adjust the opacity of the video based on scroll progress
+//     gsap.to(video, {
+//       opacity: 1 - progress, // Fade out the video as scroll progresses
+//       duration: 0.2,
+//     });
+//   },
+// });
 
-var largeTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".project--panel-one-wrapper",
-    pin: ".project-image",
-    pinSpacing: false,
-    start: "top top",
-    endTrigger: ".project-bleed",
-    end: "top bottom",
-  },
-});
+// var largeTL = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".project--panel-one-wrapper",
+//     pin: ".project-image",
+//     pinSpacing: false,
+//     start: "top top",
+//     endTrigger: ".project-bleed",
+//     end: "top bottom",
+//   },
+// });
 
 // GSAP animation code
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".video-img",
     start: "bottom center",
-    scrub: 1,
+    scrub: 0,
   },
 });
 
 tl.to(".video-img", {
   translate: "0 0", // Change this to your desired translation values
-  ease: "power2.inOut",
-});
-
-tl.to(".video-img", {
   width: "100%",
   paddingLeft: 0,
   ease: "power2.inOut",
-  // delay: 0.5, // Adjust the delay value as needed (in seconds)
 });
 
 // GSAP Animation replace ScrollReveal
@@ -332,4 +365,38 @@ animateDown.forEach((div, index) => {
       delay: index * 0.2, // Stagger the animation for each div
     },
   });
+});
+
+// gsap.to(".project-image", {
+//   yPercent: 50,
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".project-image",
+//     // start: "top bottom", // the default values
+//     // end: "bottom top",
+//     scrub: true,
+//   },
+// });
+
+gsap.to(".project-intro", {
+  yPercent: -75,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".project--panel-one-wrapper",
+    start: "top bottom", // the default values
+    end: "bottom top",
+    scrub: true,
+  },
+});
+
+const pinnedDiv = document.querySelector(".section-map");
+
+gsap.to(pinnedDiv, {
+  scrollTrigger: {
+    trigger: ".section-map",
+    start: "top top",
+    end: "bottom top",
+    pin: true, // Pin the element to the viewport
+    pinSpacing: false, // Don't add spacing to the pinned element
+  },
 });

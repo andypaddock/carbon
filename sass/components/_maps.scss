@@ -1,12 +1,13 @@
 section.section-map {
   padding-top: 0 !important;
   overflow-x: hidden;
+  transform: translateY(-150vh);
 }
 .map-wrapper {
   position: relative;
 }
 #map {
-  height: 80vh;
+  height: 100vh;
   // &::after {
   //   content: "";
   //   background: rgb(239, 236, 233);
