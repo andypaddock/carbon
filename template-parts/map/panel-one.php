@@ -1,7 +1,6 @@
+<?php $pageElements = get_field('page_element_headings', 'options'); ?>
 <div class="row extended map-wrapper">
     <div id="map"></div>
-
-
     <?php
 // WP_Query arguments
 $args = array(
@@ -51,9 +50,11 @@ if ( $query->have_posts() ) {
                 // Get the post title and slug
                 $post_title = get_the_title();
                 $post_slug  = $post->post_name;
+                $color_var = get_field('project_colour');
         ?>
-            <li class="area-link <?php echo $post_slug; ?>-link"><a href="#<?php echo $post_slug; ?>">Read more about
-                    our projects in <span><?php echo $post_title; ?></span><i class="fa-sharp fa-arrow-right"></i></a>
+            <li class="area-link <?php echo $post_slug; ?>-link"><a href="#<?php echo $post_slug; ?>"
+                    style="--marker-color: <?php echo $color_var; ?>"><?php echo $pageElements['project_read_more']; ?>
+                    <span><?php echo $post_title; ?></span><i class="fa-sharp fa-arrow-right"></i></a>
             </li>
             <?php
             }
@@ -89,10 +90,12 @@ if ( $query->have_posts() ):
 
         // Get the post title and slug
         $post_title = get_the_title();
-        $post_slug = sanitize_title( $post_title );?>
+        $post_slug = sanitize_title( $post_title );
+        $color_var = get_field('project_colour');?>
 
 
-    <div id="<?php echo ($post_slug);?>" class="offcanvas container map-details">
+    <div id="<?php echo ($post_slug);?>" class="offcanvas container map-details"
+        style="--marker-color: <?php echo $color_var; ?>">
         <button class="close-button">&times;</button>
         <div class="row cols map-details--wrapper">
             <div class="map-details--description">
@@ -101,7 +104,7 @@ if ( $query->have_posts() ):
                     </h2>
                     <div class="read-more-text">
                         <?php the_field('project_description');?>
-                        <span id="toggle">Read More</span>
+                        <span id="toggle"><?php echo $pageElements['read_more']; ?></span>
                     </div>
                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
                         alt="<?php the_title_attribute(); ?>" />

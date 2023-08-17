@@ -2078,20 +2078,23 @@ section.section-map {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 #button-container .buttons a {
   text-transform: uppercase;
   font-family: "cora", sans-serif;
   font-size: 1.7rem;
   color: #ebe9e7;
+  opacity: 0.5;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 #button-container .buttons a.active {
   font-size: 4.5rem;
   color: #fff;
+  opacity: 1;
 }
 #button-container .buttons a.active::before {
   content: "\f061";
@@ -2109,7 +2112,7 @@ section.section-map {
 
 .area-link-wrapper {
   position: absolute;
-  bottom: 15vh;
+  bottom: 30vh;
   left: 50%;
   translate: -50%;
 }
@@ -2130,8 +2133,8 @@ section.section-map {
 .area-link-wrapper ul li {
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid #fff;
-  padding: 1rem 3rem;
-  width: 18rem;
+  padding: 2rem 3rem;
+  width: 20rem;
   position: absolute;
 }
 .area-link-wrapper ul li span {
@@ -2139,7 +2142,7 @@ section.section-map {
 }
 .area-link-wrapper ul li i {
   display: block;
-  color: #9bd866;
+  color: var(--marker-color);
   padding-top: 1rem;
 }
 
@@ -2231,12 +2234,13 @@ section.section-map {
   left: -5rem;
   top: 2rem;
   font-size: 3rem;
-  color: #9bd866;
+  color: var(--marker-color);
 }
 .map-details--description #toggle {
   text-transform: uppercase;
-  color: #9bd866;
+  color: var(--marker-color);
   font-weight: 400;
+  cursor: pointer;
 }
 .map-details--description .sticky-wrapper {
   position: sticky;
@@ -2249,6 +2253,9 @@ section.section-map {
   -webkit-column-count: unset;
      -moz-column-count: unset;
           column-count: unset;
+}
+.map-details--list .toggle-block label i {
+  color: var(--marker-color);
 }
 .map-details--list .heading-4 {
   font-size: 1.4rem;
@@ -3839,6 +3846,7 @@ section.panel-project {
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 3;
+  background: #2f2e2c;
 }
 section.panel-project .project--panel-one {
   position: relative;

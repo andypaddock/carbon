@@ -47,7 +47,7 @@ const vtl = gsap.timeline({
     scrub: true,
     pin: true,
     pinSpacing: "margin",
-    markers: true,
+    // markers: true,
     onUpdate: (self) => {
       const progress = self.progress; // Get the scroll trigger's progress
 

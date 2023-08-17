@@ -6,6 +6,7 @@ section.panel-project {
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 3;
+  background: #2f2e2c;
   .project--panel-one {
     position: relative;
     min-height: 100vh;
@@ -217,6 +218,7 @@ section.panel-project {
   display: flex;
   align-items: center;
   justify-content: right;
+
   img {
     float: right;
     translate: 0 -100vh;

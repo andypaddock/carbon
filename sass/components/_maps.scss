@@ -169,16 +169,18 @@ section.section-map {
   .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     a {
       text-transform: uppercase;
       font-family: $font-header;
       font-size: 1.7rem;
       color: #ebe9e7;
+      opacity: 0.5;
       transition: all 0.5s ease-in-out;
       &.active {
         font-size: 4.5rem;
         color: $color-white;
+        opacity: 1;
         &::before {
           content: "\f061";
           font: var(--fa-font-sharp-solid);
@@ -198,7 +200,7 @@ section.section-map {
 }
 .area-link-wrapper {
   position: absolute;
-  bottom: 15vh;
+  bottom: 30vh;
   left: 50%;
   translate: -50%;
   .area-link {
@@ -216,15 +218,15 @@ section.section-map {
     li {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid $color-white;
-      padding: 1rem 3rem;
-      width: 18rem;
+      padding: 2rem 3rem;
+      width: 20rem;
       position: absolute;
       span {
         font-weight: 400;
       }
       i {
         display: block;
-        color: $color-primary;
+        color: var(--marker-color);
         padding-top: 1rem;
       }
     }
@@ -312,13 +314,14 @@ section.section-map {
         left: -5rem;
         top: 2rem;
         font-size: 3rem;
-        color: $color-primary;
+        color: var(--marker-color);
       }
     }
     #toggle {
       text-transform: uppercase;
-      color: $color-primary;
+      color: var(--marker-color);
       font-weight: 400;
+      cursor: pointer;
     }
     .sticky-wrapper {
       position: sticky;
@@ -329,6 +332,9 @@ section.section-map {
     padding: 3rem 2rem;
     .toggle-block {
       column-count: unset;
+      label i {
+        color: var(--marker-color);
+      }
     }
     .heading-4 {
       font-size: 1.4rem;
