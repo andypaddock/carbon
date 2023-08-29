@@ -79,52 +79,52 @@ vtl.to(projectWrapper, {
   zIndex: -1,
 });
 
-// gsap.to(".cloud-one", {
-//   scrollTrigger: {
-//     trigger: ".hero",
-//     start: "top center",
-//     end: "bottom center",
-//     scrub: true,
-//   },
-//   y: 200,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.9, // Adjust the value to control the cloud's scaling
-//   opacity: 1,
-// });
+gsap.to(".cloud-one", {
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top center",
+    end: "bottom center",
+    scrub: true,
+  },
+  y: 200,
+  // Adjust the value to control the cloud's movement
+  scale: 1.9, // Adjust the value to control the cloud's scaling
+  opacity: 1,
+});
 
-// gsap.to(".cloud-two", {
-//   scrollTrigger: {
-//     trigger: ".hero",
-//     start: "top center",
-//     end: "bottom center",
-//     scrub: true,
-//   },
-//   y: 500,
-//   // Adjust the value to control the cloud's movement
-//   scale: 2.4, // Adjust the value to control the cloud's scaling
-// });
-// gsap.to(".cloud-four", {
-//   scrollTrigger: {
-//     trigger: ".base-video",
-//     start: "top bottom",
-//     end: "bottom top",
-//     scrub: true,
-//   },
-//   y: -500,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.4, // Adjust the value to control the cloud's scaling
-// });
-// gsap.to(".cloud-five", {
-//   scrollTrigger: {
-//     trigger: ".base-video",
-//     start: "top bottom",
-//     end: "bottom top",
-//     scrub: true,
-//   },
-//   y: -600,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.7, // Adjust the value to control the cloud's scaling
-// });
+gsap.to(".cloud-two", {
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top center",
+    end: "bottom center",
+    scrub: true,
+  },
+  y: 500,
+  // Adjust the value to control the cloud's movement
+  scale: 2.4, // Adjust the value to control the cloud's scaling
+});
+gsap.to(".cloud-four", {
+  scrollTrigger: {
+    trigger: ".base-video",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+  y: -500,
+  // Adjust the value to control the cloud's movement
+  scale: 1.4, // Adjust the value to control the cloud's scaling
+});
+gsap.to(".cloud-five", {
+  scrollTrigger: {
+    trigger: ".base-video",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+  y: -600,
+  // Adjust the value to control the cloud's movement
+  scale: 1.7, // Adjust the value to control the cloud's scaling
+});
 
 gsap.to("#block-1", {
   scrollTrigger: {

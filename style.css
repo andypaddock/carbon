@@ -914,7 +914,7 @@ blockquote {
 .carbon-form-embed .wpforms-container .wpforms-field textarea {
   border-radius: 0;
   border-color: transparent;
-  opacity: 0.9;
+  opacity: 1;
   font-size: 1.4rem;
   font-family: "lato", sans-serif;
   font-weight: 100;
@@ -927,15 +927,15 @@ blockquote {
   overflow: hidden;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
 }
 
 input::-webkit-input-placeholder {
   font-size: 1.4rem;
   font-family: "lato", sans-serif;
   font-weight: 100;
-  color: #000;
+  color: #fff;
   opacity: 1;
 }
 
@@ -954,27 +954,27 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container button {
 
 .wpforms-container ::-webkit-input-placeholder {
   /* Chrome and Safari */
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .wpforms-container ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #000 !important;
+  color: #fff !important;
   opacity: 1 !important;
 }
 
 .wpforms-container :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .wpforms-container ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .wpforms-container ::placeholder {
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .accordion__item {
@@ -1194,6 +1194,22 @@ video {
 .cloud-five {
   top: unset;
   opacity: 0.4;
+}
+
+.single-post .post-thumbnail img,
+.archive .post-thumbnail img {
+  width: 100%;
+  height: 50vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.single-post .entry-content,
+.archive .entry-content {
+  padding: 8rem 0;
+}
+.single-post .entry-title,
+.archive .entry-title {
+  padding: 5rem 0 0;
 }
 
 .testimonial-carousel {
@@ -1502,6 +1518,7 @@ video {
 .section-news-feed .news-feed-wrapper .news-filters ul li {
   padding: 1rem 0 2rem;
   letter-spacing: 1.1px;
+  cursor: pointer;
 }
 .section-news-feed .news-feed-wrapper .news-filters ul li.filter-head {
   font-weight: 700;
@@ -2757,9 +2774,6 @@ section.section-map {
   padding-top: 25vh;
 }
 
-.numbers-block {
-  border-bottom: 1px solid #fff;
-}
 .numbers-block--items {
   display: -webkit-box;
   display: -ms-flexbox;
