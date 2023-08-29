@@ -2116,6 +2116,7 @@ section.section-map {
 #button-container .buttons a.active::before {
   content: "\f061";
   font: var(--fa-font-sharp-solid);
+  font-size: 4rem;
 }
 #button-container .buttons a::before {
   content: "—";
