@@ -35,7 +35,7 @@ if( $image ) {
     echo wp_get_attachment_image( $image, $size, false, array("class" => "video-img") );
 }?>
         <?php $project_video = get_sub_field('project_video');?>
-        <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload" autoplay
+        <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload"
             src="<?php echo $project_video['url']; ?>" muted>
 
         </video>

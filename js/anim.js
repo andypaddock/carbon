@@ -126,103 +126,48 @@ gsap.to(".cloud-five", {
   scale: 1.7, // Adjust the value to control the cloud's scaling
 });
 
-gsap.to("#block-1", {
-  scrollTrigger: {
-    trigger: ".block-1",
-    // toggleActions: "play complete reverse reset",
-    start: "top 50%",
-    end: () => "+=" + this.document.querySelector(".block-1").offsetHeight,
-    onEnter: () => {
-      gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-1 h3", { color: "#9bd866" });
-    },
-    onEnterBack: () => {
-      gsap.to("#block-1", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-1 h3", { color: "#9bd866" });
-    },
-    onLeave: () => {
-      gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-1 h3", { color: "#ffffff" });
-    },
-    onLeaveBack: () => {
-      gsap.to("#block-1", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-1 h3", { color: "#ffffff" });
-    },
-  },
-});
+function configureScrollTrigger(blockId, triggerClass) {
+  const blockSelector = `#${blockId}`;
+  const triggerSelector = `.${triggerClass}`;
 
-gsap.to("#block-2", {
-  scrollTrigger: {
-    trigger: ".block-2",
-    // toggleActions: "restart none none reverse",
-    start: "top 50%",
-    end: () => "+=" + this.document.querySelector(".block-2").offsetHeight,
-    onEnter: () => {
-      gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-2 h3", { color: "#9bd866" });
+  gsap.to(blockSelector, {
+    scrollTrigger: {
+      trigger: triggerSelector,
+      start: "top 50%",
+      end: () => "+=" + document.querySelector(triggerSelector).offsetHeight,
+      onEnter: () => {
+        gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(`${blockSelector} h3`, { color: "#9bd866" });
+      },
+      onEnterBack: () => {
+        gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
+        gsap.to(`${blockSelector} h3`, { color: "#9bd866" });
+      },
+      onLeave: () => {
+        gsap.to(blockSelector, {
+          fill: "#ffffff",
+          opacity: 0.4,
+          duration: 0.5,
+        });
+        gsap.to(`${blockSelector} h3`, { color: "#ffffff" });
+      },
+      onLeaveBack: () => {
+        gsap.to(blockSelector, {
+          fill: "#ffffff",
+          opacity: 0.4,
+          duration: 0.5,
+        });
+        gsap.to(`${blockSelector} h3`, { color: "#ffffff" });
+      },
     },
-    onEnterBack: () => {
-      gsap.to("#block-2", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-2 h3", { color: "#9bd866" });
-    },
-    onLeave: () => {
-      gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-2 h3", { color: "#ffffff" });
-    },
-    onLeaveBack: () => {
-      gsap.to("#block-2", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-2 h3", { color: "#ffffff" });
-    },
-  },
-});
-gsap.to("#block-3", {
-  scrollTrigger: {
-    trigger: ".block-3",
-    // toggleActions: "restart none none reverse",
-    start: "top 50%",
-    end: () => "+=" + this.document.querySelector(".block-3").offsetHeight,
-    onEnter: () => {
-      gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-3 h3", { color: "#9bd866" });
-    },
-    onEnterBack: () => {
-      gsap.to("#block-3", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-3 h3", { color: "#9bd866" });
-    },
-    onLeave: () => {
-      gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-3 h3", { color: "#ffffff" });
-    },
-    onLeaveBack: () => {
-      gsap.to("#block-3", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-3 h3", { color: "#ffffff" });
-    },
-  },
-});
-gsap.to("#block-4", {
-  scrollTrigger: {
-    trigger: ".block-4",
-    // toggleActions: "restart none none reverse",
-    start: "top 50%",
-    end: () => "+=" + this.document.querySelector(".block-4").offsetHeight,
-    onEnter: () => {
-      gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-4 h3", { color: "#9bd866" });
-    },
-    onEnterBack: () => {
-      gsap.to("#block-4", { fill: "#9bd866", opacity: 1, duration: 0.5 });
-      gsap.to(".block-4 h3", { color: "#9bd866" });
-    },
-    onLeave: () => {
-      gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-4 h3", { color: "#ffffff" });
-    },
-    onLeaveBack: () => {
-      gsap.to("#block-4", { fill: "#ffffff", opacity: 0.4, duration: 0.5 });
-      gsap.to(".block-4 h3", { color: "#ffffff" });
-    },
-  },
-});
+  });
+}
+
+configureScrollTrigger("block-1", "block-1");
+configureScrollTrigger("block-2", "block-2");
+configureScrollTrigger("block-3", "block-3");
+configureScrollTrigger("block-4", "block-4");
+
 gsap.to(challengeVideo, {
   scrollTrigger: {
     trigger: "#challenge",
