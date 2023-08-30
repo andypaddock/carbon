@@ -21,7 +21,7 @@ get_header();
 				?>
     </header> -->
     <div class="container">
-        <div class="row col-10">
+        <div class="row col-8">
             <?php
 			/* Start the Loop */
 			while ( have_posts() ) :

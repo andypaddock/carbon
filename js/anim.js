@@ -68,14 +68,14 @@ vtl.to(projectVideo, { opacity: 1, duration: 0.1 });
 
 vtl.to(videoImg, {
   opacity: 0,
-  duration: 0.1,
+  duration: 0.5,
 });
 vtl.to(videoImg, {
   zIndex: -1,
 });
 vtl.to(projectWrapper, {
   opacity: 0,
-  duration: 0.1,
+  duration: 0.5,
   zIndex: -1,
 });
 
@@ -379,7 +379,7 @@ animateDown.forEach((div, index) => {
 // });
 
 gsap.to(".project-intro", {
-  yPercent: -75,
+  yPercent: -50,
   ease: "none",
   scrollTrigger: {
     trigger: ".project--panel-one-wrapper",
@@ -398,5 +398,6 @@ gsap.to(pinnedDiv, {
     end: "bottom top",
     pin: true, // Pin the element to the viewport
     pinSpacing: false, // Don't add spacing to the pinned element
+    markers: true,
   },
 });

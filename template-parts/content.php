@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <section class="container">
         <div class="row extended"><?php carbon_post_thumbnail(); ?></div>
-        <div class="row col-10">
+        <div class="row col-8">
             <h1 class="entry-title heading-1"><?php the_title();?></h1>
             <span class="entry-date"><?php echo get_the_date(); ?></span> Posted in: <?php
 $categories = get_the_category(); // Get the categories for the current post
@@ -28,7 +28,7 @@ if (!empty($categories)) {
         </div>
     </section>
     <section class="container">
-        <div class="row col-10 entry-content">
+        <div class="row col-8 entry-content">
             <?php
 		the_content(
 			sprintf(

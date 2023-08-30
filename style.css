@@ -1462,9 +1462,6 @@ video {
   -webkit-text-fill-color: transparent;
 }
 
-.section-news-feed {
-  padding: 25vh 0 0;
-}
 .section-news-feed .news-feed-wrapper {
   display: -ms-grid;
   display: grid;
@@ -1912,8 +1909,8 @@ div.aligncenter {
 section.section-map {
   padding-top: 0 !important;
   overflow-x: hidden;
-  -webkit-transform: translateY(-150vh);
-          transform: translateY(-150vh);
+  -webkit-transform: translateY(-125vh);
+          transform: translateY(-125vh);
 }
 
 .map-wrapper {
