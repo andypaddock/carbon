@@ -101,41 +101,40 @@ video {
 .cloud-four,
 .cloud-five {
   position: absolute;
-  top: -100px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 100px;
-  // background-color: lightgrey;
-  animation: cloudAnimation 10s infinite linear;
+  height: 25vh;
   img {
     width: 100%;
   }
 }
-
-.cloud-two {
-  top: 0vh;
-  animation-delay: 5s;
-  opacity: 0.3;
-  // background-color:grey;
-}
 .cloud-one {
-  top: 5vh;
-  opacity: 0.5;
+  top: 40vh;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // outline: 1px solid red;
 }
-.cloud-three {
-  top: 30vh;
-  opacity: 0.4;
+.cloud-two {
+  top: 40vh;
+  // outline: 1px solid blue;
 }
-.cloud-four {
-  top: unset;
-  bottom: 90rem;
-  opacity: 0.4;
-  // z-index: 3;
-}
+
+// .cloud-three {
+//   top: 30vh;
+//   outline: 1px solid yellow;
+// }
+// .cloud-four {
+//   outline: 1px solid green;
+//   top: 40vh;
+
+//   // z-index: 3;
+// }
 .cloud-five {
-  top: unset;
-  opacity: 0.4;
+  // outline: 1px solid orange;
+  top: 70vh;
+
   // z-index: 3;
 }
 .single-post,
@@ -155,4 +154,20 @@ video {
   }
 }
 .archive {
+}
+.map-clouds {
+  position: relative;
+  .post-video {
+    position: absolute;
+    bottom: 0;
+    display: grid;
+    z-index: -1;
+    width: 100%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 140vh;
+      object-position: center bottom;
+    }
+  }
 }

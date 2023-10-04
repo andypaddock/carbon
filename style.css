@@ -1151,14 +1151,11 @@ video {
 .cloud-four,
 .cloud-five {
   position: absolute;
-  top: -100px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 100%;
-  height: 100px;
-  -webkit-animation: cloudAnimation 10s infinite linear;
-          animation: cloudAnimation 10s infinite linear;
+  height: 25vh;
 }
 .cloud-one img,
 .cloud-two img,
@@ -1168,32 +1165,19 @@ video {
   width: 100%;
 }
 
-.cloud-two {
-  top: 0vh;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
-  opacity: 0.3;
-}
-
 .cloud-one {
-  top: 5vh;
-  opacity: 0.5;
+  top: 40vh;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.cloud-three {
-  top: 30vh;
-  opacity: 0.4;
-}
-
-.cloud-four {
-  top: unset;
-  bottom: 90rem;
-  opacity: 0.4;
+.cloud-two {
+  top: 40vh;
 }
 
 .cloud-five {
-  top: unset;
-  opacity: 0.4;
+  top: 70vh;
 }
 
 .single-post .post-thumbnail img,
@@ -1210,6 +1194,26 @@ video {
 .single-post .entry-title,
 .archive .entry-title {
   padding: 5rem 0 0;
+}
+
+.map-clouds {
+  position: relative;
+}
+.map-clouds .post-video {
+  position: absolute;
+  bottom: 0;
+  display: -ms-grid;
+  display: grid;
+  z-index: -1;
+  width: 100%;
+}
+.map-clouds .post-video img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 140vh;
+  -o-object-position: center bottom;
+     object-position: center bottom;
 }
 
 .testimonial-carousel {
@@ -3928,7 +3932,6 @@ section.panel-project .project--panel-four {
   grid-template-columns: 55rem auto;
 }
 section.panel-project .project--panel-four .panel-four--text {
-  padding-bottom: 25vh;
   z-index: 3;
 }
 section.panel-project .project--panel-four .panel-four--text .how-number {
@@ -4040,6 +4043,8 @@ section.panel-project .project-image img {
   z-index: 3;
   height: 100vh;
   position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
   opacity: 0;
   top: 0;
   left: 0;
@@ -4068,9 +4073,11 @@ section.panel-project .project-image img {
 }
 .panel-four-video img {
   float: right;
-  translate: 0 -100vh;
+  translate: 0 -125vh;
   width: 50%;
-  height: auto;
+  height: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
   padding-left: 10rem;
   background-color: transparent !important;
   mix-blend-mode: lighten;
