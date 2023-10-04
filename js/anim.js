@@ -354,3 +354,22 @@ gsap.to(pinnedDiv, {
     pinSpacing: false, // Don't add spacing to the pinned element
   },
 });
+
+const staggerElements = document.querySelectorAll(".stagger");
+
+if (staggerElements.length > 0) {
+  // Color blocks
+  ScrollTrigger.batch(".stagger", {
+    // interval: 0.1, // time window (in seconds) for batching to occur
+    onEnter: (batch) =>
+      gsap.from(batch, {
+        opacity: 0,
+        y: 100,
+        stagger: { each: 0.15 },
+        overwrite: true,
+      }),
+    onLeaveBack: (batch) =>
+      gsap.set(batch, { opacity: 1, y: 0, overwrite: true }),
+    end: "35% center",
+  });
+}

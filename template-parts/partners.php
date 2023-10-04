@@ -17,7 +17,7 @@
                 <?php while( have_rows('group_members') ): the_row(); 
         $image = get_sub_field('member_imagelogo');
         ?>
-                <div class="group-member animate-tile">
+                <div class="group-member stagger">
                     <div class="group-member--image">
                         <?php if(get_sub_field('member_website')):?>
                         <a href="<?php echo esc_url( urlencode( the_sub_field('member_website') ) ); ?>" target="_blank"
