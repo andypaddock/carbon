@@ -1,5 +1,5 @@
 <div class="cloud-one">
-    <img src="/wp-content/uploads/2023/08/cloud001-scaled.webp">
+    <img src="/wp-content/uploads/2023/10/cloud0011.webp">
 </div>
 <!-- <div class="cloud-two">
     <img src="/wp-content/uploads/2023/08/cloud003-scaled.webp">
