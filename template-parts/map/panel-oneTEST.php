@@ -66,13 +66,13 @@ if ( $query->have_posts() ) {
         </ul>
     </div>
 
-    <!-- <div id="map-settings">
+    <div id="map-settings">
         <p id="map-pitch"></p>
         <p id="map-zoom"></p>
         <p id="map-bearing"></p>
         <p id="map-center"></p>
 
-    </div> -->
+    </div>
     <?php
 // WP_Query arguments
 $args = array(
@@ -90,7 +90,7 @@ if ( $query->have_posts() ):
 
         // Get the post title and slug
         $post_title = get_the_title();
-        $post_slug = $post->post_name;
+        $post_slug = sanitize_title( $post_title );
         $color_var = get_field('project_colour');?>
 
 
@@ -149,182 +149,88 @@ var map = new mapboxgl.Map({
     pitch: 75.94,
     bearing: 132.85,
     zoom: 17, // starting zoom
-    interactive: false,
+    interactive: true,
 });
 
 
-// map.on('move', function() {
-//     var pitchElement = document.getElementById('map-pitch');
-//     var zoomElement = document.getElementById('map-zoom');
-//     var bearingElement = document.getElementById('map-bearing');
-//     var centerElement = document.getElementById('map-center');
+map.on('move', function() {
+    var pitchElement = document.getElementById('map-pitch');
+    var zoomElement = document.getElementById('map-zoom');
+    var bearingElement = document.getElementById('map-bearing');
+    var centerElement = document.getElementById('map-center');
 
-//     pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
-//     zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
-//     bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
-//     centerElement.innerText = 'Center: ' + map.getCenter();
-// });
-
-
-
+    pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
+    zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
+    bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
+    centerElement.innerText = 'Center: ' + map.getCenter();
+});
 
 map.on('load', () => {
-    // Add a data source containing GeoJSON data.
-
-    <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
-
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                $color_var = get_field('project_colour');
-                $tilesetID = get_field('tileset_id');
-                $sourceLayer = get_field('source_layer');
-            ?>
-    map.addSource('<?php echo $post_slug; ?>-source', {
+    // Add a custom vector tileset source. This tileset contains
+    // point features representing museums. Each feature contains
+    // three properties. For example:
+    // {
+    //     alt_name: "Museo Arqueologico",
+    //     name: "Museo Inka",
+    //     tourism: "museum"
+    // }
+    map.addSource('Shirango', {
         type: 'vector',
-        url: 'mapbox://<?php echo $tilesetID; ?>'
+        url: 'mapbox://silverless.2psz0554'
     });
     map.addLayer({
-        'id': '<?php echo $post_slug; ?>',
+        'id': 'Shirango',
         'type': 'fill',
-        'source': '<?php echo $post_slug; ?>-source',
+        'source': 'Shirango',
         'layout': {
-            visibility: 'none'
+            // Make the layer visible by default.
+            'visibility': 'visible'
         },
         'paint': {
-            'fill-color': '<?php echo $color_var;?>',
-            'fill-opacity': 0.3
+            'fill-color': 'rgba(55,148,179,1)',
+            'fill-opacity': 0.3,
         },
-        'source-layer': '<?php echo $sourceLayer;?>'
+        'source-layer': 'Shirango-2ll1v4'
+    });
+
+    map.addLayer({
+        'id': 'Shirango-line',
+        'type': 'line',
+        'source': 'Shirango',
+        'layout': {
+            // Make the layer visible by default.
+            'visibility': 'visible'
+        },
+        'paint': {
+            'line-color': '#ffffff',
+            'line-dasharray': [4, 4],
+
+        },
+        'source-layer': 'Shirango-2ll1v4'
+    });
+
+    // Add the Mapbox Terrain v2 vector tileset. Read more about
+    // the structure of data in this tileset in the documentation:
+    // https://docs.mapbox.com/vector-tiles/reference/mapbox-terrain-v2/
+    map.addSource('contours', {
+        type: 'vector',
+        url: 'mapbox://mapbox.mapbox-terrain-v2'
     });
     map.addLayer({
-        'id': 'line-<?php echo $post_slug; ?>',
+        'id': 'contours',
         'type': 'line',
-        'source': '<?php echo $post_slug; ?>-source',
+        'source': 'contours',
+        'source-layer': 'contour',
         'layout': {
-            visibility: 'none'
+            // Make the layer visible by default.
+            'visibility': 'visible',
+            'line-join': 'round',
+            'line-cap': 'round'
         },
         'paint': {
-            'line-color': '<?php echo $color_var;?>',
-            'line-width': 2,
-            'line-dasharray': [2, 2],
-        },
-        'source-layer': '<?php echo $sourceLayer;?>'
+            'line-color': '#877b59',
+            'line-width': 1
+        }
     });
-    <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
-
 });
-
-
-
-
-const layerIds = {
-    <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
-
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                $location = get_field('center_point');
-            ?>
-
-
-    '<?php echo $post_slug; ?>': {
-        center: [<?php echo esc_attr($location['lng']); ?>, <?php echo esc_attr($location['lat']); ?>],
-        zoom: <?php the_field('zoom');?>,
-        pitch: <?php the_field('pitch');?>,
-        bearing: <?php the_field('bearing');?>,
-    },
-
-
-
-    <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
-};
-// Function to show a layer on the map
-function showLayer(layerId) {
-    const {
-        center,
-        zoom,
-        pitch,
-        bearing
-    } = layerIds[layerId];
-    map.setLayoutProperty(layerId, 'visibility', 'visible');
-    map.setLayoutProperty(`line-${layerId}`, 'visibility', 'visible'); // Show the line layer too
-    map.flyTo({
-        center: center,
-        zoom: zoom,
-        pitch: pitch,
-        bearing: bearing,
-        duration: 2000,
-        easing: function(t) {
-            return t;
-        }
-    });
-}
-
-// Function to hide all layers on the map except the specified one
-function hideLayers(exceptLayerId) {
-    for (const id in layerIds) {
-        if (id !== exceptLayerId) {
-            map.setLayoutProperty(id, 'visibility', 'none');
-            map.setLayoutProperty(`line-${id}`, 'visibility', 'none'); // Hide the line layer too
-        }
-    }
-}
-
-// Click handler for all map links
-function handleMapLinkClick(layerId, e) {
-    e.preventDefault();
-    if (map.getLayoutProperty(layerId, 'visibility') === 'none') {
-        showLayer(layerId);
-        hideLayers(layerId);
-    }
-}
-
-
-
-<?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                
-            ?>
-document.getElementById('<?php echo $post_slug; ?>-link').addEventListener('click', handleMapLinkClick.bind(null,
-    '<?php echo $post_slug; ?>'));
-<?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
 </script>

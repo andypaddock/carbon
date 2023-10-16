@@ -66,13 +66,13 @@ if ( $query->have_posts() ) {
         </ul>
     </div>
 
-    <!-- <div id="map-settings">
+    <div id="map-settings">
         <p id="map-pitch"></p>
         <p id="map-zoom"></p>
         <p id="map-bearing"></p>
         <p id="map-center"></p>
 
-    </div> -->
+    </div>
     <?php
 // WP_Query arguments
 $args = array(
@@ -90,7 +90,7 @@ if ( $query->have_posts() ):
 
         // Get the post title and slug
         $post_title = get_the_title();
-        $post_slug = $post->post_name;
+        $post_slug = sanitize_title( $post_title );
         $color_var = get_field('project_colour');?>
 
 
@@ -149,21 +149,21 @@ var map = new mapboxgl.Map({
     pitch: 75.94,
     bearing: 132.85,
     zoom: 17, // starting zoom
-    interactive: false,
+    interactive: true,
 });
 
 
-// map.on('move', function() {
-//     var pitchElement = document.getElementById('map-pitch');
-//     var zoomElement = document.getElementById('map-zoom');
-//     var bearingElement = document.getElementById('map-bearing');
-//     var centerElement = document.getElementById('map-center');
+map.on('move', function() {
+    var pitchElement = document.getElementById('map-pitch');
+    var zoomElement = document.getElementById('map-zoom');
+    var bearingElement = document.getElementById('map-bearing');
+    var centerElement = document.getElementById('map-center');
 
-//     pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
-//     zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
-//     bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
-//     centerElement.innerText = 'Center: ' + map.getCenter();
-// });
+    pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
+    zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
+    bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
+    centerElement.innerText = 'Center: ' + map.getCenter();
+});
 
 
 
@@ -185,17 +185,25 @@ $args = array(
                 $post_title = get_the_title();
                 $post_slug  = $post->post_name;
                 $color_var = get_field('project_colour');
-                $tilesetID = get_field('tileset_id');
-                $sourceLayer = get_field('source_layer');
             ?>
-    map.addSource('<?php echo $post_slug; ?>-source', {
-        type: 'vector',
-        url: 'mapbox://<?php echo $tilesetID; ?>'
+    map.addSource('<?php echo $post_slug; ?>', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': [
+                    [
+                        <?php the_field('json');?>
+                    ]
+                ]
+            }
+        }
     });
     map.addLayer({
         'id': '<?php echo $post_slug; ?>',
         'type': 'fill',
-        'source': '<?php echo $post_slug; ?>-source',
+        'source': '<?php echo $post_slug; ?>',
         'layout': {
             visibility: 'none'
         },
@@ -203,12 +211,11 @@ $args = array(
             'fill-color': '<?php echo $color_var;?>',
             'fill-opacity': 0.3
         },
-        'source-layer': '<?php echo $sourceLayer;?>'
     });
     map.addLayer({
         'id': 'line-<?php echo $post_slug; ?>',
         'type': 'line',
-        'source': '<?php echo $post_slug; ?>-source',
+        'source': '<?php echo $post_slug; ?>',
         'layout': {
             visibility: 'none'
         },
@@ -216,18 +223,14 @@ $args = array(
             'line-color': '<?php echo $color_var;?>',
             'line-width': 2,
             'line-dasharray': [2, 2],
-        },
-        'source-layer': '<?php echo $sourceLayer;?>'
+        }
     });
     <?php
                 endwhile;
             endif;
             // Restore original post data.
             wp_reset_postdata(); ?>
-
 });
-
-
 
 
 const layerIds = {
