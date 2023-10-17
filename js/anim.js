@@ -223,15 +223,15 @@ const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".video-img",
     start: "top center",
-    scrub: true,
+    scrub: 0.5,
   },
 });
 
 tl.to(".video-img", {
-  translate: "0 0", // Change this to your desired translation values
+  translate: "0 0", // Adjust the vertical translation to center the element
   width: "100%",
   height: "100vh",
-  duration: 1.6,
+  duration: 1,
   paddingLeft: 0,
   ease: "power2.inOut",
 });

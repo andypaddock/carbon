@@ -1050,7 +1050,7 @@ section.hero {
 }
 section.hero .hero--panel-one {
   height: 100vh;
-  grid-column: col-start 2/col-end 7;
+  grid-column: center-start/center-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1058,18 +1058,30 @@ section.hero .hero--panel-one {
       -ms-flex-align: center;
           align-items: center;
 }
+@media only screen and (min-width: 62.5em) {
+  section.hero .hero--panel-one {
+    grid-column: col-start 2/center-end;
+  }
+}
 section.hero .hero--panel-one .scroll-text {
   font-family: "cora", sans-serif;
   font-size: 2rem;
   text-transform: uppercase;
 }
 section.hero .hero--panel-two {
-  grid-column: col-start 2/center-end;
+  grid-column: center-start/center-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  grid-gap: 10rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding-bottom: 50vh;
+}
+@media only screen and (min-width: 62.5em) {
+  section.hero .hero--panel-two {
+    grid-gap: 10rem;
+    grid-column: col-start 2/center-end;
+  }
 }
 section.hero .hero--panel-two .map-elements {
   padding-top: 10rem;
@@ -1077,15 +1089,20 @@ section.hero .hero--panel-two .map-elements {
 section.hero .hero--panel-two .map-elements--block {
   margin-bottom: 10rem;
 }
-section.hero .hero--panel-two .sticky-map {
-  position: sticky;
-  top: 30vh;
+@media only screen and (min-width: 62.5em) {
+  section.hero .hero--panel-two .sticky-map {
+    position: sticky;
+    top: 30vh;
+  }
 }
 section.hero .hero--panel-two .sticky-map #block-1,
 section.hero .hero--panel-two .sticky-map #block-2,
 section.hero .hero--panel-two .sticky-map #block-3,
 section.hero .hero--panel-two .sticky-map #block-4 {
   opacity: 0.4;
+}
+section.hero .hero--panel-two .sticky-map svg {
+  width: 100%;
 }
 
 .block {
@@ -1436,11 +1453,22 @@ video {
 }
 .section-news-feed .news-feed-wrapper .news-content {
   padding: 8rem 0 0;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 4rem 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+@media only screen and (min-width: 62.5em) {
+  .section-news-feed .news-feed-wrapper .news-content {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 4rem 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
+  }
 }
 .section-news-feed .news-feed-wrapper .news-content .mixitup-page-list {
   -ms-grid-column-span: 2;
@@ -3822,11 +3850,16 @@ section.panel-project {
 section.panel-project .project--panel-one {
   position: relative;
   min-height: 100vh;
-  grid-column: col-start 2/col-end 6;
+  grid-column: center-start/center-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding-top: 45vh;
+}
+@media only screen and (min-width: 62.5em) {
+  section.panel-project .project--panel-one {
+    grid-column: col-start 2/col-end 6;
+  }
 }
 section.panel-project .project--panel-one .scroll-text {
   font-family: "cora", sans-serif;
@@ -3906,13 +3939,15 @@ section.panel-project .project--panel-three .explainer-title span {
   font-size: 3.5rem;
   font-weight: 400;
 }
-section.panel-project .project--panel-three .explainer {
-  -webkit-column-count: 2;
-     -moz-column-count: 2;
-          column-count: 2;
-  -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
-          column-gap: 2rem;
+@media only screen and (min-width: 62.5em) {
+  section.panel-project .project--panel-three .explainer {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
+  }
 }
 section.panel-project .project--panel-three .explainer p:first-of-type {
   font-weight: 400;
@@ -3926,6 +3961,7 @@ section.panel-project .panel-four-head-image {
 section.panel-project .project--panel-four {
   grid-column: col-start 2/col-end 11;
   padding: 25vh 0 0;
+  min-height: 100vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 55rem auto;

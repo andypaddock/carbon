@@ -10,9 +10,12 @@ section.panel-project {
   .project--panel-one {
     position: relative;
     min-height: 100vh;
-    grid-column: col-start 2 / col-end 6;
+    grid-column: center-start / center-end;
     display: flex;
     padding-top: 45vh;
+    @media only screen and (min-width: $bp-large) {
+      grid-column: col-start 2 / col-end 6;
+    }
     .scroll-text {
       font-family: $font-header;
       font-size: 2rem;
@@ -89,8 +92,10 @@ section.panel-project {
       }
     }
     .explainer {
-      column-count: 2;
-      column-gap: 2rem;
+      @media only screen and (min-width: $bp-large) {
+        column-count: 2;
+        column-gap: 2rem;
+      }
       p {
         &:first-of-type {
           font-weight: 400;
@@ -106,6 +111,7 @@ section.panel-project {
   .project--panel-four {
     grid-column: col-start 2 / col-end 11;
     padding: 25vh 0 0;
+    min-height: 100vh;
 
     display: grid;
     grid-template-columns: 55rem auto;

@@ -7,9 +7,12 @@ section.hero {
   background-repeat: no-repeat;
   .hero--panel-one {
     height: 100vh;
-    grid-column: col-start 2 / col-end 7;
+    grid-column: center-start / center-end;
     display: flex;
     align-items: center;
+    @media only screen and (min-width: $bp-large) {
+      grid-column: col-start 2 / center-end;
+    }
     .scroll-text {
       font-family: $font-header;
       font-size: 2rem;
@@ -17,10 +20,15 @@ section.hero {
     }
   }
   .hero--panel-two {
-    grid-column: col-start 2 / center-end;
+    grid-column: center-start / center-end;
+
     display: flex;
-    grid-gap: 10rem;
+    flex-wrap: wrap;
     padding-bottom: 50vh;
+    @media only screen and (min-width: $bp-large) {
+      grid-gap: 10rem;
+      grid-column: col-start 2 / center-end;
+    }
     .map-elements {
       padding-top: 10rem;
       &--block {
@@ -28,13 +36,18 @@ section.hero {
       }
     }
     .sticky-map {
-      position: sticky;
-      top: 30vh;
+      @media only screen and (min-width: $bp-large) {
+        position: sticky;
+        top: 30vh;
+      }
       #block-1,
       #block-2,
       #block-3,
       #block-4 {
         opacity: 0.4;
+      }
+      svg {
+        width: 100%;
       }
     }
   }
