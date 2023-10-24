@@ -3,14 +3,6 @@
 // Create the ScrollTrigger
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-// const smoother = ScrollSmoother.create({
-//   smooth: 2,
-//   speed: 2,
-//   effects: true,
-//   // normalizeScroll: true,
-//   smoothTouch: 0.1,
-// });
-
 // Define the base-video element
 const baseVideo = document.querySelector(".base-video");
 const firstVideo = baseVideo.querySelector("#intro"); // Assuming the video has the ID 'intro'
@@ -99,17 +91,17 @@ gsap.to(".cloud-one img", {
   scale: 3, // Adjust the value to control the cloud's scaling
 });
 
-gsap.to(".cloud-two", {
-  scrollTrigger: {
-    trigger: ".hero",
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-  },
-  y: 2500,
-  // Adjust the value to control the cloud's movement
-  scale: 1.4, // Adjust the value to control the cloud's scaling
-});
+// gsap.to(".cloud-two", {
+//   scrollTrigger: {
+//     trigger: ".hero",
+//     start: "top center",
+//     end: "bottom center",
+//     scrub: true,
+//   },
+//   y: 2500,
+//   // Adjust the value to control the cloud's movement
+//   scale: 1.4, // Adjust the value to control the cloud's scaling
+// });
 // gsap.to(".cloud-four", {
 //   scrollTrigger: {
 //     trigger: ".base-video",
@@ -136,6 +128,7 @@ gsap.to(".cloud-two", {
 function configureScrollTrigger(blockId, triggerClass) {
   const blockSelector = `#${blockId}`;
   const triggerSelector = `.${triggerClass}`;
+  const triggerHeading = `.${triggerClass}`;
 
   gsap.to(blockSelector, {
     scrollTrigger: {
@@ -144,11 +137,11 @@ function configureScrollTrigger(blockId, triggerClass) {
       end: () => "+=" + document.querySelector(triggerSelector).offsetHeight,
       onEnter: () => {
         gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
-        gsap.to(`${blockSelector} h3`, { color: "#9bd866" });
+        gsap.to(`${triggerHeading} h3`, { color: "#9bd866" });
       },
       onEnterBack: () => {
         gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
-        gsap.to(`${blockSelector} h3`, { color: "#9bd866" });
+        gsap.to(`${triggerHeading} h3`, { color: "#9bd866" });
       },
       onLeave: () => {
         gsap.to(blockSelector, {
@@ -156,7 +149,7 @@ function configureScrollTrigger(blockId, triggerClass) {
           opacity: 0.4,
           duration: 0.5,
         });
-        gsap.to(`${blockSelector} h3`, { color: "#ffffff" });
+        gsap.to(`${triggerHeading} h3`, { color: "#ffffff" });
       },
       onLeaveBack: () => {
         gsap.to(blockSelector, {
@@ -164,7 +157,7 @@ function configureScrollTrigger(blockId, triggerClass) {
           opacity: 0.4,
           duration: 0.5,
         });
-        gsap.to(`${blockSelector} h3`, { color: "#ffffff" });
+        gsap.to(`${triggerHeading} h3`, { color: "#ffffff" });
       },
     },
   });
@@ -218,22 +211,48 @@ gsap.to(challengeVideo, {
 //   },
 // });
 
-// GSAP animation code
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".video-img",
-    start: "top center",
-    scrub: 0.5,
-  },
+// // GSAP animation code
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".video-img",
+//     start: "top center",
+//     scrub: 0.5,
+//   },
+// });
+
+// tl.to(".video-img", {
+//   translate: "0 0", // Adjust the vertical translation to center the element
+//   width: "100%",
+//   height: "100vh",
+//   duration: 1,
+//   paddingLeft: 0,
+//   ease: "power2.inOut",
+// });
+
+// gsap.fromTo(
+//   ".video-img",
+//   { y: "-100vh", width: "50%" },
+//   { y: 0, width: "100%", duration: 1 }
+// );
+
+const videoAnimation = gsap.timeline({
+  paused: true,
+  defaults: { ease: "power2.inOut" }, // You can adjust the easing function
 });
 
-tl.to(".video-img", {
-  translate: "0 0", // Adjust the vertical translation to center the element
-  width: "100%",
-  height: "100vh",
-  duration: 1,
-  paddingLeft: 0,
-  ease: "power2.inOut",
+videoAnimation.fromTo(
+  ".video-img",
+  { y: "-100vh", width: "50%" },
+  { y: 0, width: "100%", duration: 1 }
+);
+ScrollTrigger.create({
+  trigger: ".video-img",
+  start: "center center", // Adjust the start position as needed
+  endTrigger: "#projectvideo",
+  end: "top top", // Adjust the end position as needed
+  animation: videoAnimation, // Use the timeline as the animation
+  scrub: true, // Set scrub to 1 to make the animation follow the scroll position
+  // markers: true, // Optional: Set to true to visualize the trigger area (for debugging)
 });
 
 // GSAP Animation replace ScrollReveal

@@ -28,6 +28,7 @@ section.hero {
     @media only screen and (min-width: $bp-large) {
       grid-gap: 10rem;
       grid-column: col-start 2 / center-end;
+      flex-wrap: nowrap;
     }
     .map-elements {
       padding-top: 10rem;
@@ -48,6 +49,9 @@ section.hero {
       }
       svg {
         width: 100%;
+        @media only screen and (min-width: $bp-large) {
+          width: unset;
+        }
       }
     }
   }

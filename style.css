@@ -1081,6 +1081,8 @@ section.hero .hero--panel-two {
   section.hero .hero--panel-two {
     grid-gap: 10rem;
     grid-column: col-start 2/center-end;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
   }
 }
 section.hero .hero--panel-two .map-elements {
@@ -1103,6 +1105,11 @@ section.hero .hero--panel-two .sticky-map #block-4 {
 }
 section.hero .hero--panel-two .sticky-map svg {
   width: 100%;
+}
+@media only screen and (min-width: 62.5em) {
+  section.hero .hero--panel-two .sticky-map svg {
+    width: unset;
+  }
 }
 
 .block {
@@ -2168,10 +2175,13 @@ section.section-map {
   background: transparent;
   border: none;
   position: absolute;
-  left: -5rem;
+  left: -10rem;
   top: 2rem;
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 100;
+  cursor: pointer;
+  width: 10rem;
+  height: 10rem;
 }
 .map-details--wrapper {
   position: relative;
@@ -4110,8 +4120,7 @@ section.panel-project .project-image img {
 .panel-four-video img {
   float: right;
   translate: 0 -125vh;
-  width: 50%;
-  height: 50%;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
   padding-left: 10rem;

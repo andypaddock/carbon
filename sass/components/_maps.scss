@@ -252,10 +252,13 @@ section.section-map {
     background: transparent;
     border: none;
     position: absolute;
-    left: -5rem;
+    left: -10rem;
     top: 2rem;
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 100;
+    cursor: pointer;
+    width: 10rem;
+    height: 10rem;
   }
   &--wrapper {
     position: relative;
