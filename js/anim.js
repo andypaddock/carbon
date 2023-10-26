@@ -241,18 +241,28 @@ const videoAnimation = gsap.timeline({
 });
 
 videoAnimation.fromTo(
-  ".video-img",
-  { y: "-100vh", width: "50%" },
-  { y: 0, width: "100%", duration: 1 }
+  ".video-img--wrapper",
+  { y: "-150vh", width: "0vw", height: "0vh" },
+  { y: 0, width: "100vw", height: "100vh", duration: 20 }
 );
+// videoAnimation.fromTo(
+//   ".video-img--wrapper",
+//   { width: "100vh" }, // Starting width (initial square size)
+//   { width: "100vw", duration: 10 } // Final width (filling the screen)
+// );
+// videoAnimation.fromTo(
+//   ".video-img--wrapper .img",
+//   { borderRadius: "40%" },
+//   { borderRadius: "0%", duration: 1 } // Adjust the duration and properties as needed
+// );
+
 ScrollTrigger.create({
-  trigger: ".video-img",
+  trigger: ".video-img--wrapper",
   start: "center center", // Adjust the start position as needed
   endTrigger: "#projectvideo",
   end: "top top", // Adjust the end position as needed
   animation: videoAnimation, // Use the timeline as the animation
   scrub: true, // Set scrub to 1 to make the animation follow the scroll position
-  // markers: true, // Optional: Set to true to visualize the trigger area (for debugging)
 });
 
 // GSAP Animation replace ScrollReveal
@@ -390,5 +400,79 @@ if (staggerElements.length > 0) {
     onLeaveBack: (batch) =>
       gsap.set(batch, { opacity: 1, y: 0, overwrite: true }),
     end: "35% center",
+  });
+}
+
+const animateGoal = document.querySelectorAll(".goal");
+
+// Set initial position and opacity of divs
+gsap.set(animateGoal, { opacity: 0.5, filter: "saturate(0.5)" });
+
+animateGoal.forEach((div, index) => {
+  gsap.to(div, {
+    opacity: 1,
+    filter: "saturate(0.5)",
+    duration: 0.6,
+    ease: "power2.out",
+
+    scrollTrigger: {
+      trigger: div,
+      start: "top center", // Trigger animation when the div is 80% from the top of the viewport
+      end: "bottom center", // End animation when the div is 20% from the bottom of the viewport
+      toggleActions: "play reverse play reverse", // Play animation when in view, and reverse it when leaving view
+    },
+  });
+});
+
+// GSAP Animation replace ScrollReveal
+const explainerLeft = document.querySelectorAll(".explainer p");
+
+if (explainerLeft.length >= 3) {
+  const firstThreeParagraphs = Array.from(explainerLeft).slice(0, 3);
+
+  // Now you have an array containing the first three <p> elements.
+  // You can loop through or manipulate them as needed.
+  // Set initial position and opacity of divs
+  gsap.set(firstThreeParagraphs, { x: -40, opacity: 0 });
+
+  firstThreeParagraphs.forEach((div, index) => {
+    gsap.to(div, {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: div,
+        start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+        end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+        toggleActions: "play reverse play reverse", // Play animation when in view, and reverse it when leaving view
+        delay: index * 0.2, // Stagger the animation for each div
+      },
+    });
+  });
+}
+
+const explainerRight = document.querySelectorAll(".explainer p");
+
+if (explainerRight.length > 3) {
+  const paragraphsAfterFirstThree = Array.from(explainerRight).slice(3);
+
+  // Set initial position and opacity of divs
+  gsap.set(paragraphsAfterFirstThree, { x: 40, opacity: 0 });
+
+  paragraphsAfterFirstThree.forEach((div, index) => {
+    gsap.to(div, {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: div,
+        start: "top 80%", // Trigger animation when the div is 80% from the top of the viewport
+        end: "bottom 20%", // End animation when the div is 20% from the bottom of the viewport
+        toggleActions: "play reverse play reverse", // Play animation when in view, and reverse it when leaving view
+        delay: index * 0.2, // Stagger the animation for each div
+      },
+    });
   });
 }

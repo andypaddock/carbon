@@ -2,10 +2,17 @@
     <div class="faq-block row <?php the_sub_field('column_size'); ?>">
         <h2 class="heading-1 heading-1--extra fmtop"><?php the_sub_field('faq_title');?></h2>
 
-        <?php if( have_rows('q_and_a') ): ?>
+
         <div class="faq-block--items toggle-block">
-            <?php while( have_rows('q_and_a') ): the_row(); ?>
-            <div class="item animate-tile">
+            <?php if (have_rows('q_and_a')) : ?>
+            <?php $item_count = 0; // Initialize a counter to keep track of item position ?>
+            <?php while (have_rows('q_and_a')) : the_row(); ?>
+            <?php
+        // Determine if the current item is odd or even
+        $item_class = ($item_count % 2 == 0) ? 'animate-tile--right' : 'animate-tile--left';
+        ?>
+
+            <div class="item <?php echo $item_class; ?>">
 
                 <label>
                     <h2 class="heading-4 font-default"><?php the_sub_field('question'); ?></h2>
@@ -16,8 +23,13 @@
                 </div>
 
             </div>
+
+            <?php
+        $item_count++; // Increment the counter for the next item
+        ?>
             <?php endwhile; ?>
+            <?php endif; ?>
         </div>
-        <?php endif; ?>
+
     </div>
 </section>

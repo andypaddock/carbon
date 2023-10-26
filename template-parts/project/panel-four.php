@@ -29,11 +29,10 @@ if( $image ) {
     </div>
     <div class="row extended panel-four-video">
         <?php 
-$image = get_sub_field('how_intro_image');
-$size = 'full'; // (thumbnail, medium, large, full or custom size)
-if( $image ) {
-    echo wp_get_attachment_image( $image, $size, false, array("class" => "video-img") );
-}?>
+$image = get_sub_field('how_intro_image');?>
+        <div class="video-img--wrapper">
+            <div class="img" style="--background: url(<?php echo esc_url($image); ?>)"></div>
+        </div>
         <?php $project_video = get_sub_field('project_video');?>
         <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload"
             src="<?php echo $project_video['url']; ?>" muted>

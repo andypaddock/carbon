@@ -28,7 +28,13 @@ if (!empty($categories)) {
         </div>
     </section>
     <section class="container">
-        <div class="row col-8 entry-content">
+        <div class="back-nav">
+            <div class="back-nav--link"><a href="<?php echo site_url(); ?>"
+                    title="<?php the_field('header_title', 'options'); ?>"><i class="fa-thin fa-arrow-left"></i>Return
+                    to the Carbon Story</a></div>
+        </div>
+        <div class="entry-content">
+
             <?php
 		the_content(
 			sprintf(

@@ -14,7 +14,7 @@
                 <?php while( have_rows('goals') ): the_row(); 
         $image = get_sub_field('goal_image');
         ?>
-                <div class="goal animate-tile ">
+                <div class="goal">
                     <div class="goal--image">
                         <?php echo wp_get_attachment_image( $image, 'full' ); ?>
                     </div>

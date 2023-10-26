@@ -3,7 +3,15 @@
 .toggle-block {
   padding: 6rem 0;
   @media only screen and (min-width: $bp-large) {
-    column-count: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    .animate-tile--left {
+      grid-column: 2;
+    }
+    .animate-tile--right {
+      grid-column: 1;
+    }
   }
 
   label {
@@ -35,8 +43,11 @@
   }
   .item {
     border: 1px solid $color-white;
-    margin-bottom: 2rem;
-    break-inside: avoid-column;
+    max-height: 5.4rem;
+    transition: all 0.3s ease 0s;
+    &.opened {
+      max-height: 100rem;
+    }
   }
 }
 

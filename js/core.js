@@ -158,6 +158,8 @@ jQuery(document).ready(function ($) {
     var otherLabels = $(this).parent().siblings(".item").find("label");
     otherLabels.removeClass("collapsed");
     otherLabels.next().slideUp();
+    $(".item").removeClass("opened");
+    $(this).parent().addClass("opened");
     $(this).toggleClass("collapsed");
     $(this).next().slideToggle();
   });

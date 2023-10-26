@@ -89,3 +89,14 @@
     }
   }
 }
+.slick-slider {
+  .slick-arrow {
+    border: transparent;
+    background: transparent;
+    cursor: pointer;
+    i {
+      font-size: 4rem;
+      color: $color-white;
+    }
+  }
+}

@@ -90,3 +90,25 @@ div.aligncenter {
     background: $color-primary;
   }
 }
+.back-nav {
+  grid-column: center-start / col-end 2;
+  padding: 8rem 2rem 0 0;
+  &--link {
+    position: sticky;
+    top: 8rem;
+
+    i {
+      padding-right: 3rem;
+      font-size: 3rem;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+    }
+  }
+}
+.entry-content {
+  grid-column: col-end 2 / col-end 10;
+}
