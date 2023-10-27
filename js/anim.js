@@ -91,40 +91,6 @@ gsap.to(".cloud-one img", {
   scale: 3, // Adjust the value to control the cloud's scaling
 });
 
-// gsap.to(".cloud-two", {
-//   scrollTrigger: {
-//     trigger: ".hero",
-//     start: "top center",
-//     end: "bottom center",
-//     scrub: true,
-//   },
-//   y: 2500,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.4, // Adjust the value to control the cloud's scaling
-// });
-// gsap.to(".cloud-four", {
-//   scrollTrigger: {
-//     trigger: ".base-video",
-//     start: "top bottom",
-//     end: "bottom top",
-//     scrub: true,
-//   },
-//   y: -500,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.4, // Adjust the value to control the cloud's scaling
-// });
-// gsap.to(".cloud-five", {
-//   scrollTrigger: {
-//     trigger: ".base-video",
-//     start: "top bottom",
-//     end: "bottom top",
-//     scrub: true,
-//   },
-//   y: -600,
-//   // Adjust the value to control the cloud's movement
-//   scale: 1.7, // Adjust the value to control the cloud's scaling
-// });
-
 function configureScrollTrigger(blockId, triggerClass) {
   const blockSelector = `#${blockId}`;
   const triggerSelector = `.${triggerClass}`;
@@ -178,83 +144,18 @@ gsap.to(challengeVideo, {
   },
 });
 
-// // Get the video element
-// const video = document.querySelector("#projectvideo");
-
-// // Configure ScrollTrigger
-// ScrollTrigger.create({
-//   trigger: video, // The element that triggers the animation
-//   start: "bottom bottom", // Animation starts when the top of the element reaches the center of the viewport
-//   end: "bottom 20%", // Animation ends when the bottom of the element reaches the center of the viewport
-//   pin: true, // Pin the element to the bottom of the viewport until animation ends
-//   pinSpacing: false, // Disable automatic adjustment of pin spacing
-//   onUpdate: (self) => {
-//     // Calculate the scroll progress within the trigger area
-//     const progress = self.progress.toFixed(2);
-
-//     // Adjust the opacity of the video based on scroll progress
-//     gsap.to(video, {
-//       opacity: 1 - progress, // Fade out the video as scroll progresses
-//       duration: 0.2,
-//     });
-//   },
-// });
-
-// var largeTL = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".project--panel-one-wrapper",
-//     pin: ".project-image",
-//     pinSpacing: false,
-//     start: "top top",
-//     endTrigger: ".project-bleed",
-//     end: "top bottom",
-//   },
-// });
-
-// // GSAP animation code
-// const tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".video-img",
-//     start: "top center",
-//     scrub: 0.5,
-//   },
-// });
-
-// tl.to(".video-img", {
-//   translate: "0 0", // Adjust the vertical translation to center the element
-//   width: "100%",
-//   height: "100vh",
-//   duration: 1,
-//   paddingLeft: 0,
-//   ease: "power2.inOut",
-// });
-
-// gsap.fromTo(
-//   ".video-img",
-//   { y: "-100vh", width: "50%" },
-//   { y: 0, width: "100%", duration: 1 }
-// );
-
 const videoAnimation = gsap.timeline({
   paused: true,
   defaults: { ease: "power2.inOut" }, // You can adjust the easing function
 });
 
+// videoAnimation.fromTo(".video-img--wrapper", {}, {});
+
 videoAnimation.fromTo(
   ".video-img--wrapper",
-  { y: "-150vh", width: "0vw", height: "0vh" },
-  { y: 0, width: "100vw", height: "100vh", duration: 20 }
+  { y: "-150vh", width: "0vw", height: "0vh", borderRadius: "40%" },
+  { y: 0, width: "100vw", height: "100vh", borderRadius: "0", duration: 20 }
 );
-// videoAnimation.fromTo(
-//   ".video-img--wrapper",
-//   { width: "100vh" }, // Starting width (initial square size)
-//   { width: "100vw", duration: 10 } // Final width (filling the screen)
-// );
-// videoAnimation.fromTo(
-//   ".video-img--wrapper .img",
-//   { borderRadius: "40%" },
-//   { borderRadius: "0%", duration: 1 } // Adjust the duration and properties as needed
-// );
 
 ScrollTrigger.create({
   trigger: ".video-img--wrapper",
@@ -372,17 +273,17 @@ gsap.to(".project-intro", {
   },
 });
 
-const pinnedDiv = document.querySelector(".section-map");
+// const pinnedDiv = document.querySelector(".section-map");
 
-gsap.to(pinnedDiv, {
-  scrollTrigger: {
-    trigger: ".section-map",
-    start: "top top",
-    end: "bottom top",
-    pin: true, // Pin the element to the viewport
-    pinSpacing: false, // Don't add spacing to the pinned element
-  },
-});
+// gsap.to(pinnedDiv, {
+//   scrollTrigger: {
+//     trigger: ".section-map",
+//     start: "top top",
+//     end: "bottom top",
+//     pin: true, // Pin the element to the viewport
+//     pinSpacing: false, // Don't add spacing to the pinned element
+//   },
+// });
 
 const staggerElements = document.querySelectorAll(".stagger");
 
@@ -476,3 +377,29 @@ if (explainerRight.length > 3) {
     });
   });
 }
+
+// Select all elements with the class ".map-link"
+const mapLinks = document.querySelectorAll(".map-link");
+
+// Loop through each ".map-link" element and apply the GSAP animation individually
+mapLinks.forEach((mapLink) => {
+  gsap.to(mapLink, {
+    scrollTrigger: {
+      trigger: mapLink, // Use the current ".map-link" element as the trigger
+      start: "top center", // Start 5rem before the center
+      end: "bottom center", // End 5rem after the center
+      toggleClass: "active", // CSS class to toggle
+      markers: true, // Add markers for visualization (optional)
+      scrub: true,
+    },
+  });
+});
+
+// gsap.to("#map", {
+//   position: "fixed",
+//   scrollTrigger: {
+//     trigger: ".panel-four-video",
+//     start: "top bottom", // the default values
+//     // endTrigger: ".section-news-feed",
+//   },
+// });

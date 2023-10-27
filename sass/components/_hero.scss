@@ -5,6 +5,8 @@ section.hero {
   background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 2;
+  background-color: $color-bg-dark;
   .hero--panel-one {
     height: 100vh;
     grid-column: center-start / center-end;
@@ -130,6 +132,7 @@ video {
   top: 40vh;
   width: 100%;
   height: 100%;
+  z-index: 3;
   // overflow: hidden;
   // outline: 1px solid red;
 }
@@ -183,7 +186,7 @@ video {
     img {
       object-fit: cover;
       width: 100%;
-      height: 140vh;
+      height: 150vh;
       object-position: center bottom;
     }
   }

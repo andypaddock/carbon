@@ -272,36 +272,36 @@ function fadeHeadings() {
 // Call the fadeHeadings function every 3 seconds
 setInterval(fadeHeadings, 3000);
 
-// Get all the anchor tags inside the "buttons" div
-const buttons = document.querySelectorAll(".buttons a");
+// // Get all the anchor tags inside the "buttons" div
+// const buttons = document.querySelectorAll(".buttons a");
 
-// Add a click event listener to each anchor tag
-buttons.forEach((button) => {
-  button.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default link behavior
+// // Add a click event listener to each anchor tag
+// buttons.forEach((button) => {
+//   button.addEventListener("click", function (event) {
+//     event.preventDefault(); // Prevent default link behavior
 
-    // Remove the "active" class from all other elements
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
+//     // Remove the "active" class from all other elements
+//     buttons.forEach((btn) => {
+//       btn.classList.remove("active");
+//     });
 
-    // Add the "active" class to the clicked button
-    this.classList.add("active");
+//     // Add the "active" class to the clicked button
+//     this.classList.add("active");
 
-    // Get the corresponding area-link using the button's ID
-    const buttonId = this.id;
-    const areaLink = document.querySelector(".area-link." + buttonId);
+//     // Get the corresponding area-link using the button's ID
+//     const buttonId = this.id;
+//     const areaLink = document.querySelector(".area-link." + buttonId);
 
-    // Remove the "active" class from all other area-links
-    const areaLinks = document.querySelectorAll(".area-link");
-    areaLinks.forEach((link) => {
-      link.classList.remove("active");
-    });
+//     // Remove the "active" class from all other area-links
+//     const areaLinks = document.querySelectorAll(".area-link");
+//     areaLinks.forEach((link) => {
+//       link.classList.remove("active");
+//     });
 
-    // Add the "active" class to the corresponding area-link
-    areaLink.classList.add("active");
-  });
-});
+//     // Add the "active" class to the corresponding area-link
+//     areaLink.classList.add("active");
+//   });
+// });
 
 // Get all off-canvas elements
 const offcanvasElements = document.querySelectorAll(".offcanvas");

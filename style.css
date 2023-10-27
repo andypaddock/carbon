@@ -1047,6 +1047,8 @@ section.hero {
   background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 2;
+  background-color: #2f2e2c;
 }
 section.hero .hero--panel-one {
   height: 100vh;
@@ -1194,6 +1196,7 @@ video {
   top: 40vh;
   width: 100%;
   height: 100%;
+  z-index: 3;
 }
 
 .cloud-two {
@@ -1235,7 +1238,7 @@ video {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
-  height: 140vh;
+  height: 150vh;
   -o-object-position: center bottom;
      object-position: center bottom;
 }
@@ -1930,16 +1933,19 @@ div.aligncenter {
 section.section-map {
   padding-top: 0 !important;
   overflow-x: hidden;
-  -webkit-transform: translateY(-125vh);
-          transform: translateY(-125vh);
 }
 
 .map-wrapper {
   position: relative;
+  padding: 50vh 0;
 }
 
 #map {
   height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 #map .marker {
   color: #ff9452;
@@ -2096,13 +2102,12 @@ section.section-map {
 }
 
 #button-container {
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
   top: 0;
-  left: 10vw;
+  padding-left: 10vw;
   z-index: 1;
 }
 #button-container .buttons {
@@ -2116,8 +2121,11 @@ section.section-map {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  grid-gap: 10vh;
+  z-index: 99;
 }
 #button-container .buttons a {
+  padding: 5rem 0;
   text-transform: uppercase;
   font-family: "cora", sans-serif;
   font-size: 1.7rem;
@@ -4170,15 +4178,17 @@ section.panel-project .project-image img {
 }
 .panel-four-video .video-img--wrapper {
   background: #2f2e2c;
-}
-.panel-four-video .video-img--wrapper .img {
-  width: 100%;
-  height: 100%;
-  background: #2f2e2c;
   background-image: var(--background);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  -webkit-box-shadow: 0 0 5rem 10rem #2f2e2c inset;
+          box-shadow: 0 0 5rem 10rem #2f2e2c inset;
+  overflow: hidden;
+}
+.panel-four-video .video-img--wrapper .img {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 .panel-four-video .video-img {

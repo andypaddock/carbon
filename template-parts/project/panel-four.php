@@ -30,8 +30,8 @@ if( $image ) {
     <div class="row extended panel-four-video">
         <?php 
 $image = get_sub_field('how_intro_image');?>
-        <div class="video-img--wrapper">
-            <div class="img" style="--background: url(<?php echo esc_url($image); ?>)"></div>
+        <div class="video-img--wrapper" style="--background: url(<?php echo esc_url($image); ?>)">
+
         </div>
         <?php $project_video = get_sub_field('project_video');?>
         <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload"
