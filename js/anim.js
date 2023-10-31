@@ -66,13 +66,13 @@ const vtl = gsap.timeline({
 
 vtl.to(projectVideo, { opacity: 1, duration: 0.1 });
 
-vtl.to(videoImg, {
-  opacity: 0,
-  duration: 0.5,
-});
-vtl.to(videoImg, {
-  zIndex: -1,
-});
+// vtl.to(videoImg, {
+//   opacity: 0,
+//   duration: 0.5,
+// });
+// vtl.to(videoImg, {
+//   zIndex: -1,
+// });
 vtl.to(projectWrapper, {
   opacity: 0,
   duration: 0.5,
@@ -153,8 +153,8 @@ const videoAnimation = gsap.timeline({
 
 videoAnimation.fromTo(
   ".video-img--wrapper",
-  { y: "-150vh", width: "0vw", height: "0vh", borderRadius: "40%" },
-  { y: 0, width: "100vw", height: "100vh", borderRadius: "0", duration: 20 }
+  { y: "-150vh", width: "0%", height: "0%", borderRadius: "40%" },
+  { y: 0, width: "100%", height: "100%", borderRadius: "0", duration: 20 }
 );
 
 ScrollTrigger.create({
@@ -395,11 +395,14 @@ mapLinks.forEach((mapLink) => {
   });
 });
 
-// gsap.to("#map", {
-//   position: "fixed",
-//   scrollTrigger: {
-//     trigger: ".panel-four-video",
-//     start: "top bottom", // the default values
-//     // endTrigger: ".section-news-feed",
-//   },
-// });
+gsap.to("#map", {
+  position: "absolute",
+  top: "unset",
+  bottom: "0",
+  scrollTrigger: {
+    trigger: ".section-news-feed",
+    start: "top bottom", // the default values
+    // endTrigger: ".section-news-feed",
+    toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
+  },
+});

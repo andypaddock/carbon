@@ -1448,6 +1448,9 @@ video {
   -webkit-text-fill-color: transparent;
 }
 
+.section-news-feed {
+  padding: 25vh 0 0;
+}
 .section-news-feed .news-feed-wrapper {
   display: -ms-grid;
   display: grid;
@@ -4182,8 +4185,8 @@ section.panel-project .project-image img {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-box-shadow: 0 0 5rem 10rem #2f2e2c inset;
-          box-shadow: 0 0 5rem 10rem #2f2e2c inset;
+  -webkit-box-shadow: 0 0 1px 1px rgba(47, 46, 44, 0.4) inset, 0 0 5rem 10rem #2f2e2c inset;
+          box-shadow: 0 0 1px 1px rgba(47, 46, 44, 0.4) inset, 0 0 5rem 10rem #2f2e2c inset;
   overflow: hidden;
 }
 .panel-four-video .video-img--wrapper .img {

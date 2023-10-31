@@ -305,6 +305,45 @@ function handleMapLinkClick(layerId, e) {
 }
 
 
+// Function to handle the mutation
+function handleMutation(mutationsList) {
+    mutationsList.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const targetElement = mutation.target;
+            const targetElementId = targetElement.id;
+
+            if (layerNav.includes(targetElementId) && targetElement.classList.contains('active')) {
+                console.log(`Element with ID ${targetElementId} has the active class added.`);
+
+            }
+        }
+    });
+}
+
+// Array of element IDs you want to observe
+const layerNav = ['nguli-rhino-link', 'kamungi-link', 'ipz-range-link'];
+
+// Options for the observer (including what mutations to observe)
+const config = {
+    attributes: true,
+    attributeFilter: ['class']
+};
+
+// Create a MutationObserver instance with the callback function
+const observer = new MutationObserver(handleMutation);
+
+// Start observing each target node for mutations
+layerNav.forEach(id => {
+    const targetNode = document.getElementById(id);
+    if (targetNode) {
+        observer.observe(targetNode, config);
+    }
+});
+
+
+
+
+
 
 <?php
 // WP_Query arguments
