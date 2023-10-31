@@ -37,6 +37,11 @@ section.hero {
       &--block {
         margin-bottom: 10rem;
       }
+      &.alternate {
+        padding-top: 0;
+        position: sticky;
+        top: 20vh;
+      }
     }
     .sticky-map {
       @media only screen and (min-width: $bp-large) {
@@ -53,6 +58,16 @@ section.hero {
         width: 100%;
         @media only screen and (min-width: $bp-large) {
           width: unset;
+        }
+      }
+    }
+    &.sticky-cols {
+      .panel-two {
+        &--text,
+        &--map {
+          align-self: flex-start;
+          position: sticky;
+          top: 20vh;
         }
       }
     }
@@ -189,5 +204,20 @@ video {
       height: 150vh;
       object-position: center bottom;
     }
+  }
+}
+// .panel-two {
+//   &--text,
+//   &--map {
+//     display: flex;
+//   }
+// }
+.panel-two--filler {
+  display: grid;
+  margin-top: 25vh;
+  .marker {
+    width: 1rem;
+    height: 40vh;
+    display: block;
   }
 }

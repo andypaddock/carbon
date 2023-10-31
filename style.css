@@ -1093,6 +1093,11 @@ section.hero .hero--panel-two .map-elements {
 section.hero .hero--panel-two .map-elements--block {
   margin-bottom: 10rem;
 }
+section.hero .hero--panel-two .map-elements.alternate {
+  padding-top: 0;
+  position: sticky;
+  top: 20vh;
+}
 @media only screen and (min-width: 62.5em) {
   section.hero .hero--panel-two .sticky-map {
     position: sticky;
@@ -1112,6 +1117,12 @@ section.hero .hero--panel-two .sticky-map svg {
   section.hero .hero--panel-two .sticky-map svg {
     width: unset;
   }
+}
+section.hero .hero--panel-two.sticky-cols .panel-two--text, section.hero .hero--panel-two.sticky-cols .panel-two--map {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  position: sticky;
+  top: 20vh;
 }
 
 .block {
@@ -1241,6 +1252,17 @@ video {
   height: 150vh;
   -o-object-position: center bottom;
      object-position: center bottom;
+}
+
+.panel-two--filler {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 25vh;
+}
+.panel-two--filler .marker {
+  width: 1rem;
+  height: 40vh;
+  display: block;
 }
 
 .testimonial-carousel {

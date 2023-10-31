@@ -91,49 +91,6 @@ gsap.to(".cloud-one img", {
   scale: 3, // Adjust the value to control the cloud's scaling
 });
 
-function configureScrollTrigger(blockId, triggerClass) {
-  const blockSelector = `#${blockId}`;
-  const triggerSelector = `.${triggerClass}`;
-  const triggerHeading = `.${triggerClass}`;
-
-  gsap.to(blockSelector, {
-    scrollTrigger: {
-      trigger: triggerSelector,
-      start: "top 50%",
-      end: () => "+=" + document.querySelector(triggerSelector).offsetHeight,
-      onEnter: () => {
-        gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
-        gsap.to(`${triggerHeading} h3`, { color: "#9bd866" });
-      },
-      onEnterBack: () => {
-        gsap.to(blockSelector, { fill: "#9bd866", opacity: 1, duration: 0.5 });
-        gsap.to(`${triggerHeading} h3`, { color: "#9bd866" });
-      },
-      onLeave: () => {
-        gsap.to(blockSelector, {
-          fill: "#ffffff",
-          opacity: 0.4,
-          duration: 0.5,
-        });
-        gsap.to(`${triggerHeading} h3`, { color: "#ffffff" });
-      },
-      onLeaveBack: () => {
-        gsap.to(blockSelector, {
-          fill: "#ffffff",
-          opacity: 0.4,
-          duration: 0.5,
-        });
-        gsap.to(`${triggerHeading} h3`, { color: "#ffffff" });
-      },
-    },
-  });
-}
-
-configureScrollTrigger("block-1", "block-1");
-configureScrollTrigger("block-2", "block-2");
-configureScrollTrigger("block-3", "block-3");
-configureScrollTrigger("block-4", "block-4");
-
 gsap.to(challengeVideo, {
   scrollTrigger: {
     trigger: "#challenge",
@@ -406,3 +363,23 @@ gsap.to("#map", {
     toggleActions: "play none none reverse", // Play animation when in view, and reverse it when leaving view
   },
 });
+
+function applyAnimationToBlock(blockId, triggerClass) {
+  gsap.to(blockId, {
+    color: "#9bd866",
+    fontWeight: "700",
+    fill: "#9bd866",
+    opacity: 1,
+    scrollTrigger: {
+      trigger: triggerClass,
+      start: "top center",
+      end: "bottom center",
+      toggleActions: "play reverse play reverse",
+    },
+  });
+}
+
+applyAnimationToBlock("#block-1", ".trigger-1");
+applyAnimationToBlock("#block-2", ".trigger-2");
+applyAnimationToBlock("#block-3", ".trigger-3");
+applyAnimationToBlock("#block-4", ".trigger-4");
