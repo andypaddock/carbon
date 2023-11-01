@@ -110,8 +110,8 @@ const videoAnimation = gsap.timeline({
 
 videoAnimation.fromTo(
   ".video-img--wrapper",
-  { y: "-150vh", width: "0%", height: "0%", borderRadius: "40%" },
-  { y: 0, width: "100%", height: "100%", borderRadius: "0", duration: 20 }
+  { y: "-150vh", width: "0%", height: "0%", opacity: "0" },
+  { y: 0, width: "100%", height: "100%", opacity: "1", duration: 20 }
 );
 
 ScrollTrigger.create({
@@ -208,17 +208,6 @@ animateDown.forEach((div, index) => {
   });
 });
 
-// gsap.to(".project-image", {
-//   yPercent: 50,
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".project-image",
-//     // start: "top bottom", // the default values
-//     // end: "bottom top",
-//     scrub: true,
-//   },
-// });
-
 gsap.to(".project-intro", {
   yPercent: -50,
   ease: "none",
@@ -229,18 +218,6 @@ gsap.to(".project-intro", {
     scrub: true,
   },
 });
-
-// const pinnedDiv = document.querySelector(".section-map");
-
-// gsap.to(pinnedDiv, {
-//   scrollTrigger: {
-//     trigger: ".section-map",
-//     start: "top top",
-//     end: "bottom top",
-//     pin: true, // Pin the element to the viewport
-//     pinSpacing: false, // Don't add spacing to the pinned element
-//   },
-// });
 
 const staggerElements = document.querySelectorAll(".stagger");
 
@@ -335,27 +312,24 @@ if (explainerRight.length > 3) {
   });
 }
 
-// Select all elements with the class ".map-link"
-const mapLinks = document.querySelectorAll(".map-link");
+// // Select all elements with the class ".map-link"
+// const mapLinks = document.querySelectorAll(".map-link");
 
-// Loop through each ".map-link" element and apply the GSAP animation individually
-mapLinks.forEach((mapLink) => {
-  gsap.to(mapLink, {
-    scrollTrigger: {
-      trigger: mapLink, // Use the current ".map-link" element as the trigger
-      start: "top center", // Start 5rem before the center
-      end: "bottom center", // End 5rem after the center
-      toggleClass: "active", // CSS class to toggle
-      markers: true, // Add markers for visualization (optional)
-      scrub: true,
-    },
-  });
-});
+// // Loop through each ".map-link" element and apply the GSAP animation individually
+// mapLinks.forEach((mapLink) => {
+//   gsap.to(mapLink, {
+//     scrollTrigger: {
+//       trigger: mapLink, // Use the current ".map-link" element as the trigger
+//       start: "top center", // Start 5rem before the center
+//       end: "bottom center", // End 5rem after the center
+//       toggleClass: "active", // CSS class to toggle
+//       scrub: true,
+//     },
+//   });
+// });
 
 gsap.to("#map", {
   position: "absolute",
-  top: "unset",
-  bottom: "0",
   scrollTrigger: {
     trigger: ".section-news-feed",
     start: "top bottom", // the default values

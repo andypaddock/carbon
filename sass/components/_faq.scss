@@ -1,7 +1,7 @@
 .section-accordion {
 }
 .toggle-block {
-  padding: 6rem 0;
+  padding: 5rem 0;
   @media only screen and (min-width: $bp-large) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,10 +43,16 @@
   }
   .item {
     border: 1px solid $color-white;
-    max-height: 5.4rem;
+    // max-height: 5.4rem;
     transition: all 0.3s ease 0s;
     &.opened {
-      max-height: 100rem;
+      // max-height: 100rem;
+    }
+  }
+  &--left,
+  &--right {
+    .item {
+      margin-bottom: 2rem;
     }
   }
 }

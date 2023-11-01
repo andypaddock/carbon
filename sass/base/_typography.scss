@@ -16,11 +16,14 @@
     color: $color-grey-dark-1;
   }
   &--hero {
-    font-size: 8rem;
+    font-size: 7rem;
     font-weight: 700;
+    line-height: 1.2;
     span {
-      font-size: 7.4rem;
+      font-size: 3.4rem;
       font-weight: initial;
+      display: block;
+      padding: 2rem 0;
     }
   }
 }

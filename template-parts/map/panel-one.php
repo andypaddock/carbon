@@ -1,70 +1,45 @@
 <?php $pageElements = get_field('page_element_headings', 'options'); ?>
 <div class="row extended map-wrapper">
     <div id="map"></div>
-    <?php
+    <div id="features">
+        <section id="blank-filler" class="active">
+
+        </section>
+        <?php
 // WP_Query arguments
 $args = array(
     'post_type'      => 'project',
     'posts_per_page' => -1, // Display all posts
 );
-
 // The Query
 $query = new WP_Query( $args );
-
 // The Loop
-if ( $query->have_posts() ) {
-    echo '<div id="button-container">';
-    echo '<div class="buttons">';
-
-    while ( $query->have_posts() ) {
+if ( $query->have_posts() ):
+    while ( $query->have_posts() ):
         $query->the_post();
-
         // Get the post title and slug
         $post_title = get_the_title();
-        $post_slug  = $post->post_name;
-        $color_var = get_field('project_colour');
-
-        // Output the button using post name and slug
-        echo '<a style="--marker-color:' . $color_var . '" href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
-    }
-
-    echo '</div>';
-    echo '</div>';
-
-    // Restore original post data
-    wp_reset_postdata();
-} else {
-    // No posts found
-    echo 'No projects found.';
-}
-?>
-
-    <div class="area-link-wrapper">
-        <ul>
-            <?php
-        // The Loop for area links
-        if ( $query->have_posts() ) {
-            while ( $query->have_posts() ) {
-                $query->the_post();
-
-                // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                $color_var = get_field('project_colour');
-        ?>
-            <li class="area-link <?php echo $post_slug; ?>-link"><a href="#<?php echo $post_slug; ?>"
+        $post_slug = $post->post_name;
+        $color_var = get_field('project_colour');?>
+        <section id="<?php echo ($post_slug);?>" class="" style="--marker-color: <?php echo $color_var; ?>">
+            <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title);?>
+            </h2>
+            <?php the_field('short');?>
+            <div class="area-link <?php echo $post_slug; ?>-link"><a href="#offcanvas-<?php echo $post_slug; ?>"
                     style="--marker-color: <?php echo $color_var; ?>"><?php echo $pageElements['project_read_more']; ?>
                     <span><?php echo $post_title; ?></span><i class="fa-sharp fa-arrow-right"></i></a>
-            </li>
-            <?php
-            }
-        } else {
-            // No posts found
-            echo '<li>No projects found.</li>';
-        }
-        ?>
-        </ul>
+            </div>
+        </section>
+        <?php
+                endwhile;
+            endif;
+            // Restore original post data.
+            wp_reset_postdata(); ?>
     </div>
+
+
+
+
 
     <!-- <div id="map-settings">
         <p id="map-pitch"></p>
@@ -73,72 +48,9 @@ if ( $query->have_posts() ) {
         <p id="map-center"></p>
 
     </div> -->
-    <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
 
-// The Query
-$query = new WP_Query( $args );
-
-// The Loop
-if ( $query->have_posts() ):
-    while ( $query->have_posts() ):
-        $query->the_post();
-
-        // Get the post title and slug
-        $post_title = get_the_title();
-        $post_slug = $post->post_name;
-        $color_var = get_field('project_colour');?>
-
-
-    <div id="<?php echo ($post_slug);?>" class="offcanvas container map-details"
-        style="--marker-color: <?php echo $color_var; ?>">
-        <button class="close-button">&times;</button>
-        <div class="row cols map-details--wrapper">
-            <div class="map-details--description">
-                <div class="sticky-wrapper">
-                    <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title);?>
-                    </h2>
-                    <div class="read-more-text">
-                        <?php the_field('project_description');?>
-                        <span id="toggle"><?php echo $pageElements['read_more']; ?></span>
-                    </div>
-                    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
-                        alt="<?php the_title_attribute(); ?>" />
-                </div>
-            </div>
-            <div class="map-details--list"><?php if( have_rows('q_and_a') ): ?>
-                <div class="faq-block--items toggle-block">
-                    <?php while( have_rows('q_and_a') ): the_row(); ?>
-                    <div class="item ">
-
-                        <label>
-                            <h2 class="heading-4 font-default"><?php the_sub_field('question'); ?></h2>
-                            <i class="fa-sharp fa-light fa-arrow-down-right fa-2x"></i>
-                        </label>
-                        <div class="content mb2">
-                            <?php the_sub_field('answer'); ?>
-                        </div>
-
-                    </div>
-                    <?php endwhile; ?>
-                </div>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-
-    <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
 
 </div>
-
 <script>
 mapboxgl.accessToken =
     'pk.eyJ1Ijoic2lsdmVybGVzcyIsImEiOiJjaXNibDlmM2gwMDB2Mm9tazV5YWRmZTVoIn0.ilTX0t72N3P3XbzGFhUKcg';
@@ -151,22 +63,6 @@ var map = new mapboxgl.Map({
     zoom: 17, // starting zoom
     interactive: false,
 });
-
-
-// map.on('move', function() {
-//     var pitchElement = document.getElementById('map-pitch');
-//     var zoomElement = document.getElementById('map-zoom');
-//     var bearingElement = document.getElementById('map-bearing');
-//     var centerElement = document.getElementById('map-center');
-
-//     pitchElement.innerText = 'Pitch: ' + map.getPitch().toFixed(2);
-//     zoomElement.innerText = 'Zoom: ' + map.getZoom().toFixed(2);
-//     bearingElement.innerText = 'Bearing: ' + map.getBearing().toFixed(2);
-//     centerElement.innerText = 'Center: ' + map.getCenter();
-// });
-
-
-
 
 map.on('load', () => {
     // Add a data source containing GeoJSON data.
@@ -227,10 +123,7 @@ $args = array(
 
 });
 
-
-
-
-const layerIds = {
+const chapters = {
     <?php
 // WP_Query arguments
 $args = array(
@@ -253,6 +146,10 @@ $args = array(
         zoom: <?php the_field('zoom');?>,
         pitch: <?php the_field('pitch');?>,
         bearing: <?php the_field('bearing');?>,
+        duration: 2000,
+        easing: function(t) {
+            return t;
+        }
     },
 
 
@@ -261,89 +158,60 @@ $args = array(
                 endwhile;
             endif;
             // Restore original post data.
-            wp_reset_postdata(); ?>
-};
-// Function to show a layer on the map
-function showLayer(layerId) {
-    const {
-        center,
-        zoom,
-        pitch,
-        bearing
-    } = layerIds[layerId];
-    map.setLayoutProperty(layerId, 'visibility', 'visible');
-    map.setLayoutProperty(`line-${layerId}`, 'visibility', 'visible'); // Show the line layer too
-    map.flyTo({
-        center: center,
-        zoom: zoom,
-        pitch: pitch,
-        bearing: bearing,
-        duration: 2000,
-        easing: function(t) {
-            return t;
-        }
-    });
-}
-
-// Function to hide all layers on the map except the specified one
-function hideLayers(exceptLayerId) {
-    for (const id in layerIds) {
-        if (id !== exceptLayerId) {
-            map.setLayoutProperty(id, 'visibility', 'none');
-            map.setLayoutProperty(`line-${id}`, 'visibility', 'none'); // Hide the line layer too
-        }
-    }
-}
-
-// Click handler for all map links
-function handleMapLinkClick(layerId, e) {
-    e.preventDefault();
-    if (map.getLayoutProperty(layerId, 'visibility') === 'none') {
-        showLayer(layerId);
-        hideLayers(layerId);
-    }
-}
-
-
-// Function to handle the mutation
-function handleMutation(mutationsList) {
-    mutationsList.forEach(mutation => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            const targetElement = mutation.target;
-            const targetElementId = targetElement.id;
-
-            if (layerNav.includes(targetElementId) && targetElement.classList.contains('active')) {
-                console.log(`Element with ID ${targetElementId} has the active class added.`);
-
-            }
-        }
-    });
-}
-
-// Array of element IDs you want to observe
-const layerNav = ['nguli-rhino-link', 'kamungi-link', 'ipz-range-link'];
-
-// Options for the observer (including what mutations to observe)
-const config = {
-    attributes: true,
-    attributeFilter: ['class']
+            wp_reset_postdata(); ?> 'blank-filler': {
+        center: [37.930386, -2.722874], // starting position [lng, lat]
+        pitch: 75.94,
+        bearing: 132.85,
+        zoom: 17, // starting zoom
+    },
 };
 
-// Create a MutationObserver instance with the callback function
-const observer = new MutationObserver(handleMutation);
+let activeChapterName = 'blank-filler';
 
-// Start observing each target node for mutations
-layerNav.forEach(id => {
-    const targetNode = document.getElementById(id);
-    if (targetNode) {
-        observer.observe(targetNode, config);
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    // Turn off visibility for the previous active chapter
+    if (activeChapterName) {
+        map.setLayoutProperty(activeChapterName, 'visibility', 'none');
+        map.setLayoutProperty(`line-${activeChapterName}`, 'visibility', 'none');
     }
-});
+
+    // Set visibility for the new active chapter
+    map.flyTo(chapters[chapterName]);
+    map.setLayoutProperty(chapterName, 'visibility', 'visible');
+    map.setLayoutProperty(`line-${chapterName}`, 'visibility', 'visible');
+
+    // Update the active chapter and class
+    document.getElementById(chapterName).classList.add('active');
+    if (activeChapterName) {
+        document.getElementById(activeChapterName).classList.remove('active');
+    }
+
+    activeChapterName = chapterName;
+}
 
 
+function isElementInMiddleOfScreen(id) {
+    const element = document.getElementById(id);
+    if (!element) return false;
 
+    const bounds = element.getBoundingClientRect();
+    const screenMiddle = window.innerHeight / 2;
 
+    return bounds.top < screenMiddle && bounds.bottom > screenMiddle;
+}
 
+// On every scroll event, check which element is in the middle of the screen
+window.onscroll = () => {
+    for (const chapterName in chapters) {
+        if (isElementInMiddleOfScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+</script>
 
 <?php
 // WP_Query arguments
@@ -351,19 +219,60 @@ $args = array(
     'post_type'      => 'project',
     'posts_per_page' => -1, // Display all posts
 );
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                
-            ?>
-document.getElementById('<?php echo $post_slug; ?>-link').addEventListener('click', handleMapLinkClick.bind(null,
-    '<?php echo $post_slug; ?>'));
+
+// The Query
+$query = new WP_Query( $args );
+
+// The Loop
+if ( $query->have_posts() ):
+    while ( $query->have_posts() ):
+        $query->the_post();
+
+        // Get the post title and slug
+        $post_title = get_the_title();
+        $post_slug = $post->post_name;
+        $color_var = get_field('project_colour');?>
+
+
+<div id="offcanvas-<?php echo ($post_slug);?>" class="offcanvas container map-details"
+    style="--marker-color: <?php echo $color_var; ?>">
+    <button class="close-button">&times;</button>
+    <div class="row cols map-details--wrapper">
+        <div class="map-details--description">
+            <div class="sticky-wrapper">
+                <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title);?>
+                </h2>
+                <div class="read-more-text">
+                    <?php the_field('project_description');?>
+                    <span id="toggle"><?php echo $pageElements['read_more']; ?></span>
+                </div>
+                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                    alt="<?php the_title_attribute(); ?>" />
+            </div>
+        </div>
+        <div class="map-details--list"><?php if( have_rows('q_and_a') ): ?>
+            <div class="faq-block--items toggle-block">
+                <?php while( have_rows('q_and_a') ): the_row(); ?>
+                <div class="item ">
+
+                    <label>
+                        <h2 class="heading-4 font-default"><?php the_sub_field('question'); ?></h2>
+                        <i class="fa-sharp fa-light fa-arrow-down-right fa-2x"></i>
+                    </label>
+                    <div class="content mb2">
+                        <?php the_sub_field('answer'); ?>
+                    </div>
+
+                </div>
+                <?php endwhile; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
 <?php
                 endwhile;
             endif;
             // Restore original post data.
             wp_reset_postdata(); ?>
-</script>

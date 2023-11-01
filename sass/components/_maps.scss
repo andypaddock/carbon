@@ -1,248 +1,237 @@
 section.section-map {
   padding-top: 0 !important;
-  overflow-x: hidden;
+  min-height: 100vh;
   // transform: translateY(-100vh);
+  position: relative;
+  .container {
+  }
 }
 .map-wrapper {
   position: relative;
-  padding: 50vh 0;
+  // padding: 50vh 0;
 }
-#map {
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  // &::after {
-  //   content: "";
-  //   background: rgb(239, 236, 233);
-  //   background: linear-gradient(
-  //     0deg,
-  //     rgba(239, 236, 233, 1) 10%,
-  //     rgba(239, 236, 233, 0.5) 50%,
-  //     rgba(239, 236, 233, 0) 100%
-  //   );
-  //   width: 100%;
-  //   height: 25vh;
-  //   position: absolute;
-  //   bottom: 0;
-  // }
-  .marker {
-    color: #ff9452;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background: #2e2d2b;
-    display: grid;
-    place-content: center;
-    transition: width 0.5s, height 0.5s;
-    &.active {
-      background: #ff9452;
-      color: #ffffff;
-      width: 4rem;
-      height: 4rem;
-      font-size: 1.8rem;
-    }
-  }
-}
-.point-controls {
-  position: absolute;
-  bottom: 10rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 50%;
-  transform: translate(-50%);
-  &--wrapper {
-    flex: 1;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    max-width: 120rem;
-  }
-  .next,
-  .prev {
-    i {
-      font-size: 3rem;
-      cursor: pointer;
-      border: 1px solid $color-black;
-      padding: 0.5rem 1rem;
-    }
-  }
-  .next {
-    right: 3rem;
-  }
-  .prev {
-    left: 3rem;
-  }
-  .heading-1 {
-    text-transform: initial;
-  }
-}
-#map-settings {
-  position: absolute;
-  top: 0;
-  background-color: white;
-  padding: 1rem;
-  margin: 8rem;
-}
-#info-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: $color-grey-dark-1;
-  color: $color-white;
-  margin: 5rem;
-  width: 30rem;
-  img {
-    width: 30rem;
-  }
-  h3 {
-    text-align: center;
-    padding: 1rem 1rem 0;
-    text-transform: uppercase;
-    font-family: $font-header;
-    font-weight: 400;
-  }
-  p {
-    text-align: center;
-    padding: 1rem 2rem;
-  }
-  .map-link {
-    color: $color-primary;
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: $font-header;
-    padding: 0 2rem 2rem;
-  }
-}
+// #map {
+//   height: 100vh;
+//   width: 100%;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   // &::after {
+//   //   content: "";
+//   //   background: rgb(239, 236, 233);
+//   //   background: linear-gradient(
+//   //     0deg,
+//   //     rgba(239, 236, 233, 1) 10%,
+//   //     rgba(239, 236, 233, 0.5) 50%,
+//   //     rgba(239, 236, 233, 0) 100%
+//   //   );
+//   //   width: 100%;
+//   //   height: 25vh;
+//   //   position: absolute;
+//   //   bottom: 0;
+//   // }
+//   .marker {
+//     color: #ff9452;
+//     width: 3rem;
+//     height: 3rem;
+//     border-radius: 50%;
+//     background: #2e2d2b;
+//     display: grid;
+//     place-content: center;
+//     transition: width 0.5s, height 0.5s;
+//     &.active {
+//       background: #ff9452;
+//       color: #ffffff;
+//       width: 4rem;
+//       height: 4rem;
+//       font-size: 1.8rem;
+//     }
+//   }
+// }
+// .point-controls {
+//   position: absolute;
+//   bottom: 10rem;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   left: 50%;
+//   transform: translate(-50%);
+//   &--wrapper {
+//     flex: 1;
+//     margin: 0 auto;
+//     display: flex;
+//     justify-content: space-between;
+//     max-width: 120rem;
+//   }
+//   .next,
+//   .prev {
+//     i {
+//       font-size: 3rem;
+//       cursor: pointer;
+//       border: 1px solid $color-black;
+//       padding: 0.5rem 1rem;
+//     }
+//   }
+//   .next {
+//     right: 3rem;
+//   }
+//   .prev {
+//     left: 3rem;
+//   }
+//   .heading-1 {
+//     text-transform: initial;
+//   }
+// }
+// #map-settings {
+//   position: absolute;
+//   top: 0;
+//   background-color: white;
+//   padding: 1rem;
+//   margin: 8rem;
+// }
+// #info-panel {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   background-color: $color-grey-dark-1;
+//   color: $color-white;
+//   margin: 5rem;
+//   width: 30rem;
+//   img {
+//     width: 30rem;
+//   }
+//   h3 {
+//     text-align: center;
+//     padding: 1rem 1rem 0;
+//     text-transform: uppercase;
+//     font-family: $font-header;
+//     font-weight: 400;
+//   }
+//   p {
+//     text-align: center;
+//     padding: 1rem 2rem;
+//   }
+//   .map-link {
+//     color: $color-primary;
+//     display: block;
+//     text-align: center;
+//     text-transform: uppercase;
+//     font-family: $font-header;
+//     padding: 0 2rem 2rem;
+//   }
+// }
 
-.custom-marker {
-  background-color: #ff9452;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  cursor: pointer;
-}
+// .custom-marker {
+//   background-color: #ff9452;
+//   width: 16px;
+//   height: 16px;
+//   border-radius: 50%;
+//   border: 2px solid #ffffff;
+//   cursor: pointer;
+// }
 
-.custom-marker.active {
-  background-color: #007bff;
-}
+// .custom-marker.active {
+//   background-color: #007bff;
+// }
 
-.custom-marker-label {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  color: #ffffff;
-}
+// .custom-marker-label {
+//   position: absolute;
+//   top: -10px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   font-size: 12px;
+//   color: #ffffff;
+// }
 
-.info-panel {
-  top: 10px;
-  right: 10px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+// .info-panel {
+//   top: 10px;
+//   right: 10px;
+//   background-color: #ffffff;
+//   border-radius: 4px;
+//   padding: 10px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
 
-.info-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+// .info-title {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// }
 
-.info-description {
-  font-size: 14px;
-}
+// .info-description {
+//   font-size: 14px;
+// }
 
-.map-wrapper {
-  position: relative;
-}
+// .map-wrapper {
+//   position: relative;
+// }
 
-#button-container {
-  display: flex;
-  height: 100%;
-  top: 0;
-  padding-left: 10vw;
-  z-index: 1;
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    grid-gap: 10vh;
+// #button-container {
+//   display: flex;
+//   height: 100%;
+//   top: 0;
+//   padding-left: 10vw;
+//   z-index: 1;
+//   .buttons {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-evenly;
+//     grid-gap: 10vh;
 
-    z-index: 99;
-    a {
-      padding: 5rem 0;
-      text-transform: uppercase;
-      font-family: $font-header;
-      font-size: 1.7rem;
-      color: #ebe9e7;
-      opacity: 0.5;
-      transition: all 0.5s ease-in-out;
-      &.active {
-        font-size: 4.5rem;
-        color: $color-white;
-        opacity: 1;
-        &::before {
-          content: "\f061";
-          font: var(--fa-font-sharp-solid);
-          font-size: 4rem;
-        }
-      }
-      &::before {
-        content: "\2014";
-        padding-right: 1rem;
-        color: var(--marker-color);
-      }
-    }
-  }
-}
+//     z-index: 99;
+//     a {
+//       padding: 5rem 0;
+//       text-transform: uppercase;
+//       font-family: $font-header;
+//       font-size: 1.7rem;
+//       color: #ebe9e7;
+//       opacity: 0.5;
+//       transition: all 0.5s ease-in-out;
+//       &.active {
+//         font-size: 4.5rem;
+//         color: $color-white;
+//         opacity: 1;
+//         &::before {
+//           content: "\f061";
+//           font: var(--fa-font-sharp-solid);
+//           font-size: 4rem;
+//         }
+//       }
+//       &::before {
+//         content: "\2014";
+//         padding-right: 1rem;
+//         color: var(--marker-color);
+//       }
+//     }
+//   }
+// }
 
-#map-settings {
-  color: black;
-}
-.area-link-wrapper {
-  position: absolute;
-  bottom: 30vh;
-  left: 50%;
-  translate: -50%;
-  .area-link {
-    opacity: 0;
-    transition: all 1s ease-in-out;
-    z-index: -1;
-    &.active {
-      opacity: 1;
-      z-index: 3;
-    }
-  }
-  ul {
-    list-style: none;
-    position: relative;
-    li {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid $color-white;
-      padding: 2rem 3rem;
-      width: 20rem;
-      position: absolute;
-      span {
-        font-weight: 400;
-      }
-      i {
-        display: block;
-        color: var(--marker-color);
-        padding-top: 1rem;
-      }
-    }
-  }
-}
+// #map-settings {
+//   color: black;
+// }
+// .area-link-wrapper {
+//   position: absolute;
+//   bottom: 30vh;
+//   left: 50%;
+//   translate: -50%;
+//   .area-link {
+//     opacity: 0;
+//     transition: all 1s ease-in-out;
+//     z-index: -1;
+//     &.active {
+//       opacity: 1;
+//       z-index: 3;
+//     }
+//   }
+//   ul {
+//     list-style: none;
+//     position: relative;
+//
+//   }
+// }
 .offcanvas {
-  position: absolute;
+  position: fixed;
   z-index: 9;
   top: 0;
   right: -100%;
@@ -355,6 +344,81 @@ section.section-map {
     p {
       font-size: 1.6rem;
       font-weight: 100;
+    }
+    .toggle-block {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+#map {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#features {
+  position: relative;
+  padding: 0 0 60vh 0;
+  width: 30%;
+  left: 10vw;
+  font-family: sans-serif;
+  section {
+    padding: 10vh 0;
+    opacity: 0.5;
+    transition: all 1s ease-in-out;
+    &.active {
+      opacity: 1;
+      .heading-2 {
+        font-size: 4.5rem;
+        i {
+          position: absolute;
+          left: -5rem;
+          top: 2rem;
+          font-size: 3rem;
+          color: var(--marker-color);
+        }
+      }
+      p {
+        font-size: 2rem;
+      }
+      .area-link {
+        opacity: 1;
+      }
+    }
+  }
+  .heading-2 {
+    position: relative;
+    font-size: 1.7rem;
+    transition: all 1s ease-in-out;
+    i {
+      position: absolute;
+      left: -5rem;
+      top: 2rem;
+      font-size: 3rem;
+      color: var(--marker-color);
+    }
+  }
+  p {
+    font-size: 1.4rem;
+  }
+  .area-link {
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid $color-white;
+    padding: 2rem 3rem;
+    width: 100%;
+    position: absolute;
+    margin: 2rem 0 0;
+    transition: all 1s ease-in-out;
+    span {
+      font-weight: 400;
+    }
+    i {
+      display: block;
+      color: var(--marker-color);
+      padding-top: 1rem;
     }
   }
 }

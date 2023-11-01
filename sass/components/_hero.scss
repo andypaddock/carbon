@@ -13,12 +13,33 @@ section.hero {
     display: flex;
     align-items: center;
     @media only screen and (min-width: $bp-large) {
-      grid-column: col-start 2 / center-end;
+      grid-column: col-start 2 / col-end 6;
+    }
+    .hero-top-header {
+      text-align: center;
+      .header--logo {
+        padding: 8rem 5rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        svg {
+          width: 40rem;
+        }
+      }
     }
     .scroll-text {
       font-family: $font-header;
       font-size: 2rem;
       text-transform: uppercase;
+    }
+    &--image {
+      grid-column: col-end 6 / full-end;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: $color-bg-dark;
+      }
     }
   }
   .hero--panel-two {
