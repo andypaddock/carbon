@@ -196,16 +196,19 @@ jQuery(document).ready(function ($) {
   }
 
   $(document).ready(function () {
-    var hiddenParagraphs = $(".read-more-text p:not(:first)");
-    var toggleBtn = $("#toggle");
+    $(".sticky-wrapper").each(function () {
+      var currentStickyWrapper = $(this);
+      var hiddenParagraphs = currentStickyWrapper.find(
+        ".read-more-text p:not(:first)"
+      );
+      hiddenParagraphs.addClass("hidden-text");
+      var toggleBtn = currentStickyWrapper.find(".toggle-button");
 
-    // Add the "hidden-paragraph" class to subsequent paragraphs
-    hiddenParagraphs.addClass("hidden-text");
-
-    toggleBtn.on("click", function () {
-      hiddenParagraphs.slideToggle();
-      toggleBtn.text(function (i, text) {
-        return text === "Read More" ? "Read Less" : "Read More";
+      toggleBtn.on("click", function () {
+        hiddenParagraphs.slideToggle("slow");
+        toggleBtn.text(function (i, text) {
+          return text === "Read More" ? "Read Less" : "Read More";
+        });
       });
     });
   });

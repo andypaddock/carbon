@@ -2,67 +2,67 @@
 <div class="row extended map-wrapper">
     <div id="map"></div>
     <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
+    // WP_Query arguments
+    $args = array(
+        'post_type'      => 'project',
+        'posts_per_page' => -1, // Display all posts
+    );
 
-// The Query
-$query = new WP_Query( $args );
+    // The Query
+    $query = new WP_Query($args);
 
-// The Loop
-if ( $query->have_posts() ) {
-    echo '<div id="button-container">';
-    echo '<div class="buttons">';
+    // The Loop
+    if ($query->have_posts()) {
+        echo '<div id="button-container">';
+        echo '<div class="buttons">';
 
-    while ( $query->have_posts() ) {
-        $query->the_post();
+        while ($query->have_posts()) {
+            $query->the_post();
 
-        // Get the post title and slug
-        $post_title = get_the_title();
-        $post_slug  = $post->post_name;
-        $color_var = get_field('project_colour');
+            // Get the post title and slug
+            $post_title = get_the_title();
+            $post_slug  = $post->post_name;
+            $color_var = get_field('project_colour');
 
-        // Output the button using post name and slug
-        echo '<a style="--marker-color:' . $color_var . '" href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
+            // Output the button using post name and slug
+            echo '<a style="--marker-color:' . $color_var . '" href="#" id="' . $post_slug . '-link" class="map-link ' . $post_slug . '-link">' . $post_title . ' </a>';
+        }
+
+        echo '</div>';
+        echo '</div>';
+
+        // Restore original post data
+        wp_reset_postdata();
+    } else {
+        // No posts found
+        echo 'No projects found.';
     }
-
-    echo '</div>';
-    echo '</div>';
-
-    // Restore original post data
-    wp_reset_postdata();
-} else {
-    // No posts found
-    echo 'No projects found.';
-}
-?>
+    ?>
 
     <div class="area-link-wrapper">
         <ul>
             <?php
-        // The Loop for area links
-        if ( $query->have_posts() ) {
-            while ( $query->have_posts() ) {
-                $query->the_post();
+            // The Loop for area links
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                    $query->the_post();
 
-                // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                $color_var = get_field('project_colour');
-        ?>
+                    // Get the post title and slug
+                    $post_title = get_the_title();
+                    $post_slug  = $post->post_name;
+                    $color_var = get_field('project_colour');
+            ?>
             <li class="area-link <?php echo $post_slug; ?>-link"><a href="#<?php echo $post_slug; ?>"
                     style="--marker-color: <?php echo $color_var; ?>"><?php echo $pageElements['project_read_more']; ?>
                     <span><?php echo $post_title; ?></span><i class="fa-sharp fa-arrow-right"></i></a>
             </li>
             <?php
+                }
+            } else {
+                // No posts found
+                echo '<li>No projects found.</li>';
             }
-        } else {
-            // No posts found
-            echo '<li>No projects found.</li>';
-        }
-        ?>
+            ?>
         </ul>
     </div>
 
@@ -74,45 +74,45 @@ if ( $query->have_posts() ) {
 
     </div> -->
     <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
+    // WP_Query arguments
+    $args = array(
+        'post_type'      => 'project',
+        'posts_per_page' => -1, // Display all posts
+    );
 
-// The Query
-$query = new WP_Query( $args );
+    // The Query
+    $query = new WP_Query($args);
 
-// The Loop
-if ( $query->have_posts() ):
-    while ( $query->have_posts() ):
-        $query->the_post();
+    // The Loop
+    if ($query->have_posts()) :
+        while ($query->have_posts()) :
+            $query->the_post();
 
-        // Get the post title and slug
-        $post_title = get_the_title();
-        $post_slug = $post->post_name;
-        $color_var = get_field('project_colour');?>
+            // Get the post title and slug
+            $post_title = get_the_title();
+            $post_slug = $post->post_name;
+            $color_var = get_field('project_colour'); ?>
 
 
-    <div id="<?php echo ($post_slug);?>" class="offcanvas container map-details"
+    <div id="<?php echo ($post_slug); ?>" class="offcanvas container map-details"
         style="--marker-color: <?php echo $color_var; ?>">
         <button class="close-button">&times;</button>
         <div class="row cols map-details--wrapper">
             <div class="map-details--description">
                 <div class="sticky-wrapper">
-                    <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title);?>
+                    <h2 class="heading-2"><i class="fa-sharp fa-solid fa-arrow-right"></i><?php echo ($post_title); ?>
                     </h2>
                     <div class="read-more-text">
-                        <?php the_field('project_description');?>
+                        <?php the_field('project_description'); ?>
                         <span id="toggle"><?php echo $pageElements['read_more']; ?></span>
                     </div>
                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
                         alt="<?php the_title_attribute(); ?>" />
                 </div>
             </div>
-            <div class="map-details--list"><?php if( have_rows('q_and_a') ): ?>
+            <div class="map-details--list"><?php if (have_rows('q_and_a')) : ?>
                 <div class="faq-block--items toggle-block">
-                    <?php while( have_rows('q_and_a') ): the_row(); ?>
+                    <?php while (have_rows('q_and_a')) : the_row(); ?>
                     <div class="item ">
 
                         <label>
@@ -132,10 +132,10 @@ if ( $query->have_posts() ):
     </div>
 
     <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
+        endwhile;
+    endif;
+    // Restore original post data.
+    wp_reset_postdata(); ?>
 
 </div>
 
@@ -172,22 +172,22 @@ map.on('load', () => {
     // Add a data source containing GeoJSON data.
 
     <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
+        // WP_Query arguments
+        $args = array(
+            'post_type'      => 'project',
+            'posts_per_page' => -1, // Display all posts
+        );
 
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                // Get the post title and slug
                 $post_title = get_the_title();
                 $post_slug  = $post->post_name;
                 $color_var = get_field('project_colour');
                 $tilesetID = get_field('tileset_id');
                 $sourceLayer = get_field('source_layer');
-            ?>
+        ?>
     map.addSource('<?php echo $post_slug; ?>-source', {
         type: 'vector',
         url: 'mapbox://<?php echo $tilesetID; ?>'
@@ -200,10 +200,10 @@ $args = array(
             visibility: 'none'
         },
         'paint': {
-            'fill-color': '<?php echo $color_var;?>',
+            'fill-color': '<?php echo $color_var; ?>',
             'fill-opacity': 0.3
         },
-        'source-layer': '<?php echo $sourceLayer;?>'
+        'source-layer': '<?php echo $sourceLayer; ?>'
     });
     map.addLayer({
         'id': 'line-<?php echo $post_slug; ?>',
@@ -213,17 +213,17 @@ $args = array(
             visibility: 'none'
         },
         'paint': {
-            'line-color': '<?php echo $color_var;?>',
+            'line-color': '<?php echo $color_var; ?>',
             'line-width': 2,
             'line-dasharray': [2, 2],
         },
-        'source-layer': '<?php echo $sourceLayer;?>'
+        'source-layer': '<?php echo $sourceLayer; ?>'
     });
     <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
+            endwhile;
+        endif;
+        // Restore original post data.
+        wp_reset_postdata(); ?>
 
 });
 
@@ -232,36 +232,36 @@ $args = array(
 
 const layerIds = {
     <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
+        // WP_Query arguments
+        $args = array(
+            'post_type'      => 'project',
+            'posts_per_page' => -1, // Display all posts
+        );
 
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                // Get the post title and slug
                 $post_title = get_the_title();
                 $post_slug  = $post->post_name;
                 $location = get_field('center_point');
-            ?>
+        ?>
 
 
     '<?php echo $post_slug; ?>': {
         center: [<?php echo esc_attr($location['lng']); ?>, <?php echo esc_attr($location['lat']); ?>],
-        zoom: <?php the_field('zoom');?>,
-        pitch: <?php the_field('pitch');?>,
-        bearing: <?php the_field('bearing');?>,
+        zoom: <?php the_field('zoom'); ?>,
+        pitch: <?php the_field('pitch'); ?>,
+        bearing: <?php the_field('bearing'); ?>,
     },
 
 
 
     <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
+            endwhile;
+        endif;
+        // Restore original post data.
+        wp_reset_postdata(); ?>
 };
 // Function to show a layer on the map
 function showLayer(layerId) {
@@ -346,24 +346,24 @@ layerNav.forEach(id => {
 
 
 <?php
-// WP_Query arguments
-$args = array(
-    'post_type'      => 'project',
-    'posts_per_page' => -1, // Display all posts
-);
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-                 // Get the post title and slug
-                $post_title = get_the_title();
-                $post_slug  = $post->post_name;
-                
-            ?>
+    // WP_Query arguments
+    $args = array(
+        'post_type'      => 'project',
+        'posts_per_page' => -1, // Display all posts
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            // Get the post title and slug
+            $post_title = get_the_title();
+            $post_slug  = $post->post_name;
+
+    ?>
 document.getElementById('<?php echo $post_slug; ?>-link').addEventListener('click', handleMapLinkClick.bind(null,
     '<?php echo $post_slug; ?>'));
 <?php
-                endwhile;
-            endif;
-            // Restore original post data.
-            wp_reset_postdata(); ?>
+        endwhile;
+    endif;
+    // Restore original post data.
+    wp_reset_postdata(); ?>
 </script>

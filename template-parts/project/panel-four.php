@@ -34,7 +34,7 @@ $image = get_sub_field('how_intro_image');?>
 
         </div>
         <?php $project_video = get_sub_field('project_video');?>
-        <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="preload"
+        <video id="projectvideo" tabindex="0" autobuffer="autobuffer" preload="auto"
             src="<?php echo $project_video['url']; ?>" muted>
 
         </video>

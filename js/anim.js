@@ -43,10 +43,10 @@ const vtl = gsap.timeline({
   scrollTrigger: {
     trigger: ".panel-four-video",
     start: "top top", // Adjust start position as needed
-    end: "bottom top",
+    // end: "bottom top",
     scrub: true,
     pin: true,
-    pinSpacing: "margin",
+    // pinSpacing: "margin",
     // markers: true,
     onUpdate: (self) => {
       const progress = self.progress; // Get the scroll trigger's progress
@@ -66,18 +66,55 @@ const vtl = gsap.timeline({
 
 vtl.to(projectVideo, { opacity: 1, duration: 0.1 });
 
-// vtl.to(videoImg, {
-//   opacity: 0,
-//   duration: 0.5,
-// });
-// vtl.to(videoImg, {
-//   zIndex: -1,
-// });
 vtl.to(projectWrapper, {
   opacity: 0,
   duration: 0.5,
-  zIndex: -1,
+  delay: 2,
 });
+
+// // Function to set up the ScrollTrigger animation
+
+// const videoImg = document.querySelector(".video-img");
+// const projectVideo = document.getElementById("projectvideo");
+// const projectWrapper = document.querySelector(".panel-project");
+// const numberFour = document.querySelector(".number-four"); // Assuming "number-four" is the class of the element you want to animate
+
+// const vtl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".panel-four-video",
+//     start: "top top", // Adjust start position as needed
+//     scrub: true,
+//     pin: true,
+//     onUpdate: (self) => {
+//       const progress = self.progress;
+
+//       if (!isNaN(projectVideo.duration)) {
+//         const projectTime = progress * projectVideo.duration;
+
+//         if (!isNaN(projectTime) && isFinite(projectTime)) {
+//           projectVideo.currentTime = projectTime;
+//         }
+//       }
+//     },
+//   },
+// });
+
+// vtl.to(projectVideo, { opacity: 1, duration: 0.1 });
+
+// // Animation for fading out the project wrapper after video finishes
+// vtl.to(projectWrapper, {
+//   opacity: 0,
+//   duration: 2, // Adjust the duration as needed
+//   zIndex: -1,
+//   onComplete: () => {
+//     // Animation for "number-four" element after the video has finished
+//     gsap.to(numberFour, {
+//       opacity: 0,
+//       duration: 1, // Adjust the duration for the fading animation
+//       delay: 1, // Delay the start of the animation after the video finishes
+//     });
+//   },
+// });
 
 gsap.to(".cloud-one img", {
   scrollTrigger: {
@@ -88,7 +125,7 @@ gsap.to(".cloud-one img", {
   },
   y: -200,
   // Adjust the value to control the cloud's movement
-  scale: 3, // Adjust the value to control the cloud's scaling
+  scale: 2, // Adjust the value to control the cloud's scaling
 });
 
 gsap.to(challengeVideo, {
@@ -110,13 +147,13 @@ const videoAnimation = gsap.timeline({
 
 videoAnimation.fromTo(
   ".video-img--wrapper",
-  { y: "-150vh", width: "0%", height: "0%", opacity: "0" },
-  { y: 0, width: "100%", height: "100%", opacity: "1", duration: 20 }
+  { y: "-10vh", width: "0%", height: "0%", opacity: "0" },
+  { y: 0, width: "100%", height: "100%", opacity: "1", duration: 100 }
 );
 
 ScrollTrigger.create({
   trigger: ".video-img--wrapper",
-  start: "center center", // Adjust the start position as needed
+  start: "top 100%", // Adjust the start position as needed
   endTrigger: "#projectvideo",
   end: "top top", // Adjust the end position as needed
   animation: videoAnimation, // Use the timeline as the animation
@@ -357,3 +394,13 @@ applyAnimationToBlock("#block-1", ".trigger-1");
 applyAnimationToBlock("#block-2", ".trigger-2");
 applyAnimationToBlock("#block-3", ".trigger-3");
 applyAnimationToBlock("#block-4", ".trigger-4");
+
+gsap.to(".hero--panel-one", {
+  yPercent: 200,
+  ease: "power3.out",
+  scrollTrigger: {
+    start: "top top",
+    end: "bottom top",
+    scrub: true,
+  },
+});
