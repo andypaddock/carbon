@@ -60,7 +60,7 @@ section.hero {
 
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 50vh;
+    padding-bottom: 100vh;
     @media only screen and (min-width: $bp-large) {
       grid-gap: 10rem;
       grid-column: col-start 2 / center-end;
@@ -77,6 +77,9 @@ section.hero {
         top: 20vh;
         p {
           padding: 20vh 0;
+          &:first-of-type {
+            padding: 40vh 0 0;
+          }
         }
       }
     }

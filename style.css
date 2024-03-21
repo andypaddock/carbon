@@ -1124,7 +1124,7 @@ section.hero .hero--panel-two {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding-bottom: 50vh;
+  padding-bottom: 100vh;
 }
 @media only screen and (min-width: 62.5em) {
   section.hero .hero--panel-two {
@@ -1147,6 +1147,9 @@ section.hero .hero--panel-two .map-elements.alternate {
 }
 section.hero .hero--panel-two .map-elements.alternate p {
   padding: 20vh 0;
+}
+section.hero .hero--panel-two .map-elements.alternate p:first-of-type {
+  padding: 40vh 0 0;
 }
 @media only screen and (min-width: 62.5em) {
   section.hero .hero--panel-two .sticky-map {
