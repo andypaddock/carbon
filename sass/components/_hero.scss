@@ -75,6 +75,9 @@ section.hero {
         padding-top: 0;
         position: sticky;
         top: 20vh;
+        p {
+          padding: 20vh 0;
+        }
       }
     }
     .sticky-map {

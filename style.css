@@ -1145,6 +1145,9 @@ section.hero .hero--panel-two .map-elements.alternate {
   position: sticky;
   top: 20vh;
 }
+section.hero .hero--panel-two .map-elements.alternate p {
+  padding: 20vh 0;
+}
 @media only screen and (min-width: 62.5em) {
   section.hero .hero--panel-two .sticky-map {
     position: sticky;
